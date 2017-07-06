@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:panelGroupLayout id="pgl2" layout="vertical">
+                <amx:outputText value="Store Order Details " id="ot1" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;font-size:16px;"/>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:facet name="primary">
+                    <amx:commandLink id="cl1" action="bkOnHandInv">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>
+            <!--<amx:commandLink id="cl134" shortDesc="menu" actionListener="#{pageFlowScope.HomeBean.springBoardEvent}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>-->
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl4" rendered="false">
+            <amx:outputText value="outputText2" id="ot6"/>
+            <amx:outputText value="#{pageFlowScope.StoreName}" id="ot7"/>
+            <amx:outputText value="#{pageFlowScope.SellableUpc}" id="ot5"/>
+            <amx:outputText value="#{pageFlowScope.NodeArraySize}" id="ot9"/>
+            <amx:outputText value="#{pageFlowScope.strDebug}" id="ot10"/>
+            <amx:outputText value="outputText34" id="ot8"/>
+        </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="pgl3">
+            <amx:tableLayout id="tl1" inlineStyle="padding-bottom:10px; padding-top:10px;" width="90%">
+                <amx:rowLayout id="rl1">
+                    <amx:cellFormat id="cf1" halign="start" width="30%">
+                        <amx:outputText value="SellableUPC" id="ot15" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf2" halign="start">
+                        <amx:outputText value="#{pageFlowScope.SellableUpc}" id="ot16"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl2">
+                    <amx:cellFormat id="cf3" halign="start" width="30%">
+                        <amx:outputText value="Description" id="ot17" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf4" halign="start">
+                        <amx:outputText value="#{pageFlowScope.ProductDesc}" id="ot18"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl3">
+                    <amx:cellFormat id="cf5" halign="start" width="30%">
+                        <amx:outputText value="Store" id="ot19" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat> 
+                    <amx:cellFormat id="cf6" halign="start">
+                        <amx:outputText value="#{pageFlowScope.StoreName}" id="ot20"/>
+                    </amx:cellFormat>  
+                </amx:rowLayout>  
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="pgl1" styleClass="invPglPadding">
+            <amx:spacer id="s1" height="20"/>
+            <amx:listView var="row" value="#{bindings.firmOrderList.collectionModel}"
+                          fetchSize="#{bindings.firmOrderList.rangeSize}"
+                          selectedRowKeys="#{bindings.firmOrderList.collectionModel.selectedRow}"
+                          initialScrollRowKeys="#{bindings.firmOrderList.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.firmOrderList.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+                <amx:listItem id="li1" showLinkIcon="true"
+                              inlineStyle="border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid">
+                    <amx:tableLayout id="tl2" width="90%" inlineStyle="padding-bottom:10px; padding-top:10px;">
+                        <amx:rowLayout id="rl4">
+                            <amx:cellFormat id="cf7" halign="start" width="40%">
+                                <amx:outputText value="Order Number" id="ot21"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf8" halign="start" width="40%">
+                                <amx:outputText value="Delivery Date" id="ot22"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl5">
+                            <amx:cellFormat id="cf9" halign="start" width="40%">
+                                <amx:outputText value="#{row.odrNumber}" id="ot3"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf10" halign="start" width="40%">
+                                <amx:outputText value="#{row.deliveryDate}" id="ot11"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                    <amx:tableLayout id="tl3" width="90%" inlineStyle="padding-bottom:10px; padding-top:10px;">
+                        <amx:rowLayout id="rl10">
+                            <amx:cellFormat id="cf17" width="50%">
+                                <amx:outputText value="Quantity:" id="ot26"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf19">
+                                <amx:outputText value="#{row.quantity}" id="ot2"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl11">
+                            <amx:cellFormat id="cf21" width="50%">
+                                <amx:outputText value="Pack Size:" id="ot28"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf22">
+                                <amx:outputText value="#{row.packSize}" id="ot12"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl6">
+                            <amx:cellFormat id="cf11" width="50%">
+                                <amx:outputText value="Source:" id="ot23"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf12">
+                                <amx:outputText value="#{row.source}" id="ot13"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl7">
+                            <amx:cellFormat id="cf13" width="50%">
+                                <amx:outputText value="Source Type:" id="ot24"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf14">
+                                <amx:outputText value="#{row.sourceType}" id="ot14"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl9">
+                            <amx:cellFormat id="cf18" width="50%">
+                                <amx:outputText value="Buyer:" id="ot27"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf20">
+                                <amx:outputText value="#{row.buyer}" id="ot4"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:listItem>
+            </amx:listView>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
+</amx:view>
