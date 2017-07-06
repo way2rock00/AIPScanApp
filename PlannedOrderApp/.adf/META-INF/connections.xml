@@ -1,0 +1,12 @@
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+  <Reference name="PlannedOrderConnection" className="oracle.adf.model.connection.rest.RestConnection" xmlns="">
+    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="PlannedOrderConnection">
+        <Contents>
+          <restconnection name="PlannedOrderConnection" url="http://app101111.glbsnet.com"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+</References>
