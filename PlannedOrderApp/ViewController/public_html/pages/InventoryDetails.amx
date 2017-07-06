@@ -228,6 +228,15 @@
                                                     styleClass="xxRobotoFieldValue"/>
                                 </amx:cellFormat>
                             </amx:rowLayout>
+                            <amx:rowLayout id="rl3">
+                                <amx:cellFormat id="cf37" inlineStyle="padding-top:10%;"/>
+                                <amx:cellFormat id="cf38">
+                                    <amx:outputText value="Pack Size" id="ot18" styleClass="xxRobotoGroupLabel"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf39">
+                                    <amx:outputText value="#{row.packSize}" id="ot25" styleClass="xxRobotoFieldValue"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
                             <amx:rowLayout id="rl10">
                                 <amx:cellFormat id="cf35" inlineStyle="padding-top:10%;"/>
                                 <amx:cellFormat id="cf32">
