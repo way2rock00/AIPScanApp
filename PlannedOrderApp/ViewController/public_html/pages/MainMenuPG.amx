@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1" inlineStyle="color:White;">
+        <amx:facet name="header">
+              <amx:panelGroupLayout id="pgl2" layout="vertical">
+                <amx:outputText value="Welcome" id="ot1" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;font-size:16px;"/>
+                <amx:outputText value="#{applicationScope.loggedInUser}" id="ot4" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;padding-top:2px;"/>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl" shortDesc="menu" actionListener="#{pageFlowScope.HomeBean.springBoardEvent}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1"/>
+        <amx:spacer id="s1" height="40"/>
+        <amx:tableLayout id="tl1" halign="center" inlineStyle="top:-35px; position:relative;">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1" halign="start" valign="top">
+                    <amx:commandButton text="Inventory" id="cb2"
+                    inlineStyle="background-color:#86ba25; color:White; width:165px; height:180px; margin:3px; font-size:40px;"
+                                       actionListener="#{pageFlowScope.HomeBean.navigateToInventoryTF}"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf2" halign="end" valign="top">
+                    <amx:commandButton text="Planned Order" id="cb3" 
+                    inlineStyle="background-color:#767a78; color:White; width:165px; height:180px; margin:3px;"
+                                       actionListener="#{pageFlowScope.HomeBean.navigateToPlannedOrderTF}"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2">
+                <amx:cellFormat id="cf3">
+                    <amx:commandButton text="Preferences" id="cb4"
+                    inlineStyle="background-color:#767a78; color:White; width:165px; height: 180px; margin:3px;"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf4">
+                    <!--<amx:commandButton text="Preferences" id="cb5" 
+                    inlineStyle="background-color:#86ba25; color:White; width:165px; height: 180px; margin:3px;"/>-->
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:panelPage>
+</amx:view>
+    

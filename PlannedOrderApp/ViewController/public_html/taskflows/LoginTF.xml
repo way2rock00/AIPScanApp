@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="LoginTF">
+    <default-activity>Login</default-activity>
+    <managed-bean id="__1">
+      <managed-bean-name>PlannedOrderBean</managed-bean-name>
+      <managed-bean-class>deloitte.retail.mobile.beans.PlannedOrderBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="Login">
+      <page>/pages/Login.amx</page>
+    </view>
+    <view id="QuantityPG">
+      <page>/pages/QuantityPG.amx</page>
+    </view>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>
