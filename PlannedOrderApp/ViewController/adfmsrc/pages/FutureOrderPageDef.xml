@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="FutureOrderPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="PlanOrderInvDetailsService"
+              id="PlanOrderInvDetailsServiceIterator"/>
+    <accessorIterator MasterBinding="PlanOrderInvDetailsServiceIterator" Binds="planOrderInvDetails" RangeSize="25"
+                      DataControl="PlanOrderInvDetailsService"
+                      BeanClass="deloitte.retail.mobile.pojo.PlanOrderInvDetails" id="planOrderInvDetailsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="FutureOrderPlanService" id="FutureOrderPlanServiceIterator"/>
+    <accessorIterator MasterBinding="FutureOrderPlanServiceIterator" Binds="futureOrderPlanService" RangeSize="25"
+                      DataControl="FutureOrderPlanService" BeanClass="deloitte.retail.mobile.pojo.FutureOrderPlan"
+                      id="futureOrderPlanServiceIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OnHandQtyService" id="OnHandQtyServiceIterator"/>
+    <accessorIterator MasterBinding="OnHandQtyServiceIterator" Binds="onHandQtyServiceMain" RangeSize="25"
+                      DataControl="OnHandQtyService" BeanClass="deloitte.retail.mobile.pojo.OnHandQty"
+                      id="onHandQtyServiceMainIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="FutureOrderPlanService1" id="FutureOrderPlanService1Iterator"/>
+    <accessorIterator MasterBinding="FutureOrderPlanService1Iterator" Binds="futureOrderPlanService" RangeSize="25"
+                      DataControl="FutureOrderPlanService1" BeanClass="deloitte.retail.mobile.pojo.FutureOrderPlan"
+                      id="futureOrderPlanServiceIterator1"/>
+    <accessorIterator MasterBinding="FutureOrderPlanServiceIterator" Binds="futureOrderPlanDetails" RangeSize="25"
+                      DataControl="FutureOrderPlanService" BeanClass="deloitte.retail.mobile.pojo.FutureOrderPlan"
+                      id="futureOrderPlanDetailsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="onHandQtyServiceMainIterator" id="onHandQtyServiceMain">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.OnHandQty" Name="onHandQtyServiceMain0">
+        <AttrNames>
+          <Item Value="onHandQty"/>
+          <Item Value="totFirmOrderQty"/>
+          <Item Value="price"/>
+          <Item Value="dispMin"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="planOrderInvDetailsIterator" id="planOrderInvDetails1">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.PlanOrderInvDetails" Name="planOrderInvDetails10">
+        <AttrNames>
+          <Item Value="seq"/>
+          <Item Value="day"/>
+          <Item Value="inventoryDt"/>
+          <Item Value="onOrders"/>
+          <Item Value="packSize"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="futureOrderPlanServiceIterator1" id="futureOrderPlanService2">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.FutureOrderPlan" Name="futureOrderPlanService20">
+        <AttrNames>
+          <Item Value="seq"/>
+          <Item Value="qty"/>
+          <Item Value="weekEnd"/>
+          <Item Value="weekNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="futureOrderPlanDetailsIterator" id="futureOrderPlanDetails">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.FutureOrderPlan" Name="futureOrderPlanDetails0">
+        <AttrNames>
+          <Item Value="seq"/>
+          <Item Value="qty"/>
+          <Item Value="weekEnd"/>
+          <Item Value="weekNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
