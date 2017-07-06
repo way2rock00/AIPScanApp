@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="OrderHeaderListPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OrderListService" id="OrderListServiceIterator"/>
+    <accessorIterator MasterBinding="OrderListServiceIterator" Binds="orderHeadersList" RangeSize="25"
+                      DataControl="OrderListService" BeanClass="deloitte.retail.mobile.pojo.OrderHeaders"
+                      id="orderHeadersListIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="orderHeadersListIterator" id="orderHeadersList">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.OrderHeaders" Name="orderHeadersList0">
+        <AttrNames>
+          <Item Value="recordId"/>
+          <Item Value="orderId"/>
+          <Item Value="orderNumber"/>
+          <Item Value="orderType"/>
+          <Item Value="sourceType"/>
+          <Item Value="sourceId"/>
+          <Item Value="destinationType"/>
+          <Item Value="destinationId"/>
+          <Item Value="destinationDesc"/>
+          <Item Value="deliveryDate"/>
+          <Item Value="truckId"/>
+          <Item Value="orderStatus"/>
+          <Item Value="releaseDate"/>
+          <Item Value="planner"/>
+          <Item Value="sourceDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

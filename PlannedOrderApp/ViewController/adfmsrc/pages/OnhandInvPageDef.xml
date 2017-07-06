@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="OnhandInvPageDef" Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="storeId" Type="java.lang.String"/>
+    </variableIterator>
+    <iterator Binds="root" RangeSize="25" DataControl="OnHandQtyService" id="OnHandQtyServiceIterator"/>
+    <accessorIterator MasterBinding="OnHandQtyServiceIterator" Binds="onHandQtyServiceMain" RangeSize="25"
+                      DataControl="OnHandQtyService" BeanClass="deloitte.retail.mobile.pojo.OnHandQty"
+                      id="onHandQtyServiceMainIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="FutureOrderPlanService" id="FutureOrderPlanServiceIterator"/>
+    <accessorIterator MasterBinding="FutureOrderPlanServiceIterator" Binds="futureOrderPlanService" RangeSize="25"
+                      DataControl="FutureOrderPlanService" BeanClass="deloitte.retail.mobile.pojo.FutureOrderPlan"
+                      id="futureOrderPlanServiceIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LOVService" id="LOVServiceIterator"/>                      
+    <accessorIterator MasterBinding="LOVServiceIterator" Binds="storeLOV" RangeSize="-1" DataControl="LOVService"
+                      BeanClass="deloitte.retail.mobile.pojo.Store" id="storeLOVIterator"/>                      
+  </executables>
+  <bindings>
+    <list IterBinding="variables" id="store" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="storeLOVIterator">
+      <AttrNames>
+        <Item Value="storeId"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="storeId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="store"/>
+      </ListDisplayAttrNames>
+    </list>  
+    <tree IterBinding="onHandQtyServiceMainIterator" id="onHandQtyServiceMain">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.OnHandQty" Name="onHandQtyServiceMain0">
+        <AttrNames>
+          <Item Value="onHandQty"/>
+          <Item Value="causal"/>
+          <Item Value="dispMin"/>
+          <Item Value="presttnMin"/>
+          <Item Value="price"/>
+          <Item Value="totFirmOrderQty"/>
+          <Item Value="totPlnOrdQty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="futureOrderPlanServiceIterator" id="futureOrderPlanService">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.FutureOrderPlan" Name="futureOrderPlanService0">
+        <AttrNames>
+          <Item Value="weekNo"/>
+          <Item Value="weekEnd"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

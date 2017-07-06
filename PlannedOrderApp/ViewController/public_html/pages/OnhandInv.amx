@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:panelGroupLayout id="pgl2" layout="vertical">
+                <amx:outputText value="Store Inventory Details" id="ot1" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;font-size:16px;"/>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="backToScan">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>
+            <!--<amx:commandLink id="cl134" shortDesc="menu" actionListener="#{pageFlowScope.HomeBean.springBoardEvent}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>-->
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1">
+            <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot11"/>-->
+            <!--amx:outputText value="Testing" id="ot27"/>
+            <amx:outputText value="#{pageFlowScope.loginRole}" id="ot25"/>
+            <amx:outputText value="Testing" id="ot26"/-->
+            <!--amx:tableLayout id="tl1" width="100%" inlineStyle="padding-bottom:15px; table-layout:fixed;"
+                             styleClass="invPageHeader">
+                <amx:rowLayout id="rl4">
+                    <amx:cellFormat id="cf11" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf3" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="Sellable UPC" id="ot3" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf10" width="4%"/>
+                    <amx:cellFormat id="cf15" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.BarcodeBean.barcodeResult}" id="ot6"
+                                        styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl5">
+                    <amx:cellFormat id="cf17" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf13" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="Description" id="ot8" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf12" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf47" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemDesc}" id="ot9" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl7">
+                    <amx:cellFormat id="cf28" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf25" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="Sub-Class" id="ot15" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf26" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf27" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot12"
+                                        styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl6">
+                    <amx:cellFormat id="cf21" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf24" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="UOM" id="ot14" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf22" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf23" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemUom}" id="ot24" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:spacer id="s1" height="20"/>
+            <amx:tableLayout id="tl2" halign="center" inlineStyle="padding-bottom:35px; table-layout:fixed;"
+                             width="100%">
+                <amx:rowLayout id="rl1">
+                    <amx:cellFormat id="cf2" width="15%" inlineStyle="padding-top:20px;"/>
+                    <amx:cellFormat id="cf9" halign="center" width="70%" inlineStyle="padding-top:10px;">
+                        <amx:outputText value="Store" id="ot5" styleClass="xxRobotoGroupValue"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf5" width="15%"/>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl2">
+                    <amx:cellFormat id="cf1"/>
+                    <amx:cellFormat id="cf16" halign="center">
+                        <amx:selectOneChoice value="#{bindings.store.inputValue}"  id="soc1">
+                        <amx:selectItems value="#{bindings.store.items}" id="si1"/>
+                    </amx:selectOneChoice>
+                        <amx:outputText value="#{pageFlowScope.storeId}" id="ot23"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout
+            -->
+            <amx:panelGroupLayout id="pgl4" halign="center"
+                                  inlineStyle="padding-bottom:15px; outline-style:solid; outline-color:#a5a5a5; border-bottom-color:#a5a5a5; border-bottom-style:solid; border-left-color:#a5a5a5; border-right-color:#a5a5a5; border-right-style:solid; border-left-style:solid; border-left-width:medium; border-right-width:medium; border-top-width:medium; border-bottom-width:medium; outline-width:medium; border-top-style:solid; border-top-color:#a5a5a5;">
+                <amx:tableLayout id="tl7">
+                    <amx:rowLayout id="rl30">
+                        <amx:cellFormat id="cf67">
+                            <amx:spacer id="s3" height="20"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:outputText value="#{pageFlowScope.BarcodeBean.barcodeResult}" id="ot10"
+                                inlineStyle="color:Gray; font-size:x-large;"/>
+                <amx:spacer id="s6" height="10"/>
+                <amx:outputText value="#{pageFlowScope.itemDesc}" id="ot20" inlineStyle="color:Gray; font-size:large;"/>
+                <amx:spacer id="s4" height="20"/>
+                <!--<amx:selectOneChoice id="soc1" inlineStyle="color:Gray; background-color:InactiveBorder;">
+        <amx:selectItem id="si1" label="Store Name 123"/>
+        <amx:selectItem label="Store Name 234" id="si2"/>
+      </amx:selectOneChoice>-->
+                <amx:outputText value="#{pageFlowScope.storeName}(#{pageFlowScope.storeId})" id="ot3"/>
+                <amx:spacer id="s1" height="20"/>
+                <amx:selectOneChoice value="#{pageFlowScope.selectedStoreName}" id="soc1" 
+                                         valueChangeListener="#{pageFlowScope.BarcodeBean.storeValueChanged}">
+                    <amx:selectItems value="#{bindings.store.items}" id="si1"/>
+                </amx:selectOneChoice>
+                <amx:spacer id="s5" height="35"/>
+            </amx:panelGroupLayout>
+            <!--<amx:listView var="row" value="#{bindings.futureOrderPlanService.collectionModel}"
+                          fetchSize="#{bindings.futureOrderPlanService.rangeSize}"
+                          selectedRowKeys="#{bindings.futureOrderPlanService.collectionModel.selectedRow}"
+                          initialScrollRowKeys="#{bindings.futureOrderPlanService.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.futureOrderPlanService.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2">
+                <amx:listItem id="li2">
+                    <amx:tableLayout width="100%" id="tl4">
+                        <amx:rowLayout id="rl6">
+                            <amx:cellFormat width="10px" id="cf21"/>
+                            <amx:cellFormat width="30%" height="43px" id="cf23">
+                                <amx:outputText value="#{row.weekNo}" id="ot14"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat width="10px" id="cf24"/>
+                            <amx:cellFormat width="30%" halign="end" id="cf22">
+                                <amx:outputText value="#{row.weekEnd}" styleClass="adfmf-listItem-highlightText"
+                                                id="ot11"/>
+                            </amx:cellFormat>                                                
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:listItem>
+            </amx:listView>-->
+            <amx:listView var="row" value="#{bindings.onHandQtyServiceMain.collectionModel}"
+                          fetchSize="#{bindings.onHandQtyServiceMain.rangeSize}"
+                          selectedRowKeys="#{bindings.onHandQtyServiceMain.collectionModel.selectedRow}"
+                          initialScrollRowKeys="#{bindings.onHandQtyServiceMain.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.onHandQtyServiceMain.collectionModel.makeCurrent}"
+                          showMoreStrategy="off" bufferStrategy="viewport" id="lv1">
+                <amx:listItem id="li1" inlineStyle="min-width:0pt;">
+                    <!--<amx:tableLayout id="tl3" width="97%" halign="start" styleClass="xxFrame1">
+                <amx:rowLayout id="rl3">
+                    <amx:cellFormat id="cf4" width="8%" inlineStyle="padding-top:10%;"/>
+                    <amx:cellFormat id="cf6" width="70%">
+                        <amx:outputText value="On Hand" id="ot2" styleClass="xxRobotoGroupLabel"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf8" width="22%">
+                        <amx:outputText value="#{row.onHandQty}" id="ot4" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl10">
+                    <amx:cellFormat id="cf18" inlineStyle="padding-top:10%;"/>
+                    <amx:cellFormat id="cf19">
+                        <amx:outputText value="Store Order Quantity" id="ot10" styleClass="xxRobotoGroupLabel"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf20">
+                        <amx:commandLink text="#{row.totFirmOrderQty}"  id="cl3" styleClass="xxRobotoFieldValue"
+                                         action="toFirmOrder"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl12">
+                    <amx:cellFormat id="cf34" inlineStyle="padding-top:10%;"/>
+                    <amx:cellFormat id="cf33">
+                        <amx:outputText value="Planned Quantity" id="ot7"
+                                        styleClass="xxRobotoGroupLabel"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf35">
+                        <amx:commandLink text="#{row.totPlnOrdQty}" id="cl2" styleClass="xxRobotoFieldValue" action="toFutureOrder"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl9">
+                    <amx:cellFormat id="cf36" inlineStyle="padding-top:10%;"/>
+                    <amx:cellFormat id="cf37">
+                        <amx:outputText value="Price" id="ot19"
+                                        styleClass="xxRobotoGroupLabel"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf38">
+                        <amx:outputText value="#{row.price}" id="ot20" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>                
+                <amx:rowLayout id="rl11">
+                    <amx:cellFormat id="cf30" inlineStyle="padding-top:10%;"/>
+                    <amx:cellFormat id="cf32">
+                        <amx:outputText value="Promotions" id="ot21"
+                                        styleClass="xxRobotoGroupLabel"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf31">
+                        <amx:outputText value="#{row.causal}" id="ot22" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>                    
+                </amx:rowLayout>
+                <amx:rowLayout id="rl8">
+                    <amx:cellFormat id="cf14" inlineStyle="padding-top:10%;"/>
+                    <amx:cellFormat id="cf39">
+                        <amx:outputText value="Presentation Min" id="ot17" styleClass="xxRobotoGroupLabel"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf40">
+                        <amx:outputText value="#{row.presttnMin}" id="ot18" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl13">
+                    <amx:cellFormat id="cf7" inlineStyle="padding-top:10%;"/>
+                    <amx:cellFormat id="cf29">
+                        <amx:outputText value="Display Min" id="ot13" styleClass="xxRobotoGroupLabel"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf41">
+                        <amx:outputText value="#{row.dispMin}" id="ot16" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>-->
+                    <amx:panelGroupLayout id="pgl26"
+                                          inlineStyle="border-right-style:solid; border-right-color:White; border-left-style:solid; border-left-color:White; border-top-color:White; border-top-style:solid; background-color:#6A1B9A;">
+                        <amx:tableLayout id="tl3"></amx:tableLayout>
+                        <amx:spacer id="s36" height="10"/>
+                        <amx:tableLayout id="tl5">
+                            <amx:rowLayout id="rl3">
+                                <amx:cellFormat id="cf48">
+                                    <amx:spacer id="s19" width="10" inlineStyle="background-color:transparent;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf49">
+                                    <amx:outputText value="On Hand" id="ot2"
+                                                    inlineStyle="font-size:xx-large; color:White;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:spacer id="s9" height="10"/>
+                        <amx:panelGroupLayout id="pgl10" halign="end">
+                            <amx:tableLayout id="tl6">
+                                <amx:rowLayout id="rl25">
+                                    <amx:cellFormat id="cf50">
+                                        <amx:outputText value="#{row.onHandQty}" id="ot35"
+                                                        inlineStyle="font-size:40px; color:White;"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat id="cf51">
+                                        <amx:spacer id="s20" width="20"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl26">
+                                    <amx:cellFormat id="cf52" halign="end">
+                                        <amx:outputText value="EA" id="ot4"
+                                                        inlineStyle="font-size:x-large; color:White;"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat id="cf14">
+                                        <amx:spacer id="s21" width="20"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl17">
+                                    <amx:cellFormat id="cf34" height="3"/>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                        </amx:panelGroupLayout>
+                    </amx:panelGroupLayout>
+                    <amx:tableLayout id="tl4">
+                        <amx:rowLayout id="rl16">
+                            <amx:cellFormat id="cf33" height="2"/>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                    <amx:spacer id="s2" height="3"/>
+                    <amx:tableLayout id="tl18" width="100%">
+                        <amx:rowLayout id="rl27">
+                            <amx:cellFormat id="cf53">
+                                <amx:spacer id="s23" width="2"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf4" width="49%">
+                                <amx:panelGroupLayout id="pgl5" layout="vertical"
+                                                      inlineStyle="background-color:#D81B60; text-height:auto;">
+                                    <amx:tableLayout id="tl8">
+                                        <amx:rowLayout id="rl28">
+                                            <amx:cellFormat id="cf55" width="10"/>
+                                            <amx:cellFormat id="cf54">
+                                                <amx:panelGroupLayout id="pgl25">
+                                                    <amx:outputText value="Store Order " id="ot36"
+                                                                    inlineStyle="font-size:x-large; color:White;"/>
+                                                    <amx:outputText value="Quantity" id="ot34"
+                                                                    inlineStyle="font-size:x-large; color:White;"/>
+                                                </amx:panelGroupLayout>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <amx:spacer id="s8"/>
+                                    <amx:panelGroupLayout id="pgl11" halign="end">
+                                        <amx:tableLayout id="tl9">
+                                            <amx:rowLayout id="rl8">
+                                                <amx:cellFormat id="cf18">
+                                                    <amx:outputText value="#{row.totFirmOrderQty}" id="ot28"
+                                                                    inlineStyle="font-size:30px; color:White;"/>
+                                                </amx:cellFormat>
+                                                <amx:cellFormat id="cf19">
+                                                    <amx:spacer id="s22" width="10"/>
+                                                </amx:cellFormat>
+                                            </amx:rowLayout>
+                                            <amx:rowLayout id="rl9">
+                                                <amx:cellFormat id="cf20" halign="end">
+                                                    <amx:outputText value="EA" id="ot7"
+                                                                    inlineStyle="font-size:x-large; color:White;"/>
+                                                </amx:cellFormat>
+                                            </amx:rowLayout>
+                                        </amx:tableLayout>
+                                    </amx:panelGroupLayout>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf8">
+                                <amx:spacer id="s17" width="5"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf56" width="48%">
+                                <amx:panelGroupLayout id="pgl6" layout="vertical"
+                                                      inlineStyle="background-color:#D81B60;">
+                                    <amx:tableLayout id="tl10">
+                                        <amx:rowLayout id="rl10">
+                                            <amx:cellFormat id="cf57" width="10"/>
+                                            <amx:cellFormat id="cf58">
+                                                <amx:outputText value="Planned Quantity" id="ot11"
+                                                                inlineStyle="font-size:x-large; color:White;"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <amx:spacer id="s7" height="27"/>
+                                    <amx:panelGroupLayout id="pgl12" halign="end">
+                                        <amx:tableLayout id="tl11">
+                                            <amx:rowLayout id="rl11">
+                                                <amx:cellFormat id="cf59">
+                                                    <amx:commandLink text="#{row.totPlnOrdQty}" id="cl2"
+                                                                     inlineStyle="font-size:30px; color:White;"
+                                                                     action="toFutureOrder"/>
+                                                    <!--<amx:outputText value="#{row.totPlnOrdQty}" id="ot29"
+                                                                    inlineStyle="font-size:30px; color:White;"/>-->
+                                                </amx:cellFormat>
+                                                <amx:cellFormat id="cf29">
+                                                    <amx:spacer id="s28" width="10"/>
+                                                </amx:cellFormat>
+                                            </amx:rowLayout>
+                                            <amx:rowLayout id="rl12">
+                                                <amx:cellFormat id="cf60" halign="end">
+                                                    <amx:outputText value="EA" id="ot13"
+                                                                    inlineStyle="font-size:x-large; color:White;"/>
+                                                </amx:cellFormat>
+                                            </amx:rowLayout>
+                                        </amx:tableLayout>
+                                    </amx:panelGroupLayout>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf61">
+                                <amx:spacer id="s24" width="2"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl15">
+                            <amx:cellFormat id="cf32" height="5">
+                                <amx:spacer id="s10" height="3"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                    <amx:panelGroupLayout id="pgl24" layout="horizontal"/>
+                    <amx:tableLayout id="tl17" width="100%">
+                        <amx:rowLayout id="rl29">
+                            <amx:cellFormat id="cf7">
+                                <amx:spacer id="s16" width="3"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf62" width="49%" height="30%" inlineStyle="background-color:#00C853;">
+                                <amx:panelGroupLayout id="pgl8">
+                                    <amx:tableLayout id="tl12">
+                                        <amx:rowLayout id="rl13">
+                                            <amx:cellFormat id="cf30" height="3"/>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <amx:tableLayout id="tl14">
+                                        <amx:rowLayout id="rl20">
+                                            <amx:cellFormat id="cf38" width="3"/>
+                                            <amx:cellFormat id="cf39">
+                                                <amx:outputText value="Presentation Min" id="ot30"
+                                                                inlineStyle="font-size:large; color:White;"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <amx:spacer id="s13" height="15"/>
+                                    <amx:panelGroupLayout id="pgl14" halign="end" layout="vertical">
+                                        <amx:panelGroupLayout id="pgl18" layout="horizontal">
+                                            <amx:outputText value="#{row.presttnMin}" id="ot31"
+                                                            inlineStyle="font-size:large; color:White;"/>
+                                            <amx:spacer id="s18" width="3"/>
+                                        </amx:panelGroupLayout>
+                                        <amx:panelGroupLayout id="pgl19" layout="horizontal">
+                                            <amx:outputText value="EA" id="ot16"
+                                                            inlineStyle="font-size:large; color:White;"/>
+                                            <amx:spacer id="s26" width="3"/>
+                                        </amx:panelGroupLayout>
+                                        <amx:spacer id="s29" height="5"/>
+                                    </amx:panelGroupLayout>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf6">
+                                <amx:spacer id="s15" width="2"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf64" width="48%" inlineStyle="background-color:#00C853;">
+                                <amx:panelGroupLayout id="pgl9">
+                                    <amx:tableLayout id="tl13">
+                                        <amx:rowLayout id="rl14">
+                                            <amx:cellFormat id="cf63" height="3"/>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="rl24">
+                                            <amx:cellFormat id="cf45" width="3"/>
+                                            <amx:cellFormat id="cf46">
+                                                <amx:outputText value="Display Min" id="ot17"
+                                                                inlineStyle="font-size:large; color:White;"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <amx:spacer id="s14" height="15"/>
+                                    <amx:panelGroupLayout id="pgl15" halign="end">
+                                        <amx:panelGroupLayout id="pgl22" layout="horizontal">
+                                            <amx:outputText value="#{row.dispMin}" id="ot18"
+                                                            inlineStyle="font-size:large; color:White;"/>
+                                            <amx:spacer id="s33" width="3"/>
+                                        </amx:panelGroupLayout>
+                                        <amx:panelGroupLayout id="pgl23" layout="horizontal">
+                                            <amx:outputText value="EA" id="ot19"
+                                                            inlineStyle="font-size:large; color:White;"/>
+                                            <amx:spacer id="s34" width="3"/>
+                                        </amx:panelGroupLayout>
+                                        <amx:spacer id="s35" height="5"/>
+                                    </amx:panelGroupLayout>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf31">
+                                <amx:spacer id="s30" width="2"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl19">
+                            <amx:cellFormat id="cf35" height="4"/>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl18">
+                            <amx:cellFormat id="cf65"/>
+                            <amx:cellFormat id="cf66" width="30%" height="30%" inlineStyle="background-color:#00C853;">
+                                <amx:panelGroupLayout id="pgl7">
+                                    <amx:tableLayout id="tl15">
+                                        <amx:rowLayout id="rl22">
+                                            <amx:cellFormat id="cf42" height="3"/>
+                                        </amx:rowLayout>
+                                        <amx:rowLayout id="rl21">
+                                            <amx:cellFormat id="cf40" width="3"/>
+                                            <amx:cellFormat id="cf41">
+                                                <amx:outputText value="Price" id="ot32"
+                                                                inlineStyle="font-size:large; color:White;"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <amx:spacer id="s12" height="45"/>
+                                    <amx:panelGroupLayout id="pgl13" halign="end">
+                                        <amx:panelGroupLayout id="pgl20" layout="horizontal">
+                                            <amx:outputText value="#{row.price}" id="ot33"
+                                                            inlineStyle="font-size:large; color:White;"/>
+                                            <amx:spacer id="s27" width="3"/>
+                                        </amx:panelGroupLayout>
+                                        <amx:spacer id="s31" height="3"/>
+                                    </amx:panelGroupLayout>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf36" width="2"/>
+                            <amx:cellFormat id="cf37" inlineStyle="background-color:#00C853;">
+                                <amx:panelGroupLayout id="pgl16">
+                                    <amx:tableLayout id="tl16">
+                                        <amx:rowLayout id="rl23">
+                                            <amx:cellFormat id="cf43" width="3"/>
+                                            <amx:cellFormat id="cf44">
+                                                <amx:outputText value="Causal" id="ot21"
+                                                                inlineStyle="color:White; font-size:large;"/>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <amx:spacer id="s11" height="45"/>
+                                    <amx:panelGroupLayout id="pgl17" halign="end">
+                                        <amx:panelGroupLayout id="pgl21" layout="horizontal">
+                                            <amx:outputText value="#{row.causal}" id="ot22"
+                                                            inlineStyle="color:White; font-size:large;"/>
+                                            <amx:spacer id="s32" width="3"/>
+                                        </amx:panelGroupLayout>
+                                    </amx:panelGroupLayout>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                    <amx:panelGroupLayout id="pgl3" layout="horizontal">
+                        <amx:spacer id="s25" height="3"/>
+                    </amx:panelGroupLayout>
+                </amx:listItem>
+            </amx:listView>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
+</amx:view>

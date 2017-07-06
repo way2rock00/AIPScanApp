@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="OrderDetailsPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OrderDetailsService" id="OrderDetailsServiceIterator"/>
+    <accessorIterator MasterBinding="OrderDetailsServiceIterator" Binds="orderDetailsService" RangeSize="25"
+                      DataControl="OrderDetailsService" BeanClass="deloitte.retail.mobile.pojo.OrderHeaders"
+                      id="orderDetailsServiceIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="orderDetailsServiceIterator" id="orderDetailsService">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.OrderHeaders" Name="orderDetailsService0">
+        <AttrNames>
+          <Item Value="recordId"/>
+          <Item Value="orderId"/>
+          <Item Value="orderNumber"/>
+          <Item Value="orderType"/>
+          <Item Value="sourceType"/>
+          <Item Value="sourceId"/>
+          <Item Value="sourceDesc"/>
+          <Item Value="destinationType"/>
+          <Item Value="destinationId"/>
+          <Item Value="destinationDesc"/>
+          <Item Value="deliveryDate"/>
+          <Item Value="truckId"/>
+          <Item Value="orderStatus"/>
+          <Item Value="releaseDate"/>
+          <Item Value="planner"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="orderLines"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.OrderLine" Name="orderDetailsService1">
+        <AttrNames>
+          <Item Value="recordId"/>
+          <Item Value="caseUPC"/>
+          <Item Value="caseUPCDesc"/>
+          <Item Value="itemClass"/>
+          <Item Value="lineId"/>
+          <Item Value="orderId"/>
+          <Item Value="quantity"/>
+          <Item Value="sellableUPC"/>
+          <Item Value="sellableUPCDesc"/>
+          <Item Value="subClass"/>
+          <Item Value="uom"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
