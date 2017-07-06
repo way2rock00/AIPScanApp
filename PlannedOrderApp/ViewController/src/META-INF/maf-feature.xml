@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+  <adfmf:feature id="deloitte.retail.Login" name="Login">
+    <adfmf:content id="deloitte.retail.Login.1">
+      <adfmf:amx file="taskflows/LoginTF.xml#LoginTF"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="deloitte.retail.Springboard" name="Springboard">
+    <adfmf:content id="deloitte.retail.Springboard.1">
+      <adfmf:amx file="taskflows/SpringboardTF.xml#SpringboardTF"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="deloitte.retail.Home" name="Home">
+    <adfmf:content id="deloitte.retail.Home.1">
+      <adfmf:amx file="taskflows/HomeTF.xml#HomeTF"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="deloitte.retail.Preference" name="Preference">
+    <adfmf:content id="deloitte.retail.Preference.1">
+      <adfmf:amx file="taskflows/PreferenceTF.xml#PreferenceTF"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="deloitte.retail.MainMenu" name="MainMenu">
+    <adfmf:content id="deloitte.retail.MainMenu.1">
+      <adfmf:amx file="taskflows/MainMenuTF.xml#MainMenuTF"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="deloitte.retail.InvTF" name="InvTF">
+    <adfmf:content id="deloitte.retail.InvTF.1">
+      <adfmf:amx file="taskflows/InvTF.xml#InvTF">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="javascript/scanner.js" id="i1"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="deloitte.retail.MainMenuTF" name="MainMenuTF">
+    <adfmf:content id="deloitte.retail.MainMenuTF.1">
+      <adfmf:amx file="taskflows/MainMenuTF.xml#MainMenuTF"/>
+    </adfmf:content>
+  </adfmf:feature>
+</adfmf:features>

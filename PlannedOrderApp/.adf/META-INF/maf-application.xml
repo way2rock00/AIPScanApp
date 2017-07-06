@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
+                   version="1.0" name="PlannedOrderApp" id="com.company.PlannedOrderApp"
+                   appControllerFolder="ApplicationController"
+                   listener-class="deloitte.retail.application.LifeCycleListenerImpl"> 
+                   
+  <adfmf:featureReference refId="deloitte.retail.Login" id="fr1" showOnSpringboard="false" showOnNavigationBar="false"/>
+   <adfmf:featureReference refId="deloitte.retail.Home" id="fr3" showOnNavigationBar="false" showOnSpringboard="false"/>
+  <adfmf:featureReference refId="deloitte.retail.Springboard" id="fr2" showOnNavigationBar="false"
+                          showOnSpringboard="false"/>
+ 
+  <adfmf:featureReference refId="deloitte.retail.Preference" id="fr4" showOnNavigationBar="false"
+                          showOnSpringboard="false"/>
+  <adfmf:featureReference refId="deloitte.retail.MainMenu" id="fr5" showOnNavigationBar="false"
+                          showOnSpringboard="false"/>
+  <adfmf:featureReference refId="deloitte.retail.InvTF" id="fr6" showOnNavigationBar="false" showOnSpringboard="false"/>
+  <adfmf:featureReference refId="deloitte.retail.MainMenuTF" id="fr7" showOnNavigationBar="false"/>
+  <adfmf:preferences>
+    <adfmf:preferenceGroup id="UserSettings" label="UserSettings">
+      <adfmf:preferenceText id="DeliveryMonths" label="DeliveryMonths"/>
+      <adfmf:preferenceNumber id="RecordSize" label="RecordSize"/>
+    </adfmf:preferenceGroup>
+  </adfmf:preferences>
+  <adfmf:navigation>
+    <adfmf:springboard enabled="true" showSpringboardAtStartup="false" displayGotoSpringboardControl="false"
+                       width="300">
+      <adfmf:springboardFeatureReference refId="deloitte.retail.Springboard" id="sfr1"/>
+    </adfmf:springboard>
+    <adfmf:navigationBar enabled="true"/>
+  </adfmf:navigation>
+</adfmf:application>
