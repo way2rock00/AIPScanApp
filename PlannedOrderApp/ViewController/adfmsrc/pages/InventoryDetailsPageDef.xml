@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="InventoryDetailsPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="buyer" Type="java.lang.String"/>
+      <variable Name="source" Type="java.lang.String"/>
+    </variableIterator>
+
+    <iterator Binds="root" RangeSize="25" DataControl="PlanOrderInvDetailsService"
+              id="PlanOrderInvDetailsServiceIterator"/>
+    <accessorIterator MasterBinding="PlanOrderInvDetailsServiceIterator" Binds="planOrderInvDetails" RangeSize="25"
+                      DataControl="PlanOrderInvDetailsService"
+                      BeanClass="deloitte.retail.mobile.pojo.PlanOrderInvDetails" id="planOrderInvDetailsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="FutureOrderPlanService1" id="FutureOrderPlanService1Iterator"/>
+    <accessorIterator MasterBinding="FutureOrderPlanService1Iterator" Binds="dayDetails" RangeSize="25"
+                      DataControl="FutureOrderPlanService1" BeanClass="deloitte.retail.mobile.pojo.PlanOrderInvDetails"
+                      id="dayDetailsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LOVService" id="LOVServiceIterator"/>
+    <accessorIterator MasterBinding="LOVServiceIterator" Binds="sourceLOV" RangeSize="-1" DataControl="LOVService"
+                      BeanClass="deloitte.retail.mobile.pojo.Source" id="sourceLOVIterator"/>
+    <accessorIterator MasterBinding="LOVServiceIterator" Binds="buyerLOV" RangeSize="-1" DataControl="LOVService"
+                      BeanClass="deloitte.retail.mobile.pojo.Buyer" id="buyerLOVIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="FutureOrderPlanService" id="FutureOrderPlanServiceIterator"/>
+    <accessorIterator MasterBinding="FutureOrderPlanServiceIterator" Binds="dayWisePlanDetails" RangeSize="25"
+                      DataControl="FutureOrderPlanService" BeanClass="deloitte.retail.mobile.pojo.PlanOrderInvDetails"
+                      id="dayWisePlanDetailsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="dayDetailsIterator" id="dayDetails">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.PlanOrderInvDetails" Name="dayDetails0">
+        <AttrNames>
+          <Item Value="seq"/>
+          <Item Value="allocated"/>
+          <Item Value="buyer"/>
+          <Item Value="causal"/>
+          <Item Value="day"/>
+          <Item Value="inventoryDt"/>
+          <Item Value="onOrders"/>
+          <Item Value="packSize"/>
+          <Item Value="safetyStock"/>
+          <Item Value="salesForecast"/>
+          <Item Value="source"/>
+          <Item Value="weekNo"/>
+          <Item Value="expandCollapseFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="variables" id="source1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="sourceLOVIterator">
+      <AttrNames>
+        <Item Value="source"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="sourceId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="source"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="variables" id="buyer1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="buyerLOVIterator">
+      <AttrNames>
+        <Item Value="buyer"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="buyer"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="buyer"/>
+      </ListDisplayAttrNames>
+    </list>
+    <tree IterBinding="dayWisePlanDetailsIterator" id="dayWisePlanDetails">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.PlanOrderInvDetails" Name="dayWisePlanDetails0">
+        <AttrNames>
+          <Item Value="expandCollapseFlag"/>
+          <Item Value="allocated"/>
+          <Item Value="buyer"/>
+          <Item Value="causal"/>
+          <Item Value="day"/>
+          <Item Value="inventoryDt"/>
+          <Item Value="onOrders"/>
+          <Item Value="packSize"/>
+          <Item Value="safetyStock"/>
+          <Item Value="salesForecast"/>
+          <Item Value="seq"/>
+          <Item Value="source"/>
+          <Item Value="weekNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

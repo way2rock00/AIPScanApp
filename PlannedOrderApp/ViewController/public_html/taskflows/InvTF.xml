@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="InvTF">
+    <default-activity>ScanPG</default-activity>
+    <managed-bean id="__7">
+      <managed-bean-name>BarcodeBean</managed-bean-name>
+      <managed-bean-class>deloitte.retail.mobile.beans.BarcodeBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="InvMainPG">
+      <page>/pages/InvMainPG.amx</page>
+    </view>
+    <view id="OnhandInv">
+      <page>/pages/OnhandInv.amx</page>
+    </view>
+    <view id="FutureOrder">
+      <page>/pages/FutureOrder.amx</page>
+    </view>
+    <view id="InventoryDetails">
+      <page>/pages/InventoryDetails.amx</page>
+    </view>
+    <view id="ScanPG">
+      <page>/pages/ScanPG.amx</page>
+    </view>
+    <view id="FirmOrderPG">
+      <page>/pages/FirmOrderPG.amx</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id>ScanPG</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>scanProduct</from-outcome>
+        <to-activity-id>OnhandInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>OnhandInv</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>backToScan</from-outcome>
+        <to-activity-id>ScanPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>toFutureOrder</from-outcome>
+        <to-activity-id>FutureOrder</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>toFirmOrder</from-outcome>
+        <to-activity-id>FirmOrderPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>FutureOrder</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>bkOnhandInv</from-outcome>
+        <to-activity-id>OnhandInv</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>toInvDt</from-outcome>
+        <to-activity-id>InventoryDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>InventoryDetails</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>bkFutureOrder</from-outcome>
+        <to-activity-id>FutureOrder</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>FirmOrderPG</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>bkOnHandInv</from-outcome>
+        <to-activity-id>OnhandInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>

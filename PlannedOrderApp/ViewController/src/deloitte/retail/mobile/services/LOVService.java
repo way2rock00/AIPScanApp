@@ -1,0 +1,170 @@
+package deloitte.retail.mobile.services;
+
+
+import deloitte.retail.mobile.pojo.Buyer;
+import deloitte.retail.mobile.pojo.Source;
+import deloitte.retail.mobile.pojo.Store;
+import deloitte.retail.mobile.utility.RestURIs;
+import deloitte.retail.mobile.utility.ServiceManager;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.json.JSONArray;
+import oracle.adfmf.json.JSONObject;
+
+public class LOVService {
+    public LOVService() {
+        super();
+    }
+    public Buyer[] getBuyerLOV(){
+        String strBuyerDebug="S1:";
+        List<Buyer> buyerList = new ArrayList<Buyer>();
+        Buyer buyerArray[] = null;
+        
+        ServiceManager serviceManager = new ServiceManager();
+        String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
+        selectedStoreId = "1531";
+        String url = RestURIs.getBuyerLOVURI(selectedStoreId);
+        String jsonArrayAsString = serviceManager.invokeREAD(url);
+        try {
+            strBuyerDebug = strBuyerDebug +":2:";
+            JSONObject jsonObject = new JSONObject(jsonArrayAsString);       
+            
+            JSONArray nodeArray = jsonObject.getJSONArray("dbGetBuyerDetailsOutput");
+            Buyer buyerObj = new Buyer("Select Buyer");
+            buyerList.add(buyerObj);
+            int size = nodeArray.length();
+            strBuyerDebug = strBuyerDebug +":size:"+size;
+            for (int i = 0; i < size; i++) {
+                JSONObject temp = nodeArray.getJSONObject(i);
+
+                String buyer = null;
+                if (temp.getString("buyer") != null)
+                    buyer = temp.getString("buyer");
+
+                buyerObj = new Buyer(buyer);
+                buyerList.add(buyerObj);
+
+            }
+            strBuyerDebug = strBuyerDebug +":9:";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            strBuyerDebug = strBuyerDebug +":Error:"+e.getMessage();
+        }   
+        strBuyerDebug = strBuyerDebug +":10:";
+        buyerArray = buyerList.toArray(new Buyer[buyerList.size()]);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strBuyerDebug}", strBuyerDebug);
+        return buyerArray;
+    }    
+    
+    public Source[] getSourceLOV(){
+        String strSourceDebug="S1:";
+        List<Source> sourceList = new ArrayList<Source>();
+        Source sourceArray[] = null;
+        
+        ServiceManager serviceManager = new ServiceManager();
+        String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
+        selectedStoreId = "1531";
+        String url = RestURIs.getSourceLOVURI(selectedStoreId);
+        String jsonArrayAsString = serviceManager.invokeREAD(url);
+        try {
+            strSourceDebug = strSourceDebug +":2:";
+            JSONObject jsonObject = new JSONObject(jsonArrayAsString);       
+            
+            JSONArray nodeArray = jsonObject.getJSONArray("dbGetAIPSourceDetailsOutput");
+            Source sourceObj = new Source("1","Select Source");
+            sourceList.add(sourceObj);
+            int size = nodeArray.length();
+            strSourceDebug = strSourceDebug +":size:"+size;
+            for (int i = 0; i < size; i++) {
+                JSONObject temp = nodeArray.getJSONObject(i);
+
+                String sourceId = null;
+                if (temp.getString("source_id") != null)
+                    sourceId = temp.getString("source_id");
+                
+                String source = null;
+                if (temp.getString("source") != null)
+                    source = temp.getString("source");                
+
+                sourceObj = new Source(sourceId,source);
+               sourceList.add(sourceObj);
+
+            }
+            strSourceDebug = strSourceDebug +":9:";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            strSourceDebug = strSourceDebug +":Error:"+e.getMessage();
+        }   
+        strSourceDebug = strSourceDebug +":10:";
+        sourceArray = sourceList.toArray(new Source[sourceList.size()]);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strSourceDebug}", strSourceDebug);
+        return sourceArray;
+    }
+    
+    public Store[] getStoreLOV(){
+        String strStoreDebug="S1:";
+        List<Store> storeList = new ArrayList<Store>();
+        Store storeArray[] = null;
+        
+        ServiceManager serviceManager = new ServiceManager();
+//        String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
+        String selectedStoreId = "1";
+        String url = RestURIs.getStoreLOVURI(selectedStoreId);
+        
+        String strServiceStatus = "";
+        String strServiceErrMsg = "";
+        resetServiceStatus();
+        
+        String jsonArrayAsString = serviceManager.invokeREAD(url);
+        try {
+            strStoreDebug = strStoreDebug +":2:";
+            JSONObject jsonObject = new JSONObject(jsonArrayAsString);      
+            
+            if (jsonObject.getString("X_RETURN_STATUS") != null)
+                strServiceStatus = jsonObject.getString("X_RETURN_STATUS");
+            
+            if (jsonObject.getString("X_RETURN_MSG") != null)
+                strServiceErrMsg = jsonObject.getString("X_RETURN_MSG"); 
+            
+            JSONObject parent = jsonObject.getJSONObject("P_STORE_TAB");
+            JSONArray nodeArray = parent.getJSONArray("P_STORE_TAB_ITEM");
+            
+            Store storeObj = new Store("1","Select Store");
+            storeList.add(storeObj);
+            int size = nodeArray.length();
+            strStoreDebug = strStoreDebug +":size:"+size;
+            
+            for (int i = 0; i < size; i++) 
+            {
+                JSONObject temp = nodeArray.getJSONObject(i);
+
+                String storeId = null;
+                if (temp.getString("STORE_ID") != null)
+                    storeId = temp.getString("STORE_ID");
+                
+                String store = null;
+                if (temp.getString("STORE_NAME") != null)
+                    store = temp.getString("STORE_NAME");                
+
+               storeObj = new Store(store+"("+storeId+")",store);
+               storeList.add(storeObj);
+            }
+            strStoreDebug = strStoreDebug +":9:";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            strStoreDebug = strStoreDebug +":Error:"+e.getMessage();
+        }   
+        strStoreDebug = strStoreDebug +":10:";
+        storeArray = storeList.toArray(new Store[storeList.size()]);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strSourceDebug}", strStoreDebug);
+        return storeArray;
+    }
+    public void resetServiceStatus()
+    {
+       AdfmfJavaUtilities.setELValue("#{pageFlowScope.serviceStatus}", "");
+       AdfmfJavaUtilities.setELValue("#{pageFlowScope.serviceErrMsg}", "");
+    }
+}

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Future Order Plan Details" id="ot1" styleClass="headertextwhite"
+                            inlineStyle="font-size:20px;flex-wrap:wrap; overflow-wrap:break-word; text-align:center; border-bottom-width:0px; border-bottom-style:hidden; border-bottom-color:transparent;"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="bkFutureOrder">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>
+            <!--<amx:commandLink id="cl134" shortDesc="menu">
+                <amx:outputHtml id="oh2" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>-->
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1" styleClass="invPglPadding">
+            <amx:outputText value="#{pageFlowScope.selectedWeekIndex}" id="ot21"/>
+            <amx:tableLayout id="tl1" width="100%" inlineStyle="padding-bottom:15px; table-layout:fixed;"
+                             styleClass="invPageHeader">
+                <amx:rowLayout id="rl4">
+                    <amx:cellFormat id="cf11" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf3" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="Sellable UPC" id="ot3" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf10" width="4%"/>
+                    <amx:cellFormat id="cf15" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemNumber}" id="ot6" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl5">
+                    <amx:cellFormat id="cf17" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf13" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="Description" id="ot8" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf12" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf47" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemDesc}" id="ot9" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl6">
+                    <amx:cellFormat id="cf21" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf23" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="Store" id="ot28" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf22" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf24" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.storeName}" id="ot11" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl7">
+                    <amx:cellFormat id="cf28" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf25" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot15"
+                                        styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf26" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf27" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot12" styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:spacer id="s1" height="20"/>
+            <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:15px; table-layout:fixed;">
+                <amx:rowLayout id="rl11">
+                    <amx:cellFormat id="cf20" width="50%" halign="center">
+                        <amx:outputText value="Source" id="ot22" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf29" width="50%" halign="center">
+                        <amx:outputText value="Buyer" id="ot4" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl12">
+                    <amx:cellFormat id="cf30" width="50%" halign="center">
+                        <!--<amx:selectOneChoice label="" id="soc2" styleClass="invLOVDetails">
+                            <amx:selectItem id="si4" value="Source1" label="Source1"/>
+                            <amx:selectItem id="si5" value="Source2" label="Source2"/>
+                            <amx:selectItem id="si6" value="Source3" label="Source3"/>
+                        </amx:selectOneChoice>-->
+                        <amx:selectOneChoice value="#{bindings.source1.inputValue}" id="soc1">
+                            <amx:selectItems value="#{bindings.source1.items}" id="si1"/>
+                        </amx:selectOneChoice>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf31" width="50%" halign="center">
+                        <!--<amx:selectOneChoice label="" id="soc1" styleClass="invLOVDetails">
+                            <amx:selectItem id="si1" value="Buyer1" label="Buyer1"/>
+                            <amx:selectItem id="si2" value="Buyer2" label="Buyer2"/>
+                            <amx:selectItem id="si3" value="Buyer3" label="Buyer3"/>
+                        </amx:selectOneChoice>-->
+                        <amx:selectOneChoice value="#{bindings.buyer1.inputValue}" id="soc2"
+                                             valueChangeListener="#{pageFlowScope.BarcodeBean.buyerChanged}">
+                            <amx:selectItems value="#{bindings.buyer1.items}" id="si2"/>
+                        </amx:selectOneChoice>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+            <!--<amx:outputText value="#{bindings.buyer1.inputValue}" id="ot7"/>
+            <amx:outputText value="#{bindings.source1.inputValue}" id="ot18"/>-->
+            <!--<amx:listView var="row" value="#{bindings.planOrderInvDetails.collectionModel}"
+                          fetchSize="#{bindings.planOrderInvDetails.rangeSize}"
+                          selectedRowKeys="#{bindings.planOrderInvDetails.collectionModel.selectedRow}"
+                          initialScrollRowKeys="#{bindings.planOrderInvDetails.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.planOrderInvDetails.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+                <amx:listItem id="li1" >
+                    <amx:tableLayout id="tl3" width="97%" halign="start" styleClass="xxFrame1">
+                        <amx:rowLayout id="rl3">
+                            <amx:cellFormat id="cf4" width="8%" inlineStyle="padding-top:10%;"/>
+                            <amx:cellFormat id="cf6" width="70%">
+                                <amx:outputText value="On Hand" id="ot2" styleClass="xxRobotoGroupLabel"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf8" width="22%">
+                                <amx:outputText value="#{row.onOrders}" id="ot4" styleClass="xxRobotoFieldValue"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl1">
+                            <amx:cellFormat id="cf1" inlineStyle="padding-top:10%;"/>
+                            <amx:cellFormat id="cf2">
+                                <amx:outputText value="Allocated" id="ot10" styleClass="xxRobotoGroupLabel"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf5">
+                                -->
+            <!--<amx:outputText value="1200 EA" id="ot23" styleClass="xxRobotoFieldValue"/>-->
+            <!--
+                                <amx:outputText value="#{row.allocated}" id="ot23" styleClass="xxRobotoFieldValue"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl2">
+                            <amx:cellFormat id="cf16" inlineStyle="padding-top:10%;"/>
+                            <amx:cellFormat id="cf9">
+                                <amx:outputText value="Sales Forecast" id="ot5" styleClass="xxRobotoGroupLabel"/>                                
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf18">
+                                -->
+            <!--<amx:outputText value="1300 EA" id="ot24" styleClass="xxRobotoFieldValue"/>-->
+            <!--
+                                <amx:outputText value="#{row.salesForecast}" id="ot24" styleClass="xxRobotoFieldValue"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl9">
+                            <amx:cellFormat id="cf19" inlineStyle="padding-top:10%;"/>
+                            <amx:cellFormat id="cf33">
+                                <amx:outputText value="Safety Stock" id="ot19" styleClass="xxRobotoGroupLabel"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf34">
+                                -->
+            <!--<amx:outputText value="2000 EA" id="ot20" styleClass="xxRobotoFieldValue"/>-->
+            <!--
+                                <amx:outputText value="#{row.safetyStock}" id="ot20" styleClass="xxRobotoFieldValue"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl10">
+                            <amx:cellFormat id="cf35" inlineStyle="padding-top:10%;"/>
+                            <amx:cellFormat id="cf32">
+                                <amx:outputText value="Promotions" id="ot13" styleClass="xxRobotoGroupLabel"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf36">
+                                <amx:outputText value="Yes" id="ot7" styleClass="xxRobotoFieldValue"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:listItem>
+            </amx:listView>-->
+            <amx:listView var="row" value="#{bindings.dayWisePlanDetails.collectionModel}"
+                          fetchSize="#{bindings.dayWisePlanDetails.rangeSize}"
+                          selectedRowKeys="#{bindings.dayWisePlanDetails.collectionModel.selectedRow}"
+                          initialScrollRowKeys="#{bindings.dayWisePlanDetails.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.dayWisePlanDetails.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+                <amx:listItem id="li1">
+                    <amx:panelGroupLayout id="pgl3" layout="horizontal">
+                        <amx:outputText value="#{row.day}" id="ot23">
+                        </amx:outputText>
+                        <amx:spacer id="s2" width="10"/>
+                        <amx:outputText value="#{row.onOrders}" id="ot2"/>
+                        <amx:spacer id="s4" width="10"/>
+                        <amx:commandLink id="cl2" rendered="#{row.expandCollapseFlag == 'N' ? true:false}">
+                            <amx:outputHtml id="oh2" styleClass="fa fa-angle-double-down" inlineStyle="color:black;"/>
+                            <amx:setPropertyListener id="spl1" from="Y" to="#{row.expandCollapseFlag}"/>
+                        </amx:commandLink>
+                        <amx:spacer id="s3" width="10"/>
+                        <amx:commandLink id="cl3" rendered="#{row.expandCollapseFlag == 'Y' ? true:false}">
+                            <amx:outputHtml id="oh3" styleClass="fa fa-angle-double-up" inlineStyle="color:black;"/>
+                            <amx:setPropertyListener id="spl2" from="N" to="#{row.expandCollapseFlag}"/>
+                        </amx:commandLink>
+                    </amx:panelGroupLayout>
+                    <amx:panelGroupLayout id="pgl2">
+                        <amx:tableLayout id="tl3" width="97%" halign="start" styleClass="xxFrame1"
+                                         rendered="#{row.expandCollapseFlag == 'N' ? false:true}">
+                            <!--<amx:rowLayout id="rl3">
+                                <amx:cellFormat id="cf4" width="8%" inlineStyle="padding-top:10%;"/>
+                                <amx:cellFormat id="cf6" width="70%">
+                                    <amx:outputText value="On Hand" id="ot2" styleClass="xxRobotoGroupLabel"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf8" width="22%">
+                                    <amx:outputText value="#{row.onOrders}" id="ot13" styleClass="xxRobotoFieldValue"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>-->
+                            <amx:rowLayout id="rl1">
+                                <amx:cellFormat id="cf1" inlineStyle="padding-top:10%;"/>
+                                <amx:cellFormat id="cf2">
+                                    <amx:outputText value="Allocated" id="ot10" styleClass="xxRobotoGroupLabel"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf5">
+                                    <!--<amx:outputText value="1200 EA" id="ot23" styleClass="xxRobotoFieldValue"/>-->
+                                    <amx:outputText value="#{row.allocated}" id="ot14" styleClass="xxRobotoFieldValue"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                            <amx:rowLayout id="rl2">
+                                <amx:cellFormat id="cf16" inlineStyle="padding-top:10%;"/>
+                                <amx:cellFormat id="cf9">
+                                    <amx:outputText value="Sales Forecast" id="ot5" styleClass="xxRobotoGroupLabel"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf18">
+                                    <!--<amx:outputText value="1300 EA" id="ot24" styleClass="xxRobotoFieldValue"/>-->
+                                    <amx:outputText value="#{row.salesForecast}" id="ot24"
+                                                    styleClass="xxRobotoFieldValue"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                            <amx:rowLayout id="rl9">
+                                <amx:cellFormat id="cf19" inlineStyle="padding-top:10%;"/>
+                                <amx:cellFormat id="cf33">
+                                    <amx:outputText value="Safety Stock" id="ot19" styleClass="xxRobotoGroupLabel"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf34">
+                                    <!--<amx:outputText value="2000 EA" id="ot20" styleClass="xxRobotoFieldValue"/>-->
+                                    <amx:outputText value="#{row.safetyStock}" id="ot20"
+                                                    styleClass="xxRobotoFieldValue"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                            <amx:rowLayout id="rl10">
+                                <amx:cellFormat id="cf35" inlineStyle="padding-top:10%;"/>
+                                <amx:cellFormat id="cf32">
+                                    <amx:outputText value="Promotions" id="ot16" styleClass="xxRobotoGroupLabel"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf36">
+                                    <amx:outputText value="Yes" id="ot17" styleClass="xxRobotoFieldValue"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                    </amx:panelGroupLayout>
+                </amx:listItem>
+            </amx:listView>
+        </amx:panelGroupLayout>
+        <amx:outputText value="#{pageFlowScope.strDebug}" id="ot7"/>
+        <amx:outputText value="#{pageFlowScope.strMainDebug}" id="ot18"/>
+        <amx:outputText value="#{pageFlowScope.strTest}" id="ot13"/>
+        <amx:panelGroupLayout id="pgl4" layout="horizontal">
+            <amx:commandButton text="Test" id="cb1" actionListener="#{pageFlowScope.BarcodeBean.testBtn}"/>
+            <amx:commandButton text="Test1" id="cb2">
+                <amx:setPropertyListener id="spl3" from="N" to="#{pageFlowScope.strDebug}"/>
+            </amx:commandButton>
+        </amx:panelGroupLayout>
+        <!--<amx:listView var="row" value="#{bindings.dayWisePlanDetails.collectionModel}"
+                      fetchSize="#{bindings.dayWisePlanDetails.rangeSize}"
+                      selectedRowKeys="#{bindings.dayWisePlanDetails.collectionModel.selectedRow}"
+                      initialScrollRowKeys="#{bindings.dayWisePlanDetails.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.dayWisePlanDetails.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2">
+            <amx:listItem id="li2">
+                <amx:outputText value="#{row.expandCollapseFlag}" id="ot18"/>
+            </amx:listItem>
+        </amx:listView>-->
+    </amx:panelPage>
+</amx:view>
