@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.1" id="DataBindings"
+             SeparateXMLFiles="false" Package="deloitte.retail.mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/pages/SummaryPG.amx" usageId="deloitte_retail_mobile_SummaryPGPageDef"/>
+    <page path="/pages/OrderHeaderList.amx" usageId="deloitte_retail_mobile_OrderHeaderListPageDef"/>
+    <page path="/pages/OrderDetails.amx" usageId="deloitte_retail_mobile_OrderDetailsPageDef"/>
+    <page path="/pages/SpringboardPG.amx" usageId="deloitte_retail_mobile_SpringboardPGPageDef"/>
+    <page path="/pages/SKUDetails.amx" usageId="deloitte_retail_mobile_SKUDetailsPageDef"/>
+    <page path="/pages/FirmOrderPG.amx" usageId="deloitte_retail_mobile_FirmOrderPGPageDef"/>
+    <page path="/pages/MainMenuPG.amx" usageId="deloitte_retail_mobile_MainMenuPGPageDef"/>
+    <page path="/pages/OnhandInv.amx" usageId="deloitte_retail_mobile_OnhandInvPageDef"/>
+    <page path="/pages/FutureOrder.amx" usageId="deloitte_retail_mobile_FutureOrderPageDef"/>
+    <page path="/pages/InventoryDetails.amx" usageId="deloitte_retail_mobile_InventoryDetailsPageDef"/>
+    <page path="/pages/ScanPG.amx" usageId="deloitte_retail_mobile_ScanPGPageDef"/>
+    <page path="/pages/QuantityPG.amx" usageId="deloitte_retail_mobile_QuantityPGPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="deloitte_retail_mobile_SummaryPGPageDef" path="pages.SummaryPGPageDef"/>
+    <page id="deloitte_retail_mobile_OrderHeaderListPageDef" path="pages.OrderHeaderListPageDef"/>
+    <page id="deloitte_retail_mobile_OrderDetailsPageDef" path="pages.OrderDetailsPageDef"/>
+    <page id="deloitte_retail_mobile_SpringboardPGPageDef" path="taskflows.SpringboardPGPageDef"/>
+    <page id="deloitte_retail_mobile_SKUDetailsPageDef" path="pages.SKUDetailsPageDef"/>
+    <page id="deloitte_retail_mobile_FirmOrderPGPageDef" path="pages.FirmOrderPGPageDef"/>
+    <page id="deloitte_retail_mobile_MainMenuPGPageDef" path="pages.MainMenuPGPageDef"/>
+    <page id="deloitte_retail_mobile_OnhandInvPageDef" path="pages.OnhandInvPageDef"/>
+    <page id="deloitte_retail_mobile_FutureOrderPageDef" path="pages.FutureOrderPageDef"/>
+    <page id="deloitte_retail_mobile_InventoryDetailsPageDef" path="pages.InventoryDetailsPageDef"/>
+    <page id="deloitte_retail_mobile_ScanPGPageDef" path="pages.ScanPGPageDef"/>
+    <page id="deloitte_retail_mobile_QuantityPGPageDef" path="pages.QuantityPGPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="BarcodeBean" path="deloitte.retail.mobile.BarcodeBean"/>
+    <dc id="LOVService" path="deloitte.retail.mobile.LOVService"/>
+    <dc id="FutureOrderPlanService1" path="deloitte.retail.mobile.FutureOrderPlanService1"/>
+    <dc id="FutureOrderPlanService" path="deloitte.retail.mobile.FutureOrderPlanService"/>
+    <dc id="PlanOrderInvDetailsService" path="deloitte.retail.mobile.PlanOrderInvDetailsService"/>
+    <dc id="OnHandQtyService" path="deloitte.retail.mobile.OnHandQtyService"/>
+    <dc id="MainMenuBeanDc" path="deloitte.retail.mobile.MainMenuBeanDc"/>
+    <dc id="FirmOrderDC" path="deloitte.retail.mobile.FirmOrderDC"/>
+    <dc id="SKUDetailsService" path="deloitte.retail.mobile.SKUDetailsService"/>
+    <dc id="SpringboardDC" path="deloitte.retail.mobile.SpringboardDC"/>
+    <dc id="ApplicationFeatures" path="deloitte.retail.application.ApplicationFeatures"/>
+    <dc id="OrderDetailsService" path="deloitte.retail.mobile.OrderDetailsService"/>
+    <dc id="OrderListService" path="deloitte.retail.mobile.OrderListService"/>
+    <dc id="PlannedOrderSummaryService" path="deloitte.retail.mobile.PlannedOrderSummaryService"/>
+  </dataControlUsages>
+</Application>
