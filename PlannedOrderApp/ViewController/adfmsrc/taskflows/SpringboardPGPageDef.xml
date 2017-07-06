@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SpringboardPGPageDef"
+                Package="taskflows">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SpringboardDC" id="SpringboardDCIterator"/>
+    <accessorIterator MasterBinding="SpringboardDCIterator" Binds="springBoard" RangeSize="25"
+                      DataControl="SpringboardDC" BeanClass="deloitte.retail.mobile.pojo.SpringboardItems"
+                      id="springBoardIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="springBoardIterator" id="springBoard">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.SpringboardItems" Name="springBoard0">
+        <AttrNames>
+          <Item Value="featureId"/>
+          <Item Value="featureName"/>
+          <Item Value="iconName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

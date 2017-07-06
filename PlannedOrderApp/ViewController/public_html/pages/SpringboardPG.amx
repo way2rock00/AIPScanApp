@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1" styleClass="headertextwhite">
+        <amx:facet name="primary">
+            <!--  <amx:commandLink id="cl1" action="__back">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>
+            -->
+            <amx:commandLink id="cb2" shortDesc="Home" actionListener="#{bindings.gotoFeature.execute}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-1x" inlineStyle="color:White;"/>
+               </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="header">
+            <amx:panelGroupLayout id="pgl2" layout="horizontal">
+                <amx:tableLayout width="100%" id="tl1" halign="center">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="5%" id="cf9" halign="center" valign="middle">
+                            <amx:commandLink id="cl134" shortDesc="usericon">
+                                <amx:outputHtml id="oh3" styleClass="fa fa-user fa-1x" inlineStyle="color:#ffffff;"/>
+                            </amx:commandLink>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="90%" id="cf5">
+                            <amx:outputText value="#{applicationScope.loggedInUser}" id="ot1" styleClass="headertextwhite"
+                                            inlineStyle="text-align:center;flex-wrap:wrap;font-size:20px;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:listView var="row" value="#{bindings.springBoard.collectionModel}"
+                      fetchSize="#{bindings.springBoard.rangeSize}"
+                      selectedRowKeys="#{bindings.springBoard.collectionModel.selectedRow}"
+                      initialScrollRowKeys="#{bindings.springBoard.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.springBoard.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"
+                      inlineStyle="border-color:transparent;">
+            <amx:listItem id="li1" showLinkIcon="true"
+                          inlineStyle="border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid"
+                          actionListener="#{pageFlowScope. SpringboardBean.springboardClicked}">
+                <amx:tableLayout width="100%" id="tl2" halign="center"
+                                 inlineStyle="padding-bottom:13px; padding-top:13px;">
+                    <amx:rowLayout id="rl2">
+                        <!--<amx:cellFormat width="15%" halign="center">
+                            <amx:outputHtml id="oh5" styleClass="#{row.value}" inlineStyle="color:Black;"/>
+                        </amx:cellFormat>-->
+                         <amx:cellFormat width="2%" halign="center">
+                          <amx:spacer id="s1" width="2"/>
+                        </amx:cellFormat>                          
+                         <amx:cellFormat width="11%" halign="center">
+                          <amx:outputHtml id="oh4" styleClass="#{row.iconName}" inlineStyle="color:#000000;"/>
+                        </amx:cellFormat>   
+                         <amx:cellFormat width="2%" halign="center">
+                          <amx:spacer id="s2" width="2"/>
+                        </amx:cellFormat>                             
+                        <amx:cellFormat width="80%" id="cf2" halign="start" valign="middle">
+                            <amx:outputText value="#{row.featureName}" id="ot3" styleClass="xxRobotoFieldValue"
+                                            inlineStyle="flex-wrap:wrap; "/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="5%" halign="end" id="cf4">
+                            <amx:outputHtml id="oh2" styleClass="fa  fa-angle-right fa-0.5g" inlineStyle="color:Gray;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.selectedFeatureName}" type="action" from="#{row.featureName}"/>
+                <amx:setPropertyListener id="spl2" to="#{pageFlowScope.selectedFeatureId}" type="action" from="#{row.featureId}"/>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
+</amx:view>
