@@ -1,0 +1,812 @@
+@charset "windows-1252";
+
+@import url("./styles.css");
+
+@import url('../font-awesome-4.6.3/css/font-awesome.css');
+
+@font-face {
+    font-family: xxRobotoMedium;
+    src: url("../fonts/font/roboto.medium.ttf")format("truetype");
+}
+
+@font-face { 
+    font-family: xxRobotoLight;
+    src: url("../fonts/font/roboto.light.ttf")format("truetype");
+}
+
+@font-face {
+    font-family: xxRobotoRegular;
+    src: url("../fonts/font/Roboto.Regular.ttf")format("truetype");
+}
+
+.xxRobotoMedium14 {
+    font-family: xxRobotoMedium;
+    font-size: 14px;
+}
+
+.xxRobotoMedium18 {
+    font-family: xxRobotoMedium;
+    font-size: 18px;
+}
+
+.xxRobotoLight14 {
+    font-family: xxRobotoLight;
+    font-size: 14px;
+}
+
+.xxRobotoSubHeader {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #ffffff;
+    border-bottom-color: #86BC25;
+    border-bottom-width: medium;
+    border-bottom-style: solid
+}
+
+.xxRobotoFieldTitle {
+    font-family: xxRobotoLight !important;
+    font-size: 11px !important;
+    color: #999999 !important;
+}
+
+.xxRobotoGroupHeader {
+    font-family: xxRobotoMedium !important;
+    font-size: 18px !important;
+    color: #000000 !important;
+    text-wrap: normal !important;
+    overflow: visible !important;
+    white-space: pre !important;
+    /* CSS 2.0 */
+
+    white-space: pre-wrap !important;
+    /* CSS 2.1 */
+
+    word-wrap: break-word !important;
+}
+
+.xxRobotoGroupValue {
+    font-family: xxRobotoMedium !important;
+    font-size: 22px !important;
+    color: #999999 !important;
+}
+
+.xxRobotoGroupLabel {
+    font-family: xxRobotoLight !important;
+    font-size: 14px !important;
+    color: #999999 !important;
+    font-weight: bold;
+}
+
+
+.xxRobotoFieldValue {
+    font-family: xxRobotoRegular !important;
+    font-size: 14px !important;
+    color: #000000 !important;
+    text-wrap: normal !important;
+    overflow: visible !important;
+    white-space: pre !important;
+    font-weight: normal !important;
+    /* CSS 2.0 */
+
+    white-space: pre-wrap !important;
+    /* CSS 2.1 */
+
+    word-wrap: break-word !important;
+}
+.xxMainPgGreenTile{
+  background-color:#86ba25; color:White; width:98%; height:98%; font-size: x-large;
+}
+.xxMainPgGreyTile{
+  background-color:#767a78; color:White; width:98%; height:98%; font-size: x-large;
+}
+
+
+.xxFrame1{
+  margin: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #86BC25;
+  padding-bottom:3%;
+}
+
+.xxFrameBottomOpen{
+    border-style: solid;
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-bottom-width: 0px;
+    border-right-width: 2px;
+    margin: 5px;
+    margin-left: 5px;    
+    border-left-color: #86BC25;
+    border-top-color: #86BC25;
+    border-right-color: #86BC25;
+    /*border-color : #86BC25;*/
+    /*border-style: solid ;*/
+    /*border-width: 2px*/
+}
+
+.xxFrameTopOpen{
+  border-style: solid;
+    border-top-width: 0px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    margin: 5px;
+    margin-left: 5px;
+    border-left-color: #86BC25;
+    border-bottom-color: #86BC25;
+    border-right-color: #86BC25;
+    padding-bottom:3%;    
+}
+.amx-panelPage-facet-header {
+    -webkit-box-pack: center;
+}
+
+.amx-panelPage-facet-secondary {
+    width: 52px;
+}
+
+.blueHeader > .amx-panelPage-header {
+    background-color: #1C75BC;
+    height: auto;
+}
+
+.whiteHeader > .amx-panelPage-header {
+    background-color: #ffffff;
+    height: auto;
+}
+
+.amx-panelPage-header-appIcon {
+    display: none;
+}
+
+.amx-outputText.headerText {
+    font-family: xxRobotoLight;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.amx-outputText.headerTextBlue {
+    font-family: xxRobotoLight;
+    color: #1C75BC;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.amx-inputText .field-value .wrap {
+    border-bottom: none !important;
+    margin-bottom: 0px !important;
+}
+
+.amx-inputText-content {
+    border: none !important;
+    outline: 0 !important;
+    font-family: xxRobotoRegular;
+    height: 30px;
+}
+
+input[type="password"] {
+    letter-spacing: 0px;
+}
+
+.username_field, .password_field {
+    background: #ffffff none repeat scroll 0 0;
+    border: thin solid #000000;
+    border-radius: 5px;
+    /*box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset;*/
+
+    font-size: 16px;
+    text-align: left !important;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: xxRobotoRegular !important;
+}
+
+.remember_me_field {
+    font-family: xxRobotoRegular;
+    font-size: 11px;
+}
+
+.amx-outputText.subHeaderText {
+    font-family: xxRobotoLight;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    top: 13px;
+    position: relative;
+}
+
+.amx-panelGroupLayout.headerContainer {
+    width: 100%;
+    display: block;
+}
+
+.amx-panelGroupLayout.pageSubHeadingContainer {
+    background-color: #1C75BC;
+    height: 48px;
+}
+
+.amx-panelGroupLayout.dashboardLayout {
+    margin: 10px;
+}
+
+textarea:focus, textarea:active, -webkit-textarea:focus, -webkit-textarea:active, input:focus, input:active, -webkit-input:focus, -webkit-input:active {
+    border-bottom-color: #86BC25;
+    border-bottom-width: medium;
+    border-bottom-style: solid;
+}
+
+.amx-panelPage-header {
+    border-bottom-color: #86BC25;
+    background-color: #000000;
+    border-bottom-width: medium;
+    border-bottom-style: solid;
+    height: auto;
+    padding-top: 10px !important;
+    padding-bottom: 10px;
+}
+
+.amx-panelPage-header .amx-outputText {
+    color: #86BC25;
+    font-size: x-large;
+    font-family: xxRobotoLight;
+}
+
+.amx-panelPage-footer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 48px;
+    display: block;
+    background-color: #F6F6F7;
+    border-top: 1px solid #D5D5D7;
+    z-index: 1;
+    padding-bottom: 10px;
+}
+
+.headertextwhite {
+    color: #ffffff !important;
+    font-size: x-large;
+    font-family: xxRobotoLight;
+    text-wrap: normal !important;
+    overflow: visible !important;
+    white-space: pre !important;
+    /* CSS 2.0 */
+
+    white-space: pre-wrap !important;
+    /* CSS 2.1 */
+
+    word-wrap: break-word !important;
+}
+
+.amx-commandLink.dashboardIcons {
+    margin: 10px 5px 10px 5px;
+}
+
+.round-button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    background: #464646;
+    font-family: xxRobotoRegular;
+}
+
+.round-button-up {
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    font-family: xxRobotoRegular;
+    background-position: 50% 50%;
+}
+
+.amx-commandButton.homeButtonSel {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: #00b500;
+    border: 2px solid #00b500;
+    background-image: none;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.amx-commandButton.homeButtonDef {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: #00b500;
+    background-image: none;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.amx-commandButton.buttonsLarge {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    padding: 10px 10px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 1px;
+    background: #86BC25;
+    background-image: none;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.amx-commandButton.buttonsLarge1 {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 1px;
+    background: #86BC25;
+    background-image: url("../images/DownArrow.png")!important;
+    background-repeat: no-repeat;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    font-size: 18px;
+    width: 96%;
+    background-position: 50% 50%;
+}
+
+.amx-commandButton.buttonsLarge2 {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 1px;
+    background: #86BC25;
+    background-image: url("../images/UpArrow.png")!important;
+    background-repeat: no-repeat;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    font-size: 18px;
+    width: 96%;
+    background-position: 50% 50%;
+}
+
+.gauge {
+    /*width: 160px;*/
+
+    border-radius: 10px !important;
+    padding-top: 0% !important;
+    padding-bottom: 0% !important;
+    line-height: 20px !important;
+    text-align: center;
+    /*position: fixed;*/
+}
+
+.amx-commandButton.tabButtons {
+    margin: 6px 0px 0px 0px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: #1C75BC;
+    width: 180px;
+    background-image: none;
+    font-family: xxRobotoLight;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.amx-commandButton.approve {
+    border: 0;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: #1C75BC;
+    width: 75px;
+    background-image: none;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    height: 21px;
+    min-height: 21px;
+}
+
+.approve.amx-commandButton.amx-disabled {
+    border: 0;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: Gray;
+    width: 75px;
+    background-image: none;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    height: 21px;
+    min-height: 21px;
+}
+
+.amx-commandButton.detailsApprove {
+    margin: 6px 0px 0px 0px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: #1C75BC;
+    width: 150px;
+    background-image: none;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.detailsApprove.amx-commandButton.amx-disabled {
+    margin: 6px 0px 0px 0px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: Gray;
+    width: 150px;
+    background-image: none;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.amx-commandButton.popupButton {
+    border: 0;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: #1C75BC;
+    width: 50px;
+    background-image: none;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    height: 25px;
+    min-height: 25px;
+}
+
+.amx-commandButton-label {
+    overflow: visible;
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 16px;
+}
+
+.approve > .amx-commandButton-label {
+    font-size: 11px;
+    font-weight: 500;
+    top: 4px;
+}
+
+.popupButton > .amx-commandButton-label {
+    font-size: 13px;
+    font-weight: 500;
+    top: 5px;
+}
+
+.amx-commandButton.homeButtons1 {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    height: 167px;
+    display: inline-block;
+    outline: 0;
+    width: 140px;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.homeButtonsLarge > .amx-commandButton-icon {
+    margin: 0px;
+    width: 140px;
+    height: 167px;
+}
+/*.homeButtons.amx-commandButton.amx-disabled {
+    margin: 10px 5px 10px 5px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    width: 140px;
+    border-radius: 4px;
+    background: #A7A9AC;
+    background-image: none;
+    font-family: Helvetica;
+    color: #ffffff;
+    font-size: 16px;
+} #27aae2*/
+.tabButtons.amx-commandButton.amx-disabled {
+    margin: 6px 0px 0px 0px;
+    border: 0;
+    padding: 9px 0px;
+    display: inline-block;
+    outline: 0;
+    border-radius: 4px;
+    background: transparent;
+    width: 180px;
+    border-bottom: #ffffff solid 8px;
+    font-family: xxRobotoRegular;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.amx-panelFormLayout {
+    background: transparent;
+    border: none;
+    margin: 0px;
+}
+
+.amx-panelGroupLayout.springboardSubHeading {
+    border-bottom: #cccccc solid 2px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.amx-outputText.springboardSubText {
+    font-family: xxRobotoRegular;
+    font-size: 16px;
+    font-weight: bold;
+    color: #757575;
+}
+
+.amx-listView.sprigboardList {
+    border: 0px;
+}
+
+.amx-listView {
+    border-bottom: none 0px #BABABC;
+}
+
+.amx-listItem.sprigboardListItem {
+    padding: 0px !important;
+    border: 0px;
+    height: 35px !important;
+    min-height: 0px !important;
+}
+
+.amx-listItem.amx-listItem-selected, .amx-listItem:active {
+    border-bottom: none 0px #BABABC;
+    border-top: none 0px #BABABC;
+    top: -1px;
+    margin-bottom: -1px;
+    background-color: transparent;
+}
+
+.sprigboardListItem.amx-listItem.amx-listItem-selected, .sprigboardListItem.amx-listItem:active {
+    background-color: transparent;
+    border: 0px;
+    margin: 0px;
+}
+
+.reportListItem.amx-listItem.amx-listItem-selected, .reportListItem.amx-listItem:active {
+    background-color: white;
+}
+
+.amx-listItem.dashboardListItem {
+    border-bottom: solid 1px #a8a9ad !important;
+    height: 72px;
+}
+
+.amx-outputText.dashboardListItemText {
+    color: Black;
+    font-size: 14px;
+    font-family: xxRobotoRegular;
+    white-space: normal;
+}
+
+html[dir=ltr] .field-label {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+}
+
+html[dir=ltr] .field-value {
+    padding-right: 15px;
+    /* padding-left: 8px; */
+}
+
+.field.amx-simple > .field-value {
+    padding: 2px 2px;
+}
+
+html[dir=ltr] .amx-inputText .field-value {
+    padding-left: 2px;
+}
+
+.amx-panelFormLayout .field > .field-label {
+    color: #000000;
+    font-size: 14px;
+    font-family: xxRobotoRegular;
+}
+
+.amx-label-position-topCenter .amx-panelFormLayout_sizingTable > *, .amx-label-position-topStart .amx-panelFormLayout_sizingTable > *, .amx-label-position-topEnd .amx-panelFormLayout_sizingTable > * {
+    border: none;
+}
+
+html[dir=ltr] .amx-selectOneChoice .selectItemsContainer {
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    -webkit-border-image: none;
+    border-image: none;
+    position: static;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: 98%;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-family: xxRobotoRegular;
+    background-color: White;
+    vertical-align: middle;
+}
+
+
+
+HTML[dir="ltr"] .amx-inputDate-trigger-dateTime {
+    border-width: 1px;
+    border: #000000 !important;
+    border-radius: 5px;
+    border-style: solid;
+    -webkit-border-image: none;
+    border-image: none;
+    position: static;
+    height: 30px;
+    background-image: url("../images/Date.png");
+    background-repeat: no-repeat;
+    background-position: 98%;
+    /*padding-left: 6px;*/
+}
+
+HTML[dir="ltr"] .amx-inputDate-text {
+    padding-right: 20px;
+    padding-top: 8px;
+    position: relative;
+}
+
+keygen, select, select[size="0"], select[size="1"] {
+    border-radius: 0px;
+    border-color: #1C75BC !important;
+}
+
+.amx-outputText.poApproverListText1 {
+    /*color:#0e3d67;*/
+
+    font-size: 13px;
+}
+
+.amx-outputText.poApproverListText1Bold {
+    color: #0e3d67;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.amx-outputText.poApproverListText2 {
+    color: #a5a5a5;
+    font-size: 10px;
+}
+
+.amx-outputText.poApproverListText2Value {
+    /*color:#0e3d67;*/
+
+    font-size: 11px;
+}
+
+.amx-outputText.poApproverListTextD2 {
+    color: #a5a5a5;
+    font-size: 12px;
+}
+
+.amx-outputText.poApproverListTextD2Value {
+    /*color:#0e3d67;*/
+
+    font-size: 14px;
+}
+
+.amx-panelGroupLayout.poApproverDetailsPanel {
+    margin: 10px;
+    padding: 8px;
+    height: 125px;
+    border-top: #d6d6d6 2px solid;
+}
+
+.amx-panelGroupLayout.itemDetail {
+    margin: 10px;
+    padding: 8px;
+    height: 125px;
+}
+
+.amx-popup {
+    left: 15% !important;
+    top: 40% !important;
+    bottom: 35% !important;
+    z-index: 1000;
+    alignment-adjust: middle;
+    alignment-baseline: middle;
+    vertical-align: middle;
+    position: absolute;
+    width: 60%;
+}
+
+.amx-popup.confirmationPopup {
+    width: 70%;
+    top: 40% !important;
+    border-radius: 7px;
+    padding: 0px;
+    border: none;
+    height: 105px;
+}
+
+.amx-panelGroupLayout.popupContainer {
+    background: #1C75BC;
+    padding: 6px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    color: white;
+}
+
+.amx-panelGroupLayout.popupSubContainer {
+    padding: 6px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.amx-outputText.poDetailsSubHeader {
+    color: #1C75BC;
+    font-weight: bold;
+}
+
+.amx-outputText.poShopFloorSubHeader {
+    color: #1C75BC;
+    font-weight: 400;
+}
+
+.amx-panelPage-header-overflowIcon{
+    display: none;
+}
+.invPageHeader {
+    border-color : #86BC25;
+    border-style: solid ;
+    border-width: 2px;
+}
+.invPglPadding{
+    padding:  5px;
+}
+.invPageRow.amx-node .amx-rowLayout{
+    border-bottom-color: #999999;
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+}
+.invPageCell{
+    border-right-color: Gray;
+    border-right-width: thin;
+    border-right-style: solid !important;
+}
+.invLOVDetails > .field-label{
+    padding: 0px !important ;
+}
+
+.upcInputText{
+    border-bottom-style: solid !important;
+}
