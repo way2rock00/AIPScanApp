@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Scan Product" id="ot1" inlineStyle="color:White; font-size:x-large;"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelGroupLayout id="pgl4" halign="center"
+                          inlineStyle="padding-bottom:15px; outline-style:solid; outline-color:#a5a5a5; border-bottom-color:#a5a5a5; border-bottom-style:solid; border-left-color:#a5a5a5; border-right-color:#a5a5a5; border-right-style:solid; border-left-style:solid; border-left-width:medium; border-right-width:medium; border-top-width:medium; border-bottom-width:medium; outline-width:medium; border-top-style:solid; border-top-color:#a5a5a5;">
+      <amx:tableLayout id="tl7">
+        <amx:rowLayout id="rl6">
+          <amx:cellFormat id="cf15">
+            <amx:spacer id="s3" height="20"/>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+      <amx:outputText value="UPC13455" id="ot10" inlineStyle="color:Gray; font-size:x-large;"/>
+      <amx:spacer id="s6" height="10"/>
+      <amx:outputText value=" UPC13455 Description" id="ot20" inlineStyle="color:Gray; font-size:large;"/>
+      <amx:spacer id="s4" height="20"/>
+      <amx:selectOneChoice id="soc1" inlineStyle="color:Gray; background-color:InactiveBorder;">
+        <amx:selectItem id="si1" label="Store Name 123"/>
+        <amx:selectItem label="Store Name 234" id="si2"/>
+      </amx:selectOneChoice>
+      <amx:spacer id="s5" height="35"/>
+    </amx:panelGroupLayout>
+    <amx:panelGroupLayout id="pgl1"
+                          inlineStyle="border-right-style:solid; border-right-color:White; border-left-style:solid; border-left-color:White; border-top-color:White; border-top-style:solid; background-color:#6A1B9A;">
+      <amx:tableLayout id="tl3"></amx:tableLayout>
+      <amx:spacer id="s1" height="10"/>
+      <amx:tableLayout id="tl5">
+        <amx:rowLayout id="rl3">
+          <amx:cellFormat id="cf9">
+            <amx:spacer id="s19" width="10" inlineStyle="background-color:transparent;"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf10">
+            <amx:outputText value="On Hand" id="ot2" inlineStyle="font-size:xx-large; color:White;"/>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+      <amx:spacer id="s9" height="10"/>
+      <amx:panelGroupLayout id="pgl10" halign="end">
+        <amx:tableLayout id="tl6">
+          <amx:rowLayout id="rl4">
+            <amx:cellFormat id="cf11">
+              <amx:outputText value="1000" id="ot3" inlineStyle="font-size:40px; color:White;"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf12">
+              <amx:spacer id="s20" width="20"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl5">
+            <amx:cellFormat id="cf13" halign="end">
+              <amx:outputText value="EA" id="ot4" inlineStyle="font-size:x-large; color:White;"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf14">
+              <amx:spacer id="s21" width="20"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl17">
+            <amx:cellFormat id="cf34" height="3"/>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:panelGroupLayout>
+    </amx:panelGroupLayout>
+    <amx:tableLayout id="tl4">
+      <amx:rowLayout id="rl16">
+        <amx:cellFormat id="cf33" height="2"/>
+      </amx:rowLayout>
+    </amx:tableLayout>
+    <amx:spacer id="s2" height="3"/>
+    <amx:tableLayout id="tl2" width="100%">
+      <amx:rowLayout id="rl2">
+        <amx:cellFormat id="cf21">
+          <amx:spacer id="s23" width="2"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf4" width="49%">
+          <amx:panelGroupLayout id="pgl5" layout="vertical"
+                                inlineStyle="background-color:#D81B60; text-height:auto;">
+            <amx:tableLayout id="tl8">
+              <amx:rowLayout id="rl7">
+                <amx:cellFormat id="cf16" width="10"/>
+                <amx:cellFormat id="cf17">
+                  <amx:outputText value="Store Order Quantity" id="ot5" inlineStyle="font-size:x-large; color:White;"/>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:spacer id="s8"/>
+            <amx:panelGroupLayout id="pgl11" halign="end">
+              <amx:tableLayout id="tl9">
+                <amx:rowLayout id="rl8">
+                  <amx:cellFormat id="cf18">
+                    <amx:outputText value="1000" id="ot6" inlineStyle="font-size:30px; color:White;"/>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf19">
+                    <amx:spacer id="s22" width="10"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl9">
+                  <amx:cellFormat id="cf20" halign="end">
+                    <amx:outputText value="EA" id="ot7" inlineStyle="font-size:x-large; color:White;"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+            </amx:panelGroupLayout>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf8">
+          <amx:spacer id="s17" width="5"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf5" width="48%">
+          <amx:panelGroupLayout id="pgl6" layout="vertical" inlineStyle="background-color:#D81B60;">
+            <amx:tableLayout id="tl10">
+              <amx:rowLayout id="rl10">
+                <amx:cellFormat id="cf25" width="10"/>
+                <amx:cellFormat id="cf26">
+                  <amx:outputText value="Planned Quantity" id="ot11" inlineStyle="font-size:x-large; color:White;"/>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:spacer id="s7" height="27"/>
+            <amx:panelGroupLayout id="pgl12" halign="end">
+              <amx:tableLayout id="tl11">
+                <amx:rowLayout id="rl11">
+                  <amx:cellFormat id="cf27">
+                    <amx:outputText value="2000" id="ot12" inlineStyle="font-size:30px; color:White;"/>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf29">
+                    <amx:spacer id="s28" width="10"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl12">
+                  <amx:cellFormat id="cf28" halign="end">
+                    <amx:outputText value="EA" id="ot13" inlineStyle="font-size:x-large; color:White;"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+            </amx:panelGroupLayout>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf22">
+          <amx:spacer id="s24" width="2"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl15">
+        <amx:cellFormat id="cf32" height="5">
+          <amx:spacer id="s10" height="3"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+    <amx:panelGroupLayout id="pgl2" layout="horizontal"/>
+    <amx:tableLayout id="tl1" width="100%">
+      <amx:rowLayout id="rl1">
+        <amx:cellFormat id="cf7">
+          <amx:spacer id="s16" width="3"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf2" width="49%" height="30%" inlineStyle="background-color:#00C853;">
+          <amx:panelGroupLayout id="pgl8">
+            <amx:tableLayout id="tl12">
+              <amx:rowLayout id="rl13">
+                <amx:cellFormat id="cf30" height="3"/>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:tableLayout id="tl14">
+              <amx:rowLayout id="rl20">
+                <amx:cellFormat id="cf38" width="3"/>
+                <amx:cellFormat id="cf39">
+                  <amx:outputText value="Presentation Min" id="ot14" inlineStyle="font-size:large; color:White;"/>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:spacer id="s13" height="15"/>
+            <amx:panelGroupLayout id="pgl14" halign="end" layout="vertical">
+              <amx:panelGroupLayout id="pgl18" layout="horizontal">
+                <amx:outputText value="1000" id="ot15" inlineStyle="font-size:large; color:White;"/>
+                <amx:spacer id="s18" width="3"/>
+              </amx:panelGroupLayout>
+              <amx:panelGroupLayout id="pgl19" layout="horizontal">
+                <amx:outputText value="EA" id="ot16" inlineStyle="font-size:large; color:White;"/>
+                <amx:spacer id="s26" width="3"/>
+              </amx:panelGroupLayout>
+              <amx:spacer id="s29" height="3"/>
+            </amx:panelGroupLayout>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf6">
+          <amx:spacer id="s15" width="2"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf3" width="48%" inlineStyle="background-color:#00C853;">
+          <amx:panelGroupLayout id="pgl9">
+            <amx:tableLayout id="tl13">
+              <amx:rowLayout id="rl14">
+                <amx:cellFormat id="cf24" height="3"/>
+              </amx:rowLayout>
+              <amx:rowLayout id="rl24">
+                <amx:cellFormat id="cf45" width="3"/>
+                <amx:cellFormat id="cf46">
+                  <amx:outputText value="Display Min" id="ot17" inlineStyle="font-size:large; color:White;"/>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:spacer id="s14" height="25"/>
+            <amx:panelGroupLayout id="pgl15" halign="end">
+              <amx:panelGroupLayout id="pgl22" layout="horizontal">
+                <amx:outputText value="1000" id="ot18" inlineStyle="font-size:large; color:White;"/>
+                <amx:spacer id="s33" width="3"/>
+              </amx:panelGroupLayout>
+              <amx:panelGroupLayout id="pgl23" layout="horizontal">
+                <amx:outputText value="EA" id="ot19" inlineStyle="font-size:large; color:White;"/>
+                <amx:spacer id="s34" width="3"/>
+              </amx:panelGroupLayout>
+              <amx:spacer id="s35" height="3"/>
+            </amx:panelGroupLayout>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf31">
+          <amx:spacer id="s30" width="2"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl19">
+        <amx:cellFormat id="cf35" height="4"/>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl18">
+        <amx:cellFormat id="cf23"/>
+        <amx:cellFormat id="cf1" width="30%" height="30%" inlineStyle="background-color:#00C853;">
+          <amx:panelGroupLayout id="pgl7">
+            <amx:tableLayout id="tl15">
+              <amx:rowLayout id="rl22">
+                <amx:cellFormat id="cf42" height="3"/>
+              </amx:rowLayout>
+              <amx:rowLayout id="rl21">
+                <amx:cellFormat id="cf40" width="3"/>
+                <amx:cellFormat id="cf41">
+                  <amx:outputText value="Price" id="ot8" inlineStyle="font-size:large; color:White;"/>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:spacer id="s12" height="45"/>
+            <amx:panelGroupLayout id="pgl13" halign="end">
+              <amx:panelGroupLayout id="pgl20" layout="horizontal">
+                <amx:outputText value="1000" id="ot9" inlineStyle="font-size:large; color:White;"/>
+                <amx:spacer id="s27" width="3"/>
+              </amx:panelGroupLayout>
+              <amx:spacer id="s31" height="3"/>
+            </amx:panelGroupLayout>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf36" width="2"/>
+        <amx:cellFormat id="cf37" inlineStyle="background-color:#00C853;">
+          <amx:panelGroupLayout id="pgl16">
+            <amx:tableLayout id="tl16">
+              <amx:rowLayout id="rl23">
+                <amx:cellFormat id="cf43" width="3"/>
+                <amx:cellFormat id="cf44">
+                  <amx:outputText value="Causal" id="ot21" inlineStyle="color:White; font-size:large;"/>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:spacer id="s11" height="45"/>
+            <amx:panelGroupLayout id="pgl17" halign="end">
+              <amx:panelGroupLayout id="pgl21" layout="horizontal">
+                <amx:outputText value="Yes" id="ot22" inlineStyle="color:White; font-size:large;"/>
+                <amx:spacer id="s32" width="3"/>
+              </amx:panelGroupLayout>
+            </amx:panelGroupLayout>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+    <amx:panelGroupLayout id="pgl3" layout="horizontal">
+      <amx:spacer id="s25" height="3"/>
+    </amx:panelGroupLayout>
+  </amx:panelPage>
+</amx:view>
