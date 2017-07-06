@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:panelGroupLayout id="pgl2" layout="vertical">
+                <amx:outputText value="Welcome" id="ot1" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;font-size:16px;"/>
+                <amx:outputText value="#{applicationScope.loggedInUser}" id="ot4" styleClass="headertextwhite"
+                                inlineStyle="text-align:center;padding-top:2px;"/>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl134" shortDesc="menu" actionListener="#{pageFlowScope.HomeBean.springBoardEvent}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl3" layout="vertical" styleClass="xxRobotoSubHeader">
+            <amx:tableLayout id="tl2" width="100%">
+                <amx:rowLayout id="rl2">
+                    <amx:cellFormat id="cf3" width="100%" halign="center" valign="middle">
+                        <amx:outputText value="Order Summary" id="ot2"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+        <amx:panelFormLayout id="pfl2" labelWidth="40%" fieldWidth="60%" labelPosition="start" fieldHalign="start"
+                             showHorizontalDividers="false" maxColumns="1"
+                             rendered="#{pageFlowScope.showSearchRegion == 'true'}">
+            <amx:panelLabelAndMessage id="plam4" label="Order Type" styleClass="label xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl6" width="100%">
+                    <amx:rowLayout id="rl5">
+                        <amx:cellFormat styleClass="cell-border" id="cf5" width="95%">
+                            <!--<amx:inputText styleClass="username_field" id="it6"
+                                           value="#{pageFlowScope.searchOrderType}"/>-->
+                            <amx:selectOneChoice value="#{pageFlowScope.searchOrderType}" 
+                                                 id="soc2" inlineStyle="color:##86BC25">
+                                <amx:selectItem value="-999" id="si3" label="Select Order Type"/>
+                                <amx:selectItem value="Purchase Order" id="si4" label="Purchase Order"/>
+                                <amx:selectItem value="Transfer Order" id="si5" label="Transfer Order"/>
+                            </amx:selectOneChoice>                                              
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam1" label="Status" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl1" width="100%">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat styleClass="cell-border" id="cf6" width="95%">
+                            <!--<amx:inputText styleClass="username_field" id="it1"
+                                           value="#{pageFlowScope.searchStatus}"/>-->
+                            <amx:selectOneChoice value="#{pageFlowScope.searchStatus}" 
+                                                 id="soc4" inlineStyle="color:##86BC25">
+                                <amx:selectItem value="-999" id="si2" label="Select Status"/>
+                                <amx:selectItem value="Released" id="si6" label="Released"/>
+                                <amx:selectItem value="Unreleased" id="si7" label="Unreleased"/>
+                            </amx:selectOneChoice>                                              
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam2" label="Source"
+                                      styleClass="label  xxRobotoFieldValue" showRequired="false">
+                <amx:tableLayout id="tl3" width="100%">
+                    <amx:rowLayout id="rl3">
+                        <amx:cellFormat styleClass="cell-border" id="cf7" width="95%">
+                            <!--<amx:inputText styleClass="username_field" id="it2" inputType="text"
+                                           value="#{pageFlowScope.searchSource}"/>-->
+                                <amx:selectOneChoice value="#{pageFlowScope.searchSource}" 
+                                                     id="soc1">
+                                    <amx:selectItems value="#{bindings.sourceDesc.items}" id="si1"/>
+                                </amx:selectOneChoice>                                           
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam3" label="Destination" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false">
+                <amx:tableLayout id="tl4" width="100%">
+                    <amx:rowLayout id="rl4">
+                        <amx:cellFormat styleClass="cell-border" id="cf8" width="95%">
+                            <!--<amx:inputText styleClass="username_field" id="it3" inputType="text"
+                                               value="#{pageFlowScope.searchDestination}"/>-->
+                            <amx:selectOneChoice value="#{pageFlowScope.searchDestination}" 
+                                                 id="soc3" inlineStyle="color:##86BC25" styleClass="test">
+                                <amx:selectItems value="#{bindings.destinationDesc.items}" id="si8"/>
+                            </amx:selectOneChoice>                                               
+                            </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam5" label="Delivery From Date" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl5" width="100%">
+                    <amx:rowLayout id="rl6">
+                        <amx:cellFormat styleClass="cell-border" id="cf9" width="95%">
+                            <amx:inputDate id="id1" 
+                                           value="#{pageFlowScope.searchDeliveryFromDate}" simple="true"
+                                           required="#{pageFlowScope.showSearchRegion == 'true' ? true : false}"
+                                           inlineStyle="border-color:Black; border-radius:5px; border-width:thin; border-style:solid;"
+                                           inputType="date"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="" id="plm1" showRequired="false" 
+            rendered="#{pageFlowScope.showSearchRegion == 'true'  &amp;&amp; pageFlowScope.deliveryFromDateError == 'true'}">
+                <amx:tableLayout id="tl15" width="100%">
+                    <amx:rowLayout id="rl10">
+                        <amx:cellFormat styleClass="cell-border" id="cf16" width="90%">
+                            <amx:outputText value="Please enter Delivery From Date" id="ot7" inlineStyle="color:Red;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>              
+            <amx:panelLabelAndMessage id="plam6" label="Delivery To Date" styleClass="label  xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl7" width="100%">
+                    <amx:rowLayout id="rl7">
+                        <amx:cellFormat styleClass="cell-border" id="cf10" width="95%">
+                            <amx:inputDate id="id2" 
+                                           value="#{pageFlowScope.searchDeliveryToDate}" simple="true" inputType="date"
+                                           required="#{pageFlowScope.showSearchRegion == 'true' ? true : false}"
+                                           inlineStyle="border-color:Black; border-radius:5px; border-width:thin; border-style:solid;"
+                                           valueChangeListener="#{pageFlowScope.HomeBean.dateChanged}"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="" id="plam12" showRequired="false" 
+            rendered="#{pageFlowScope.showSearchRegion == 'true'  &amp;&amp; pageFlowScope.deliveryToDateError == 'true'}">
+                <amx:tableLayout id="tl16" width="100%">
+                    <amx:rowLayout id="rl15">
+                        <amx:cellFormat styleClass="cell-border" id="cf18" width="90%">
+                            <amx:outputText value="Please enter Delivery To Date" id="ot8" inlineStyle="color:Red;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>               
+            <amx:panelLabelAndMessage id="plam7" label="Order Number From" styleClass="label xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl8" width="100%">
+                    <amx:rowLayout id="rl8">
+                        <amx:cellFormat styleClass="cell-border" id="cf1" width="95%">
+                            <amx:inputText styleClass="username_field" id="it4" inputType="number"
+                                           value="#{pageFlowScope.searchOrderNumberFrom}"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam8" label="Order Number To" styleClass="label xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl9" width="100%">
+                    <amx:rowLayout id="rl9">
+                        <amx:cellFormat styleClass="cell-border" id="cf11" width="95%">
+                            <amx:inputText styleClass="username_field" id="it5" inputType="number"
+                                           value="#{pageFlowScope.searchOrderNumberTo}"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam9" label="Case UPC From" styleClass="label xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl12" width="100%">
+                    <amx:rowLayout id="rl11">
+                        <amx:cellFormat styleClass="cell-border" id="cf12" width="95%">
+                            <amx:inputText styleClass="username_field" id="it7" inputType="number"
+                                           value="#{pageFlowScope.searchCaseUPCFrom}"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam10" label="Case UPC To" styleClass="label xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl13" width="100%">
+                    <amx:rowLayout id="rl12">
+                        <amx:cellFormat styleClass="cell-border" id="cf14" width="95%">
+                            <amx:inputText styleClass="username_field" id="it8" inputType="number"
+                                           value="#{pageFlowScope.searchCaseUPCTo}"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>            
+            <amx:panelLabelAndMessage id="plam11" label="Truck #" styleClass="label xxRobotoFieldValue"
+                                      showRequired="false" rendered="true">
+                <amx:tableLayout id="tl14" width="100%">
+                    <amx:rowLayout id="rl13">
+                        <amx:cellFormat styleClass="cell-border" id="cf17" width="95%">
+                            <amx:inputText styleClass="username_field" id="it9" inputType="number"
+                                           value="#{pageFlowScope.searchTruckNumber}"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>
+        </amx:panelFormLayout>
+            <amx:panelLabelAndMessage label="" id="plam13" showRequired="false" 
+            rendered="#{pageFlowScope.showSearchRegion == 'true'  &amp;&amp; pageFlowScope.fetchSizeError == 'true'}">
+                <amx:tableLayout id="tl17" width="100%">
+                    <amx:rowLayout id="rl16">
+                        <amx:cellFormat styleClass="cell-border" id="cf19" width="90%">
+                            <amx:outputText value="Please set Record Limit in Preferences" id="ot9" inlineStyle="color:Red;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:panelLabelAndMessage>        
+        <amx:panelGroupLayout layout="vertical" id="pgl1" halign="center"
+                              rendered="#{pageFlowScope.showSearchRegion == 'true'}">
+            <amx:commandButton text="Search" id="cb111" styleClass="buttonsLarge" shortDesc="Search for Orders"
+                               action="#{pageFlowScope.HomeBean.searchPlannedOrderClicked}" actionListener="#{pageFlowScope.HomeBean.searchPlannedOrders}">
+                <amx:setPropertyListener id="spl3" from="" to="#{pageFlowScope.selectedStatus}"/>
+                <amx:setPropertyListener id="spl5" from="N" to="#{pageFlowScope.showMessage}"/>
+            </amx:commandButton>
+        </amx:panelGroupLayout>
+        <amx:tableLayout id="tl11" width="100%">
+            <amx:rowLayout id="r1l2">
+                <amx:cellFormat id="cf15" width="100%" halign="center" valign="middle"
+                                inlineStyle="background-color:#86BC25;">
+                    <amx:commandButton id="cb1" styleClass="fa fa-angle-down fa-2g "
+                                       actionListener="#{pageFlowScope.HomeBean.resetSearchFields}"
+                                       inlineStyle="color:#ffffff; min-height:5pt;" shortDesc="Expand"
+                                       rendered="#{pageFlowScope.showSearchRegion == 'false' || pageFlowScope.showSearchRegion == null }">
+                        <amx:setPropertyListener id="spl1" from="true" to="#{pageFlowScope.showSearchRegion}"/>
+                    </amx:commandButton>
+                    <amx:commandButton id="cb2" styleClass="fa fa-angle-up fa-2g" shortDesc="Collapse"
+                                       inlineStyle="min-height:5pt;color:#ffffff;"
+                                       actionListener="#{pageFlowScope.HomeBean.resetSearchFields}"
+                                       rendered="#{pageFlowScope.showSearchRegion == 'true'}">
+                        <amx:setPropertyListener id="spl2" from="false" to="#{pageFlowScope.showSearchRegion}"/>
+                    </amx:commandButton>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>    
+        <amx:panelLabelAndMessage label="" id="plam14" showRequired="false" rendered="true">
+            <amx:tableLayout id="tl18" width="100%">
+                <amx:rowLayout id="rl17">
+                    <amx:cellFormat styleClass="cell-border" id="cf20" width="90%" halign="center">
+                        <amx:spacer id="s1" height="10"/>
+                        <amx:outputText value="#{pageFlowScope.serviceErrMsg}" id="ot10" inlineStyle="color:gray;"/>
+                        <amx:spacer id="s2" height="10"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelLabelAndMessage>       
+        <amx:listView var="row" value="#{bindings.plannedOrderSummary.collectionModel}"
+                      fetchSize="#{bindings.plannedOrderSummary.rangeSize}"
+                      selectedRowKeys="#{bindings.plannedOrderSummary.collectionModel.selectedRow}"
+                      initialScrollRowKeys="#{bindings.plannedOrderSummary.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.plannedOrderSummary.collectionModel.makeCurrent}" showMoreStrategy="off"
+                      bufferStrategy="viewport" id="lv2">
+            <amx:listItem id="li2" action="toOrderHeaderList"
+                          inlineStyle="min-height:30px;padding-top:8px;padding-bottom:8px;border-bottom-color:#86BC25;border-bottom-width:thin;border-bottom-style:solid;">
+                <amx:tableLayout id="tl10" width="100%" inlineStyle="vertical-align:middle;">
+                    <amx:rowLayout id="rl14">
+                        <amx:cellFormat id="cf13" width="15%" valign="middle" halign="center">
+                            <amx:outputHtml id="oh4" styleClass="fa fa-file-text-o fa-x" inlineStyle="color:GrayText;"/>
+                            <amx:spacer id="s3" width="5"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf2" halign="start" width="70%" valign="middle">
+                            <amx:outputText value="#{row.status}" id="ot5" styleClass="xxRobotoFieldValue"
+                                            inlineStyle="vertical-align:middle;font-size:18px"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf4" width="auto" halign="center">
+                            <amx:commandButton text="#{row.statusCount}" id="cb3"
+                                               inlineStyle="vertical-align:middle; color:White; font-size:20px; text-align:center; font-weight:bold; background-color:#2f8dea;"
+                                               styleClass="round-button"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener id="spl4" from="#{row.status}" to="#{pageFlowScope.selectedStatus}"/>
+                <amx:setPropertyListener id="spl6" from="N" to="#{pageFlowScope.showMessage}"/>
+            </amx:listItem>
+        </amx:listView>
+        <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot3"/>
+        <amx:outputText value="S:#{pageFlowScope.showMessage}:~:#{pageFlowScope.showSearchRegion}:S" id="ot6"/>
+         --><!--<amx:outputText value="Test123:#{bindings.plannedOrderSummary.rangeSize}" id="ot10"/>--><!--
+        <amx:outputText value="RS:#{preferenceScope.application.UserSettings.RecordSize}" id="ot12"/>  
+        <amx:outputText value="DM:#{preferenceScope.application.UserSettings.DeliveryMonths}" id="ot13"/>  
+        <amx:outputText value="DD:#{pageFlowScope.strDateDebug}" id="ot11"/>-->           
+    </amx:panelPage>
+</amx:view>

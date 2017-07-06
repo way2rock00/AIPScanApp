@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SummaryPGPageDef" Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="test" Type="java.lang.StringBuffer"/>
+    </variableIterator>
+    <iterator Binds="root" RangeSize="25" DataControl="PlannedOrderSummaryService"
+              id="PlannedOrderSummaryServiceIterator"/>
+    
+    <accessorIterator MasterBinding="PlannedOrderSummaryServiceIterator" Binds="plannedOrderSummary" RangeSize="-1"
+                      DataControl="PlannedOrderSummaryService"
+                      BeanClass="deloitte.retail.mobile.pojo.PlannedOrderSummaryInfo" id="plannedOrderSummaryIterator"/>
+    
+    <accessorIterator MasterBinding="PlannedOrderSummaryServiceIterator" Binds="sourceLocation" RangeSize="-1"
+                      DataControl="PlannedOrderSummaryService" BeanClass="deloitte.retail.mobile.pojo.Location"
+                      id="sourceLocationIterator"/>
+    
+    <accessorIterator MasterBinding="PlannedOrderSummaryServiceIterator" Binds="destinationLocation" RangeSize="-1"
+                      DataControl="PlannedOrderSummaryService" BeanClass="deloitte.retail.mobile.pojo.Location"
+                      id="destinationLocationIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="plannedOrderSummaryIterator" id="plannedOrderSummary">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.PlannedOrderSummaryInfo" Name="plannedOrderSummary0">
+        <AttrNames>
+          <Item Value="recordId"/>
+          <Item Value="status"/>
+          <Item Value="statusCount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider"/>
+    <tree IterBinding="sourceLocationIterator" id="sourceLocation">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.Location" Name="sourceLocation0">
+        <AttrNames>
+          <Item Value="locationDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="variables" id="test1">
+      <AttrNames>
+        <Item Value="test"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="variables" id="sourceDesc" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="sourceLocationIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="test"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="locationCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="locationDesc"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="variables" id="destinationDesc" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject" StaticList="false" ListIter="destinationLocationIterator">
+      <AttrNames>
+        <Item Value="test"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="locationCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="locationDesc"/>
+      </ListDisplayAttrNames>
+    </list>
+  </bindings>
+</pageDefinition>
