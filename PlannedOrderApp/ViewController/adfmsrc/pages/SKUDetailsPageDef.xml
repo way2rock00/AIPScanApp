@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SKUDetailsPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SKUDetailsService" id="SKUDetailsServiceIterator"/>
+    <accessorIterator MasterBinding="SKUDetailsServiceIterator" Binds="skuDetailsService" RangeSize="25"
+                      DataControl="SKUDetailsService" BeanClass="deloitte.retail.mobile.pojo.SKUDetails"
+                      id="skuDetailsServiceIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="skuDetailsServiceIterator" id="skuDetailsService">
+      <nodeDefinition DefName="deloitte.retail.mobile.pojo.SKUDetails" Name="skuDetailsService0">
+        <AttrNames>
+          <Item Value="recordId"/>
+          <Item Value="allocatedQty"/>
+          <Item Value="caseUPC"/>
+          <Item Value="deliveryDate"/>
+          <Item Value="onHandQyt"/>
+          <Item Value="onOrderQty"/>
+          <Item Value="packSize"/>
+          <Item Value="safetyStockQty"/>
+          <Item Value="salesForecastQty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
