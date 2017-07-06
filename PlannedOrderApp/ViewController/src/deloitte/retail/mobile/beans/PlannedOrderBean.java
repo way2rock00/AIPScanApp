@@ -41,6 +41,9 @@ public class PlannedOrderBean {
         String strLoginNumber = "";
         String strErrorMessage = "";
         String strRole="";
+        String strOprStoreId="";
+        
+        
         System.out.println("LoginIn_buttonClick start");
         String userName = AdfmfJavaUtilities.getELValue("#{pageFlowScope.userName}").toString();
         String password = AdfmfJavaUtilities.getELValue("#{pageFlowScope.password}").toString();
@@ -73,6 +76,11 @@ public class PlannedOrderBean {
                     {
                         strRole = jsonObject.getString("X_ROLE");
                     }
+                    if(jsonObject.getString("X_STORE_ID") != null)
+                    {
+                        strOprStoreId = jsonObject.getString("X_STORE_ID");
+                    }
+                    
                     
                 }
             }
@@ -85,16 +93,17 @@ public class PlannedOrderBean {
             this.validated = false;
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", "Invalid Credentials Provided.");
         }
-        else{
+        else
+        {
             this.validated = true;
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", null);
             AdfmfJavaUtilities.setELValue("#{applicationScope.loggedInUser}", userName);
             AdfmfJavaUtilities.setELValue("#{applicationScope.loggedInBuyerNumber}", strLoginNumber);
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.showSearchRegion}", "false");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginRole}", strRole);
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.oprStrId}", strOprStoreId);
         }
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}", strDebug);
-
         System.out.println("LoginIn_buttonClick end");
     }   
 }
