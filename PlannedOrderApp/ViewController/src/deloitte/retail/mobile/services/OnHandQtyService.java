@@ -27,31 +27,15 @@ public class OnHandQtyService {
                 
                 String strServiceStatus = "";
                 String strServiceErrMsg = "";
-                
-//                resetServiceStatus();
-                
                 ServiceManager serviceManager = new ServiceManager();
-                
-        //                String sellableUPC = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.sellableUPCNo}");
-//                        String storeNm = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.storeNm}");
-                
-                String sellableUPC  = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.BarcodeBean.barcodeResult}");
-//                String storeId      = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.storeName}");
-                String storeId      = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.storeId}");
-        
+                String sellableUPC  = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
+                String storeId      = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
                 strDebug=strDebug+"\n Item: "+sellableUPC;
                 strDebug=strDebug+"\n store: "+storeId;
-//                String storeId="3211";   //  = (String)AdfmfJavaUtilities.getELValue("#{bindings.store.inputValue}");
-//                AdfmfJavaUtilities.setELValue("#{pageFlowScope.storeName}", storeId);           
-                
                 String url = RestURIs.getItemQtyUrl(sellableUPC ,storeId);
-                
                 strDebug = strDebug+" --URL: -- "+url+" storeId:"+storeId;
-//                storeId="3211";
-//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.storeName}", storeId);       //temp
                 String jsonArrayAsString = serviceManager.invokeREAD(url);
                 strDebug = strDebug +"~"+jsonArrayAsString;
-                
                 try 
                 {
                             strDebug = strDebug +"\n:2:";
@@ -83,24 +67,33 @@ public class OnHandQtyService {
                                     String onHandQty = null;
                                     if (temp.getString("P_ON_HAND_QUANTITY") != null)
                                         onHandQty = temp.getString("P_ON_HAND_QUANTITY");
+                                    else if (onHandQty == null)
+                                        onHandQty = "0";                    
                                     strDebug13=strDebug13+"--OnHand-- "+onHandQty;
                                         
                                     String totFirmOrderQty = null;
                                     if (temp.getString("P_TOTAL_FIRM_ORDER_QUANTITY") != null)
                                         totFirmOrderQty = temp.getString("P_TOTAL_FIRM_ORDER_QUANTITY");
+                                    else if (totFirmOrderQty == null)
+                                        totFirmOrderQty = "0";
                     
-
                                     String totPlanOrdQty = null;
                                     if (temp.getString("P_TOTAL_PLANNED_ORDER_QUANTITY") != null)
                                         totPlanOrdQty = temp.getString("P_TOTAL_PLANNED_ORDER_QUANTITY");
+                                    else if (totPlanOrdQty == null)
+                                        totPlanOrdQty = "0";
 
                                     String dispMin = null;
                                     if (temp.getString("P_DISPLAY_MIN") != null)
                                         dispMin = temp.getString("P_DISPLAY_MIN");
+                                    else if (dispMin == null)
+                                        dispMin = "0"; 
                                     
                                     String presentationMin = null;
                                     if (temp.getString("P_PRESENTATION_MIN") != null)
                                         presentationMin = temp.getString("P_PRESENTATION_MIN");
+                                    else if (presentationMin == null)
+                                        presentationMin = "0"; 
                                     
                                     String price = null;
                                     if (temp.getString("P_PRICE") != null)

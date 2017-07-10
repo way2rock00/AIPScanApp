@@ -68,6 +68,6 @@
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:outputText value="#{pageFlowScope.strDebug}" id="ot2"/>
-         <amx:outputText value="strDebugLog:#{applicationScope.strDebugLog}" id="ot3"/>
+         <!--<amx:outputText value="strDebugLog:#{applicationScope.strDebugLog}" id="ot3"/>-->
     </amx:panelPage>
 </amx:view>

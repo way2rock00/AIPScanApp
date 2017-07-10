@@ -8,6 +8,7 @@ import deloitte.retail.mobile.utility.RestURIs;
 import deloitte.retail.mobile.utility.ServiceManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
@@ -25,7 +26,6 @@ public class LOVService {
         
         ServiceManager serviceManager = new ServiceManager();
         String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
-        selectedStoreId = "1531";
         String url = RestURIs.getBuyerLOVURI(selectedStoreId);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
         try {
@@ -33,18 +33,22 @@ public class LOVService {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);       
             
             JSONArray nodeArray = jsonObject.getJSONArray("dbGetBuyerDetailsOutput");
-            Buyer buyerObj = new Buyer("Select Buyer");
+            Buyer buyerObj = new Buyer("-999","Select Buyer");
             buyerList.add(buyerObj);
             int size = nodeArray.length();
             strBuyerDebug = strBuyerDebug +":size:"+size;
             for (int i = 0; i < size; i++) {
                 JSONObject temp = nodeArray.getJSONObject(i);
+                
+                String buyerId = null;
+                if (temp.getString("buyer") != null)
+                    buyerId = temp.getString("buyer");                
 
                 String buyer = null;
-                if (temp.getString("buyer") != null)
-                    buyer = temp.getString("buyer");
+                if (temp.getString("buyer_name") != null)
+                    buyer = temp.getString("buyer_name");
 
-                buyerObj = new Buyer(buyer);
+                buyerObj = new Buyer(buyerId,buyer);
                 buyerList.add(buyerObj);
 
             }
@@ -66,7 +70,6 @@ public class LOVService {
         
         ServiceManager serviceManager = new ServiceManager();
         String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
-        selectedStoreId = "1531";
         String url = RestURIs.getSourceLOVURI(selectedStoreId);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
         try {
@@ -74,7 +77,7 @@ public class LOVService {
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);       
             
             JSONArray nodeArray = jsonObject.getJSONArray("dbGetAIPSourceDetailsOutput");
-            Source sourceObj = new Source("1","Select Source");
+            Source sourceObj = new Source("-999","Select Source");
             sourceList.add(sourceObj);
             int size = nodeArray.length();
             strSourceDebug = strSourceDebug +":size:"+size;
@@ -107,6 +110,7 @@ public class LOVService {
     public Store[] getStoreLOV(){
         String strStoreDebug="S1:";
         List<Store> storeList = new ArrayList<Store>();
+        //HashMap storeNames = new HashMap();
         Store storeArray[] = null;
         
         ServiceManager serviceManager = new ServiceManager();
@@ -132,7 +136,7 @@ public class LOVService {
             JSONObject parent = jsonObject.getJSONObject("P_STORE_TAB");
             JSONArray nodeArray = parent.getJSONArray("P_STORE_TAB_ITEM");
             
-            Store storeObj = new Store("1","Select Store");
+            Store storeObj = new Store("-999","Select Store");
             storeList.add(storeObj);
             int size = nodeArray.length();
             strStoreDebug = strStoreDebug +":size:"+size;
@@ -149,8 +153,9 @@ public class LOVService {
                 if (temp.getString("STORE_NAME") != null)
                     store = temp.getString("STORE_NAME");                
 
-               storeObj = new Store(store+"("+storeId+")",store);
+               storeObj = new Store(storeId,store);
                storeList.add(storeObj);
+                //storeNames.put(storeId, store);
             }
             strStoreDebug = strStoreDebug +":9:";
         } catch (Exception e) {
@@ -159,7 +164,15 @@ public class LOVService {
         }   
         strStoreDebug = strStoreDebug +":10:";
         storeArray = storeList.toArray(new Store[storeList.size()]);
+        //AdfmfJavaUtilities.setELValue("#{pageFlowScope.storeNameList}", storeNames);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.strSourceDebug}", strStoreDebug);
+        
+        //Default Selected Store Id in Store LOV.
+        String strSelectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
+        if(strSelectedStoreId==null||"".equalsIgnoreCase(strSelectedStoreId)){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedStoreId}", 
+                                      (String)AdfmfJavaUtilities.getELValue("#{applicationScope.oprStrId}"));
+        }
         return storeArray;
     }
     public void resetServiceStatus()

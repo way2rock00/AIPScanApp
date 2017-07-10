@@ -45,7 +45,7 @@
 
 .xxRobotoFieldTitle {
     font-family: xxRobotoLight !important;
-    font-size: 11px !important;
+    font-size: 13px !important;
     color: #999999 !important;
 }
 
@@ -808,5 +808,17 @@ keygen, select, select[size="0"], select[size="1"] {
 }
 
 .upcInputText{
+    border: outset !important;
+}
+
+.invPageExpandSection {
+    border-color : #86BC25;
+    border-style: solid ;
+    border-width: 2px;
+    border-top-color: #86BC25 !important;
+    border-top-style: solid !important;
+    border-top-width: 2px !important;
+    border-bottom-color: #86BC25 !important;
     border-bottom-style: solid !important;
+    border-bottom-width: 2px !important;
 }

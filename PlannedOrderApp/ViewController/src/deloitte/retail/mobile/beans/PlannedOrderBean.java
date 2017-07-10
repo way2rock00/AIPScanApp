@@ -100,8 +100,8 @@ public class PlannedOrderBean {
             AdfmfJavaUtilities.setELValue("#{applicationScope.loggedInUser}", userName);
             AdfmfJavaUtilities.setELValue("#{applicationScope.loggedInBuyerNumber}", strLoginNumber);
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.showSearchRegion}", "false");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.loginRole}", strRole);
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.oprStrId}", strOprStoreId);
+            AdfmfJavaUtilities.setELValue("#{applicationScope.loginRole}", strRole);
+            AdfmfJavaUtilities.setELValue("#{applicationScope.oprStrId}", strOprStoreId);
         }
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}", strDebug);
         System.out.println("LoginIn_buttonClick end");

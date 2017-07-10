@@ -5,6 +5,7 @@ public class Buyer {
         super();
     }
     private String buyer;
+    private String buyerId;
 
 
     public void setBuyer(String buyer) {
@@ -15,7 +16,17 @@ public class Buyer {
         return buyer;
     }
 
-    public Buyer(String buyer) {
+
+    public void setBuyerId(String buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public String getBuyerId() {
+        return buyerId;
+    }
+
+    public Buyer(String buyerId,String buyer) {
+        this.buyerId = buyerId;
         this.buyer = buyer;
     }
 

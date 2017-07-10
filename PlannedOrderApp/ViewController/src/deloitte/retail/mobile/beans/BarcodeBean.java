@@ -14,6 +14,8 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.json.JSONObject;
 import deloitte.retail.mobile.services.FutureOrderPlanService;
 
+import java.util.HashMap;
+
 import oracle.adfmf.bindings.dbf.AmxTreeBinding;
 
 public class BarcodeBean {
@@ -28,7 +30,17 @@ public class BarcodeBean {
     }
 
     public String getStoreName() {
-        return storeName;
+        String strStoreName="";
+        try{
+        HashMap hMap = (HashMap)AdfmfJavaUtilities.getELValue("#{pageFlowScope.storeNameList}");
+        String strSelectedStoreid = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
+        int iStoreId = Integer.parseInt(strSelectedStoreid);
+        strStoreName = (String)hMap.get(iStoreId);
+        }
+        catch(Exception e){
+            strStoreName="";
+        }
+        return strStoreName;
     }
 
     public void setStoreId(String storeId) {
@@ -97,7 +109,7 @@ public class BarcodeBean {
         String oldBarcodeResult = this.barcodeResult;
         this.barcodeResult = barcodeResult;
         propertyChangeSupport.firePropertyChange ("barcodeResult", oldBarcodeResult, barcodeResult);
-        findDescription();
+        
     }
 
     public String getBarcodeResult () 
@@ -126,11 +138,9 @@ public class BarcodeBean {
    
     public void findDescription() {
         String strDebug = "S:";
-        String barcodeSuccess = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.BarcodeBean.barcodeError}");
         String strItemNumber = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.BarcodeBean.barcodeResult}");
-        strDebug=strDebug+"~barcodeSuccess:"+barcodeSuccess+"~+strItemNumber:"+strItemNumber;
+        strDebug=strDebug+"~strItemNumber:"+strItemNumber;
         
-        if("".equals(barcodeSuccess)&&!"".equals(strItemNumber)){
             String url = RestURIs.getScanItemDetailsURL(strItemNumber);
             strDebug = strDebug+"~"+url;
             ServiceManager serviceManager = new ServiceManager();
@@ -175,26 +185,12 @@ public class BarcodeBean {
             }
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}",strDebug);
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.BarcodeBean.barcodeError}",strDebug);
-        }
     }
 
     public void storeValueChanged(ValueChangeEvent valueChangeEvent) {
-        String strStoreName = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreName}");
-        try{
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.storeId}",
-                                      strStoreName.substring(strStoreName.indexOf("(")+1, strStoreName.indexOf(")")));
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.storeName}",
-                                          strStoreName.substring(0,strStoreName.indexOf("(")));
-        }
-        catch(Exception e){
-        }
-    }
-
-    public void buyerChanged(ValueChangeEvent valueChangeEvent) {
-        // Add event code here...
-        String strBuyerChange = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.buyerChange}");
-        strBuyerChange = strBuyerChange +"~N~";
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.buyerChange}",strBuyerChange);
+        oracle.adfmf.bindings.dbf.AmxTreeBinding a = (oracle.adfmf.bindings.dbf.AmxTreeBinding)
+            AdfmfJavaUtilities.getELValue("#{bindings.onHandQtyServiceMain}");
+        a.getIterator().refresh();
     }
 
     public void testBtn(ActionEvent actionEvent) {
@@ -208,5 +204,15 @@ public class BarcodeBean {
             AdfmfJavaUtilities.getELValue("#{bindings.dayWisePlanDetails}");
         a.getIterator().refresh();
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.strTest}",strTest);
+    }
+
+    public void itemNumberChanged(ValueChangeEvent valueChangeEvent) {
+       findDescription();
+    }
+
+    public void buyerSourceChange(ValueChangeEvent valueChangeEvent) {
+        oracle.adfmf.bindings.dbf.AmxTreeBinding a = (oracle.adfmf.bindings.dbf.AmxTreeBinding)
+            AdfmfJavaUtilities.getELValue("#{bindings.dayWisePlanDetails}");
+        a.getIterator().refresh();
     }
 }

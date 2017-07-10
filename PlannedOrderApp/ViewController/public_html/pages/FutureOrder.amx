@@ -44,7 +44,7 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf22" width="4%" inlineStyle="padding-top:8px;"/>
                     <amx:cellFormat id="cf24" width="70%" height="10" inlineStyle="padding-top:8px;">
-                        <amx:outputText value="#{pageFlowScope.storeName}" id="ot11" styleClass="xxRobotoFieldValue"/>
+                        <amx:outputText value="#{pageFlowScope.BarcodeBean.storeName}" id="ot11" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl7">
@@ -77,50 +77,23 @@
                               initialScrollRowKeys="#{bindings.futureOrderPlanDetails.collectionModel.selectedRow}"
                               selectionListener="#{bindings.futureOrderPlanDetails.collectionModel.makeCurrent}"
                               showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" inlineStyle="border:0px">
-                    <amx:listItem id="li1" action="toInvDt">
+                    <amx:listItem id="li1" action="toInvDt" inlineStyle="border-bottom:solid 2px #BABABC;">
                         <amx:setPropertyListener id="spl1" from="#{row.weekNo}"
                                                  to="#{pageFlowScope.selectedWeekIndex}"/>
-                        <amx:tableLayout id="tl3" width="100%" inlineStyle="padding:10px;" styleClass="invPageRow">
+                        <amx:setPropertyListener id="spl2" from="-999"
+                                                 to="#{pageFlowScope.selectedBuyerId}"/>
+                        <amx:setPropertyListener id="spl3" from="-999"
+                                                 to="#{pageFlowScope.selectedSourceId}"/>
+                                                 
+                        <amx:tableLayout id="tl3" width="100%" inlineStyle="padding:10px;">
                             <amx:rowLayout id="rl2">
-                                <amx:cellFormat id="cf4" width="50%" halign="center" styleClass="invPageCell">
+                                <amx:cellFormat id="cf4" width="50%" halign="center">
                                     <amx:outputText value="#{row.weekEnd}" id="ot26" inlineStyle="color:#999999;"/>
                                 </amx:cellFormat>
                                 <amx:cellFormat id="cf5" width="50%" halign="center">
                                     <amx:outputText value="#{row.qty}" id="ot5" inlineStyle="color:#999999;"/>
                                 </amx:cellFormat>
                             </amx:rowLayout>
-                            <!--<amx:rowLayout id="rl3">
-                        <amx:cellFormat id="cf6" width="50%" halign="center" styleClass="invPageCell">
-                            <amx:outputText value="18 Feb 2017" id="ot13" inlineStyle="color:#999999;"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf7" width="50%" halign="center">
-                            <amx:outputText value="125 EA" id="ot10" inlineStyle="color:#999999;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>   
-                    <amx:rowLayout id="rl8">
-                        <amx:cellFormat id="cf8" width="50%" halign="center" styleClass="invPageCell">
-                            <amx:outputText value="25 Feb 2017" id="ot14" inlineStyle="color:#999999;"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf9" width="50%" halign="center">
-                            <amx:outputText value="70 EA" id="ot16" inlineStyle="color:#999999;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>      
-                    <amx:rowLayout id="rl9">
-                        <amx:cellFormat id="cf14" width="50%" halign="center" styleClass="invPageCell">
-                            <amx:outputText value="1 Mar 2017" id="ot17" inlineStyle="color:#999999;"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf16" width="50%" halign="center">
-                            <amx:outputText value="100 EA" id="ot18" inlineStyle="color:#999999;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>      
-                    <amx:rowLayout id="rl10">
-                        <amx:cellFormat id="cf18" width="50%" halign="center" styleClass="invPageCell">
-                            <amx:outputText value="8 Mar 2017" id="ot19" inlineStyle="color:#999999;"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf19" width="50%" halign="center">
-                            <amx:outputText value="50 EA" id="ot20" inlineStyle="color:#999999;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>-->
                         </amx:tableLayout>
                     </amx:listItem>
                 </amx:listView>
@@ -129,15 +102,5 @@
         <amx:outputText value="#{pageFlowScope.strDebug}" id="ot21"/>
         <amx:outputText value="getPlanOrderInvDetails:#{pageFlowScope.getPlanOrderInvDetails}" id="ot7"/>
         <amx:outputText value="getFutureOrderPlan:#{pageFlowScope.getFutureOrderPlan}" id="ot10"/>
-        <!--<amx:listView var="row" value="#{bindings.futureOrderPlanDetails.collectionModel}"
-                      fetchSize="#{bindings.futureOrderPlanDetails.rangeSize}"
-                      selectedRowKeys="#{bindings.futureOrderPlanDetails.collectionModel.selectedRow}"
-                      initialScrollRowKeys="#{bindings.futureOrderPlanDetails.collectionModel.selectedRow}"
-                      selectionListener="#{bindings.futureOrderPlanDetails.collectionModel.makeCurrent}"
-                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2">
-            <amx:listItem id="li2">
-                <amx:outputText value="#{row.seq}" id="ot13"/>
-            </amx:listItem>
-        </amx:listView>-->
     </amx:panelPage>
 </amx:view>

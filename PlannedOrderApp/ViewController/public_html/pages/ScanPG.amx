@@ -34,15 +34,16 @@
                 <amx:cellFormat id="cf10" width="4%"/>
                 <amx:cellFormat id="cf15" width="60%" height="10" inlineStyle="padding-bottom:10px;padding-right:20px">
                     <amx:inputText value="#{pageFlowScope.BarcodeBean.barcodeResult}" styleClass="upcInputText"
-                                   id="it1"/>
+                                   id="it1" valueChangeListener="#{pageFlowScope.BarcodeBean.itemNumberChanged}"
+                                   hintText="Enter Item Number "/>
                 </amx:cellFormat>
-                <amx:cellFormat id="cf6">
+                <!--<amx:cellFormat id="cf6">
                     <amx:commandLink id="cl1" shortDesc="menu">
                         <amx:outputHtml id="oh2" styleClass="fa fa-caret-right" inlineStyle="color:black;"/>
                         <amx:setPropertyListener id="spl2" from="#{pageFlowScope.BarcodeBean.barcodeResult}"
                                                  to="#{pageFlowScope.BarcodeBean.barcodeResult}"/>
                     </amx:commandLink>
-                </amx:cellFormat>
+                </amx:cellFormat>-->
             </amx:rowLayout>
             <amx:rowLayout id="rl5">
                 <amx:cellFormat id="cf17" width="3%"/>
@@ -64,14 +65,7 @@
             </amx:rowLayout>
             <amx:rowLayout id="rl12">
                 <amx:cellFormat id="cf30" width="100%" halign="center">
-                    <!--<amx:selectOneChoice label="" value="#{pageFlowScope.BarcodeBean.storeName}" id="soc1" styleClass="invLOVDetails">
-                        <amx:selectItem id="si1" value="Cleveland" label="Cleveland ABC"/>
-                        <amx:selectItem id="si2" value="Toronto" label="Toronto"/>
-                        <amx:selectItem id="si3" value="Store MNC" label="Store MNC"/>
-                    </amx:selectOneChoice>-->
-                    <!--  value="#{bindings.store.inputValue}" --> 
-                    <amx:selectOneChoice value="#{pageFlowScope.selectedStoreName}" id="soc1"
-                                         valueChangeListener="#{pageFlowScope.BarcodeBean.storeValueChanged}">
+                    <amx:selectOneChoice value="#{pageFlowScope.selectedStoreId}" id="soc1">
                         <amx:selectItems value="#{bindings.store.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
@@ -83,10 +77,6 @@
                 <amx:cellFormat id="cf1" width="45%" halign="center" inlineStyle="padding-left:10px">
                     <amx:commandButton text="Ok" id="cb2" styleClass="buttonsLarge" shortDesc="Ok" action="scanProduct"
                                        inlineStyle="width:100%;height:auto;">
-                        <!--<amx:setPropertyListener id="spl1" from="#{bindings.store.inputValue}"
-                                                 to="#{pageFlowScope.storeName}"/>
-                        <amx:setPropertyListener id="spl3" from="#{bindings.storeIdVar.inputValue}"
-                                                 to="#{pageFlowScope.storeId}"/>-->
                     </amx:commandButton>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf5" width="5%">
@@ -98,12 +88,14 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <amx:outputText value="ItemNumber:#{pageFlowScope.itemNumber}" id="ot2"/>
+        <!--<amx:outputText value="ItemNumber:#{pageFlowScope.itemNumber}" id="ot2"/>
         <amx:outputText value="ItemDesc:#{pageFlowScope.itemDesc}" id="ot4"/>
-        <amx:outputText value="SubClass:#{pageFlowScope.itemSubClass}" id="ot5"/>
-        <amx:outputText value="Debug:#{pageFlowScope.strDebug}" id="ot6"/>
-        <amx:outputText value="StoreId:#{pageFlowScope.storeId}" id="ot7"/>
-        <amx:outputText value="StoreName:#{pageFlowScope.storeName}" id="ot10"/>
+        <amx:outputText value="SubClass:#{pageFlowScope.itemSubClass}" id="ot5"/>-->
+        <!--<amx:outputText value="Debug:#{pageFlowScope.strDebug}" id="ot6"/>-->
+        <amx:outputText value="BarCodeResult:#{pageFlowScope.BarcodeBean.barcodeResult}" id="ot7"/>
         <amx:outputText value="StoreName:#{pageFlowScope.strStoreDebug}" id="ot11"/>
+         <amx:outputText value="SelectedStoreId:#{pageFlowScope.selectedStoreId}" id="ot2"/>
+          <amx:outputText value="OperStoreId:#{applicationScope.oprStrId}" id="ot4"/>
+          <amx:outputText value="loginRole:#{applicationScope.loginRole}" id="ot5"/>
     </amx:panelPage>
 </amx:view>

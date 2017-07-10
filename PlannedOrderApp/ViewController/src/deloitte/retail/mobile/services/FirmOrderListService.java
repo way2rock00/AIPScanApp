@@ -31,18 +31,8 @@ public class FirmOrderListService {
         ServiceManager serviceManager = new ServiceManager();
         
         String strSellableUpc = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
-        String strStoreName = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.storeName}");
-        
-        String strItemDesc = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemDesc}");
-        
-        
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.SellableUpc}", strSellableUpc);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.StoreName}", strStoreName);
-        
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.ProductDesc}", strItemDesc);
-        
-              
-        String url = RestURIs.getFirmOrderURL(strSellableUpc, strStoreName);
+        String strStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
+        String url = RestURIs.getFirmOrderURL(strSellableUpc, strStoreId);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
         try 
         {

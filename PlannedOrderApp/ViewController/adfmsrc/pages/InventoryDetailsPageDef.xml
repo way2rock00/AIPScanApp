@@ -65,7 +65,7 @@
         <Item Value="buyer"/>
       </AttrNames>
       <ListAttrNames>
-        <Item Value="buyer"/>
+        <Item Value="buyerId"/>
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="buyer"/>

@@ -14,7 +14,7 @@ public class PlanOrderInvDetails {
 
     public PlanOrderInvDetails(String seq, String weekNo, String day, String inventoryDt, String salesForecast, String safetyStock,
                                String onOrders, String packSize, String allocated, String causal, String buyer,
-                               String source, String expandCollapseFlag) 
+                               String source, String expandCollapseFlag,String buyerId,String sourceId) 
     {
         super();
         this.seq=seq;
@@ -29,6 +29,8 @@ public class PlanOrderInvDetails {
         this.causal = causal;
         this.buyer = buyer;
         this.source = source;
+        this.buyerId = buyerId;
+        this.sourceId = sourceId;
         this.expandCollapseFlag = expandCollapseFlag;
     }
     
@@ -53,7 +55,9 @@ public class PlanOrderInvDetails {
     private String allocated;
     private String causal;
     private String buyer;
+    private String buyerId;
     private String source;
+    private String sourceId;
     private String expandCollapseFlag;
 
     public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
@@ -194,7 +198,27 @@ public class PlanOrderInvDetails {
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
     }
-    
+
+    public void setBuyerId(String buyerId) {
+        String oldBuyerId = this.buyerId;
+        this.buyerId = buyerId;
+        propertyChangeSupport.firePropertyChange("buyerId", oldBuyerId, buyerId);
+    }
+
+    public String getBuyerId() {
+        return buyerId;
+    }
+
+    public void setSourceId(String sourceId) {
+        String oldSourceId = this.sourceId;
+        this.sourceId = sourceId;
+        propertyChangeSupport.firePropertyChange("sourceId", oldSourceId, sourceId);
+    }
+
+    public String getSourceId() {
+        return sourceId;
+    }
+
     public static Comparator<PlanOrderInvDetails> planOrderDayComparator=new Comparator<PlanOrderInvDetails>() {
             public int compare(PlanOrderInvDetails p1, PlanOrderInvDetails p2) {
 

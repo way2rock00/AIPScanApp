@@ -130,22 +130,10 @@ public class FutureOrderPlanService {
         {
         
         String sellableUPC  = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
-//        String storeNm      = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.storeName}");
-        String storeId      = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.storeId}");
+        String storeId      = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
         String buyerId="-999";
         String sourceId="-999";
         strDebug=strDebug+"~sellableUPC:"+sellableUPC+":storeId:"+storeId+":buyerId:"+buyerId+":sourceId:"+sourceId;
-        /*
-        if (sellableUPC.equals("400000003078"))
-        {    
-            buyerId        = "1234";
-            sourceId     ="4118";
-        }
-        if (sellableUPC.equals("400000002019"))
-        {    
-            buyerId      = "1234";
-            sourceId     = "7889698";
-        }*/
         String url = RestURIs.getPlanOrderInvDetails(sellableUPC,storeId,buyerId,sourceId);
         strDebug=strDebug+":url:"+url;
 
@@ -212,9 +200,19 @@ public class FutureOrderPlanService {
                     if (temp.getString("BUYER") != null)
                         buyer = temp.getString("BUYER");
                     
+                    String payloadBuyerId = null;
+                    if (temp.getString("BUYER_ID") != null)
+                        payloadBuyerId = temp.getString("BUYER_ID");                    
+                    
                     String source = null;
                     if (temp.getString("SOURCE") != null)
                         source = temp.getString("SOURCE");
+                    
+                    String payloadSourceId = null;
+                    if (temp.getString("SOURCE_ID") != null)
+                        payloadSourceId = temp.getString("SOURCE_ID");                       
+                    
+                    
                         
                     String weekNo;
                     
@@ -235,7 +233,9 @@ public class FutureOrderPlanService {
                                                 causal, 
                                                 buyer, 
                                                 source,
-                                                "N");
+                                                "N",
+                                                payloadBuyerId,
+                                                payloadSourceId);
                     
                     planOrderInvDetailsList.add(planOrdInvDtlRec);                                    
                 }
@@ -255,7 +255,7 @@ public class FutureOrderPlanService {
     public PlanOrderInvDetails[] getDayDetails() 
     {
             List<PlanOrderInvDetails> planOrderInvDetails  = new ArrayList<PlanOrderInvDetails>();
-            String strDebug;
+            String strDebug="";
             String strMainDebug="";
             String strBuyerChange = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.buyerChange}");
             strBuyerChange = strBuyerChange +"~N~";
@@ -267,23 +267,42 @@ public class FutureOrderPlanService {
             String strPlanOrderSetFlag = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.planOrderSetFlag}");
             String strSelectedIndex = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedWeekIndex}");
             
-            strDebug= "strPlanOrderSetFlag: "+strPlanOrderSetFlag;
+            //strDebug= "strPlanOrderSetFlag: "+strPlanOrderSetFlag;
             try
             {
                 int noOfWeek = 3;//temp change it to 7 once testing completes
                 int startIndex = (Integer.parseInt(strSelectedIndex)-1)*noOfWeek;
                 int endIndex = (startIndex+noOfWeek);
-                strDebug=strDebug+":startIndex:"+startIndex+":endIndex:"+endIndex;
+                //strDebug=strDebug+":startIndex:"+startIndex+":endIndex:"+endIndex;
                 if("Y".equalsIgnoreCase(strPlanOrderSetFlag))
                 {
                     for(int i = startIndex ; i < endIndex ; i++)
                     {
                         PlanOrderInvDetails porid= (PlanOrderInvDetails)planOrderInvDetailsList.get(i);
-                        strDebug= strDebug+ ":i="+i+":WekNo:"+porid.getWeekNo();                      
-                        //if(porid.getWeekNo().equals(strSelectedIndex))
-                        //{
+                        porid.setExpandCollapseFlag("N");
+                        String payloadBuyerId = porid.getBuyerId();
+                        String payloadSourceId = porid.getSourceId();
+                        String selectedBuyerId=AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedBuyerId}")==null?"-999":
+                                               (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedBuyerId}");
+                        String selectedSourceId=AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedSourceId}")==null ? "-999":
+                                                  (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedSourceId}");
+                        boolean canAdd = true;
+                        
+                        if(!("-999".equalsIgnoreCase(selectedBuyerId))&&!(selectedBuyerId.equalsIgnoreCase(payloadBuyerId)))
+                            canAdd = false;
+                        
+                        if(!("-999".equalsIgnoreCase(selectedSourceId))&&!(selectedSourceId.equalsIgnoreCase(payloadSourceId)))
+                            canAdd = false;
+                        
+                        strDebug= strDebug+ ":i="+i+":payloadBuyerId:"+payloadBuyerId+" payloadSourceId:"+payloadSourceId+
+                                  " selectedBuyerId:"+selectedBuyerId+" selectedSourceId:"+selectedSourceId;                      
+                        if(canAdd)
+                        {
+                            strDebug= strDebug+":CanAddTrue";
                             planOrderInvDetails.add(porid);
-                        //}
+                        }else{
+                            strDebug= strDebug+":CanAddFalse";
+                        }
                     }
                 }
             }
