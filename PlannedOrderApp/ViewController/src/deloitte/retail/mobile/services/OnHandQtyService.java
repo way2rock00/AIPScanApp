@@ -98,6 +98,8 @@ public class OnHandQtyService {
                                     String price = null;
                                     if (temp.getString("P_PRICE") != null)
                                         price = temp.getString("P_PRICE");
+                                    else if (price == null)
+                                        price = "0";
                                     
                                     String causal = null;
                                     if (temp.getString("P_CAUSAL") != null)

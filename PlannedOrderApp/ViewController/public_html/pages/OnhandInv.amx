@@ -47,7 +47,7 @@
                 <amx:spacer id="s5" height="10"/>
             </amx:panelGroupLayout>
             <!--<amx:outputText value="Debug:#{pageFlowScope.strDebug}" id="ot6"/>-->
-            <amx:outputText value="#{applicationScope.loginRole}:#{pageFlowScope.selectedStoreId}:#{applicationScope.oprStrId}" id="ot6"/>
+            <!--<amx:outputText value="#{applicationScope.loginRole}:#{pageFlowScope.selectedStoreId}:#{applicationScope.oprStrId}" id="ot6"/>-->
             <!--<amx:commandButton text="Reset" id="cb1">
                 <amx:setPropertyListener id="spl1" from="A" to="#{pageFlowScope.strDebug}"/>
             </amx:commandButton>-->
@@ -320,7 +320,7 @@
                                         <amx:rowLayout id="rl23">
                                             <amx:cellFormat id="cf43" width="3"/>
                                             <amx:cellFormat id="cf44">
-                                                <amx:outputText value="Causal" id="ot21"
+                                                <amx:outputText value="Promotions" id="ot21"
                                                                 inlineStyle="color:White; font-size:large;"/>
                                             </amx:cellFormat>
                                         </amx:rowLayout>

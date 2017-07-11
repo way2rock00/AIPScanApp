@@ -51,7 +51,7 @@
                     <amx:outputText value="Description" id="ot8" styleClass="xxRobotoFieldTitle"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf12" width="4%"/>
-                <amx:cellFormat id="cf47" width="70%" height="10" halign="center">
+                <amx:cellFormat id="cf47" width="70%" height="10" halign="start">
                     <amx:outputText value="#{pageFlowScope.itemDesc}" id="ot9" styleClass="xxRobotoFieldValue"/>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -92,10 +92,11 @@
         <amx:outputText value="ItemDesc:#{pageFlowScope.itemDesc}" id="ot4"/>
         <amx:outputText value="SubClass:#{pageFlowScope.itemSubClass}" id="ot5"/>-->
         <!--<amx:outputText value="Debug:#{pageFlowScope.strDebug}" id="ot6"/>-->
-        <amx:outputText value="BarCodeResult:#{pageFlowScope.BarcodeBean.barcodeResult}" id="ot7"/>
-        <amx:outputText value="StoreName:#{pageFlowScope.strStoreDebug}" id="ot11"/>
-         <amx:outputText value="SelectedStoreId:#{pageFlowScope.selectedStoreId}" id="ot2"/>
+        <!--<amx:outputText value="BarCodeResult:#{pageFlowScope.BarcodeBean.barcodeResult}" id="ot7"/>-->
+        <!--<amx:outputText value="StoreName:#{pageFlowScope.strStoreDebug}" id="ot11"/>
+         <amx:outputText value="StoreName:#{pageFlowScope.strDebug}" id="ot2"/>-->
+         <!--<amx:outputText value="SelectedStoreId:#{pageFlowScope.selectedStoreId}" id="ot2"/>
           <amx:outputText value="OperStoreId:#{applicationScope.oprStrId}" id="ot4"/>
-          <amx:outputText value="loginRole:#{applicationScope.loginRole}" id="ot5"/>
+          <amx:outputText value="loginRole:#{applicationScope.loginRole}" id="ot5"/>-->
     </amx:panelPage>
 </amx:view>

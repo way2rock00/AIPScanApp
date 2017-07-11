@@ -110,14 +110,14 @@ public class LOVService {
     public Store[] getStoreLOV(){
         String strStoreDebug="S1:";
         List<Store> storeList = new ArrayList<Store>();
-        //HashMap storeNames = new HashMap();
+        HashMap storeNames = new HashMap();
         Store storeArray[] = null;
         
         ServiceManager serviceManager = new ServiceManager();
 //        String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
         String selectedStoreId = "1";
         String url = RestURIs.getStoreLOVURI(selectedStoreId);
-        
+        strStoreDebug = strStoreDebug +":url:"+url;
         String strServiceStatus = "";
         String strServiceErrMsg = "";
         resetServiceStatus();
@@ -154,17 +154,17 @@ public class LOVService {
                     store = temp.getString("STORE_NAME");                
 
                storeObj = new Store(storeId,store);
+                strStoreDebug = strStoreDebug +":8.1:storeId:"+storeId+" store:"+store;
                storeList.add(storeObj);
-                //storeNames.put(storeId, store);
+                storeNames.put(storeId, store);
             }
             strStoreDebug = strStoreDebug +":9:";
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            strStoreDebug = strStoreDebug +":Error:"+e.getMessage();
-        }   
+            strStoreDebug = strStoreDebug +":Error:"+e.getMessage();        }   
         strStoreDebug = strStoreDebug +":10:";
         storeArray = storeList.toArray(new Store[storeList.size()]);
-        //AdfmfJavaUtilities.setELValue("#{pageFlowScope.storeNameList}", storeNames);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.storeNameList}", storeNames);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.strSourceDebug}", strStoreDebug);
         
         //Default Selected Store Id in Store LOV.

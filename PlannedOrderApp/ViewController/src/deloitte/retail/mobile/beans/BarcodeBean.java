@@ -31,15 +31,16 @@ public class BarcodeBean {
 
     public String getStoreName() {
         String strStoreName="";
+        String strDebug="S:";
         try{
         HashMap hMap = (HashMap)AdfmfJavaUtilities.getELValue("#{pageFlowScope.storeNameList}");
         String strSelectedStoreid = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
-        int iStoreId = Integer.parseInt(strSelectedStoreid);
-        strStoreName = (String)hMap.get(iStoreId);
+        strStoreName = (String)hMap.get(strSelectedStoreid);
         }
         catch(Exception e){
             strStoreName="";
         }
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}",strDebug);
         return strStoreName;
     }
 
@@ -109,7 +110,7 @@ public class BarcodeBean {
         String oldBarcodeResult = this.barcodeResult;
         this.barcodeResult = barcodeResult;
         propertyChangeSupport.firePropertyChange ("barcodeResult", oldBarcodeResult, barcodeResult);
-        
+        findDescription();
     }
 
     public String getBarcodeResult () 

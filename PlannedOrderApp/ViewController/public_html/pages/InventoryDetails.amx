@@ -15,7 +15,7 @@
             </amx:commandLink>-->
         </amx:facet>
         <amx:panelGroupLayout id="pgl1" styleClass="invPglPadding">
-            <amx:outputText value="#{pageFlowScope.selectedWeekIndex}" id="ot21"/>
+            <!--<amx:outputText value="#{pageFlowScope.selectedWeekIndex}" id="ot21"/>-->
             <amx:tableLayout id="tl1" width="100%" inlineStyle="padding-bottom:15px; table-layout:fixed;"
                              styleClass="invPageHeader">
                 <amx:rowLayout id="rl4">
@@ -52,7 +52,7 @@
                 <amx:rowLayout id="rl7">
                     <amx:cellFormat id="cf28" width="3%" inlineStyle="padding-top:8px;"/>
                     <amx:cellFormat id="cf25" width="25%" height="10" inlineStyle="padding-top:8px;">
-                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot15"
+                        <amx:outputText value="Sub-Class" id="ot15"
                                         styleClass="xxRobotoFieldTitle"/>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf26" width="4%" inlineStyle="padding-top:8px;"/>
@@ -62,11 +62,11 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
-            <amx:spacer id="s1" height="20"/>
-            <amx:commandButton text="Test" id="cb3">
+            <!--<amx:spacer id="s1" height="20"/>-->
+            <!--<amx:commandButton text="Test" id="cb3">
                 <amx:setPropertyListener id="spl4" from="a" to="#{pageFlowScope.strDebug}"/>
             </amx:commandButton>
-            <amx:outputText value="Source:#{pageFlowScope.selectedSourceId}:Buyer:#{pageFlowScope.selectedBuyerId}" id="ot220" styleClass="xxRobotoFieldTitle"/>
+            <amx:outputText value="Source:#{pageFlowScope.selectedSourceId}:Buyer:#{pageFlowScope.selectedBuyerId}" id="ot220" styleClass="xxRobotoFieldTitle"/>-->
             <amx:tableLayout id="tl2" width="100%" inlineStyle="padding-bottom:15px; table-layout:fixed;">
                 <amx:rowLayout id="rl11">
                     <amx:cellFormat id="cf20" width="50%" halign="center">
@@ -115,7 +115,7 @@
                                     <amx:outputText value="#{row.day}" id="ot23"/>
                                 </amx:cellFormat>
                                 <amx:cellFormat id="cf4" width="40%" halign="center">
-                                    <amx:outputText value="On Orders:#{row.onOrders}" id="ot2" styleClass="xxRobotoFieldTitle"/>
+                                    <amx:outputText value="On Order :#{row.onOrders}" id="ot2" styleClass="xxRobotoFieldTitle"/>
                                 </amx:cellFormat>
                                 <amx:cellFormat id="cf6" width="20%" halign="end">
                                     <amx:commandLink id="cl2" rendered="#{row.expandCollapseFlag == 'N' ? true:false}">
@@ -213,7 +213,7 @@
                 </amx:listItem>
             </amx:listView>
         </amx:panelGroupLayout>
-        <amx:outputText value="#{pageFlowScope.strDebug}" id="ot7"/>
+        <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot7"/>
         <amx:outputText value="#{pageFlowScope.strMainDebug}" id="ot26"/>
         <amx:outputText value="#{pageFlowScope.strTest}" id="ot13"/>
         <amx:panelGroupLayout id="pgl4" layout="horizontal">
@@ -221,7 +221,7 @@
             <amx:commandButton text="Test1" id="cb2">
                 <amx:setPropertyListener id="spl3" from="N" to="#{pageFlowScope.strDebug}"/>
             </amx:commandButton>
-        </amx:panelGroupLayout>
+        </amx:panelGroupLayout>-->
         <!--<amx:listView var="row" value="#{bindings.dayWisePlanDetails.collectionModel}"
                       fetchSize="#{bindings.dayWisePlanDetails.rangeSize}"
                       selectedRowKeys="#{bindings.dayWisePlanDetails.collectionModel.selectedRow}"

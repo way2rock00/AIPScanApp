@@ -99,8 +99,8 @@
                 </amx:listView>
             </amx:panelGroupLayout>
         </amx:panelGroupLayout>
-        <amx:outputText value="#{pageFlowScope.strDebug}" id="ot21"/>
-        <amx:outputText value="getPlanOrderInvDetails:#{pageFlowScope.getPlanOrderInvDetails}" id="ot7"/>
-        <amx:outputText value="getFutureOrderPlan:#{pageFlowScope.getFutureOrderPlan}" id="ot10"/>
+        <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot21"/>-->
+        <!--<amx:outputText value="getPlanOrderInvDetails:#{pageFlowScope.getPlanOrderInvDetails}" id="ot7"/>
+        <amx:outputText value="getFutureOrderPlan:#{pageFlowScope.getFutureOrderPlan}" id="ot10"/>-->
     </amx:panelPage>
 </amx:view>
