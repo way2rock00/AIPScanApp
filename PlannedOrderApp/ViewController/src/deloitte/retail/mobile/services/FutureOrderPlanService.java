@@ -76,7 +76,7 @@ public class FutureOrderPlanService {
         List<FutureOrderPlan> futureOrderPlanList = new ArrayList<FutureOrderPlan>();
         int weekWiseSum=0;
         String strDebug=null;
-        int noOfWeek = 3;//temp change it to 7 once testing completes
+        int noOfWeek = 7;//temp change it to 7 once testing completes
         strDebug=strDebug+":listSize:"+listSize;
 
             for(int j=0;j<listSize;j++)
@@ -84,7 +84,7 @@ public class FutureOrderPlanService {
                 strDebug=strDebug+":j="+j;
                 PlanOrderInvDetails planObj = (PlanOrderInvDetails)p_planOrderInvDetailsList.get(j);
                 if(planObj != null){
-                if(j%noOfWeek==2 || j==listSize-1)
+                if(j%noOfWeek==6 || j==listSize-1)
                 {
                     strDebug=strDebug+"~Set~";
                     weekWiseSum = weekWiseSum + Integer.parseInt(planObj.getSalesForecast() == null?"0":planObj.getSalesForecast());
@@ -158,7 +158,7 @@ public class FutureOrderPlanService {
                 JSONArray nodeArray = parent.getJSONArray("P_PO_QTY_TAB_ITEM");
     
                 int size = nodeArray.length();
-                int noOfWeek = 3;//temp change it to 7 once testing completes
+                int noOfWeek = 7;//temp change it to 7 once testing completes
                 strDebug=strDebug+":size:"+size;
                 for (int i = 0; i < size; i++) 
                 {
@@ -270,7 +270,7 @@ public class FutureOrderPlanService {
             //strDebug= "strPlanOrderSetFlag: "+strPlanOrderSetFlag;
             try
             {
-                int noOfWeek = 3;//temp change it to 7 once testing completes
+                int noOfWeek = 7;//temp change it to 7 once testing completes
                 int startIndex = (Integer.parseInt(strSelectedIndex)-1)*noOfWeek;
                 int endIndex = (startIndex+noOfWeek);
                 //strDebug=strDebug+":startIndex:"+startIndex+":endIndex:"+endIndex;

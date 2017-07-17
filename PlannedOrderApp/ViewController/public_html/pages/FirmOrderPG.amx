@@ -51,14 +51,29 @@
                         <amx:outputText value="#{pageFlowScope.itemDesc}" id="ot5"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
+                <amx:rowLayout id="rl1">
+                    <amx:cellFormat id="cf1" height="5"/>
+                </amx:rowLayout>
                 <amx:rowLayout id="rl3">
                     <amx:cellFormat id="cf23" width="5"/>
                     <amx:cellFormat id="cf5" halign="start" width="30%">
                         <amx:outputText value="Store" id="ot19" styleClass="xxRobotoFieldTitle"/>
-                    </amx:cellFormat> 
+                    </amx:cellFormat>
                     <amx:cellFormat id="cf6" halign="start">
-                        <amx:outputText value="#{pageFlowScope.StoreName}" id="ot20"/>
-                    </amx:cellFormat>  
+                        <amx:outputText value="#{pageFlowScope.BarcodeBean.storeName}" id="ot20"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl8">
+                    <amx:cellFormat id="cf2" height="5"/>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl14">
+                    <amx:cellFormat id="cf15" width="5"/>
+                    <amx:cellFormat id="cf24">
+                        <amx:outputText value="Sub-Class" id="ot7" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf36">
+                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot8"/>
+                    </amx:cellFormat>
                 </amx:rowLayout>  
             </amx:tableLayout>
         </amx:panelGroupLayout>

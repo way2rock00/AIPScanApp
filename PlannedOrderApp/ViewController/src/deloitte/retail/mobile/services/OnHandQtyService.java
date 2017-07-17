@@ -103,8 +103,12 @@ public class OnHandQtyService {
                                     
                                     String causal = null;
                                     if (temp.getString("P_CAUSAL") != null)
-                                        causal = temp.getString("P_CAUSAL");
-                
+                                    {
+                                        if("Y".equalsIgnoreCase(temp.getString("P_CAUSAL")))
+                                            causal = "Yes";
+                                        else if("N".equalsIgnoreCase(temp.getString("P_CAUSAL")))
+                                            causal = "No";
+                                    }
                                 OnHandQty onHandQtyObj=new OnHandQty(onHandQty, totFirmOrderQty, totPlanOrdQty, dispMin, presentationMin, price, causal);
                                 onHandQtyList.add(onHandQtyObj);
                 }

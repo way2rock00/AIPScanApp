@@ -6,7 +6,7 @@
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" height="30%" valign="middle" halign="center"
                                 inlineStyle="padding:50px 20px 20px 20px;">
-                    <amx:image id="i1" source="/resources/images/Login_Page_Image.png" inlineStyle="width:50%"/>
+                    <amx:image id="i1" source="/resources/images/Retail Store Management Logo.png" inlineStyle="width:50%"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
