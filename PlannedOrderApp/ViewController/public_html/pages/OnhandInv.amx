@@ -44,7 +44,7 @@
                                      valueChangeListener="#{pageFlowScope.BarcodeBean.storeValueChanged}">
                     <amx:selectItems value="#{bindings.store.items}" id="si1"/>
                 </amx:selectOneChoice>
-                <amx:spacer id="s5" height="10"/>
+                <amx:spacer id="s5" height="35"/>
             </amx:panelGroupLayout>
             <!--<amx:outputText value="Debug:#{pageFlowScope.strDebug}" id="ot6"/>-->
             <!--<amx:outputText value="#{applicationScope.loginRole}:#{pageFlowScope.selectedStoreId}:#{applicationScope.oprStrId}" id="ot6"/>-->
@@ -305,6 +305,8 @@
                                     <amx:spacer id="s12" height="45"/>
                                     <amx:panelGroupLayout id="pgl13" halign="end">
                                         <amx:panelGroupLayout id="pgl20" layout="horizontal">
+                                            <amx:outputText value="$" id="ot5"
+                                                            inlineStyle="font-size:large; color:White;"/>
                                             <amx:outputText value="#{row.price}" id="ot33"
                                                             inlineStyle="font-size:large; color:White;"/>
                                             <amx:spacer id="s27" width="3"/>
