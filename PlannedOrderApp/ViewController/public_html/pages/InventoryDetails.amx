@@ -14,6 +14,7 @@
                 <amx:outputHtml id="oh2" styleClass="fa fa-reorder fa-1x" inlineStyle="color:#ffffff;"/>
             </amx:commandLink>-->
         </amx:facet>
+        
         <amx:panelGroupLayout id="pgl1" styleClass="invPglPadding">
             <!--<amx:outputText value="#{pageFlowScope.selectedWeekIndex}" id="ot21"/>-->
             <amx:tableLayout id="tl1" width="100%" inlineStyle="padding-bottom:15px; table-layout:fixed;"
@@ -38,6 +39,18 @@
                         <amx:outputText value="#{pageFlowScope.itemDesc}" id="ot9" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
+                <amx:rowLayout id="rl7">
+                    <amx:cellFormat id="cf28" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf25" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="Item Sub-Class" id="ot15"
+                                        styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf26" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf27" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot12"
+                                        styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
                 <amx:rowLayout id="rl6">
                     <amx:cellFormat id="cf21" width="3%" inlineStyle="padding-top:8px;"/>
                     <amx:cellFormat id="cf23" width="25%" height="10" inlineStyle="padding-top:8px;">
@@ -49,18 +62,16 @@
                                         styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
-                <amx:rowLayout id="rl7">
-                    <amx:cellFormat id="cf28" width="3%" inlineStyle="padding-top:8px;"/>
-                    <amx:cellFormat id="cf25" width="25%" height="10" inlineStyle="padding-top:8px;">
-                        <amx:outputText value="Sub-Class" id="ot15"
-                                        styleClass="xxRobotoFieldTitle"/>
+                <amx:rowLayout id="rl3">
+                    <amx:cellFormat id="cf6" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf7" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="On-Hand" id="ot7" styleClass="xxRobotoFieldTitle"/>
                     </amx:cellFormat>
-                    <amx:cellFormat id="cf26" width="4%" inlineStyle="padding-top:8px;"/>
-                    <amx:cellFormat id="cf27" width="70%" height="10" inlineStyle="padding-top:8px;">
-                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot12"
-                                        styleClass="xxRobotoFieldValue"/>
+                    <amx:cellFormat id="cf8" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf9" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.onHandQty}" id="ot10" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
-                </amx:rowLayout>
+                </amx:rowLayout>                
             </amx:tableLayout>
             <!--<amx:spacer id="s1" height="20"/>-->
             <!--<amx:commandButton text="Test" id="cb3">
@@ -101,6 +112,13 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
+            
+            <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot21"/>
+            <amx:outputText value="#{pageFlowScope.strBuyerDebug}" id="ot17"/>-->
+            <amx:outputText value="#{pageFlowScope.strSourceDebug}" id="ot17"/>
+            
+            <amx:outputText value="Note: * Item is 'On Sale' for this week" id="ot16" inlineStyle="color:#da291c; font-size:small;"/>
+            <amx:spacer id="sp01" height="10"/>
             <amx:listView var="row" value="#{bindings.dayWisePlanDetails.collectionModel}" inlineStyle="border:none;"
                           fetchSize="#{bindings.dayWisePlanDetails.rangeSize}"
                           selectedRowKeys="#{bindings.dayWisePlanDetails.collectionModel.selectedRow}"
@@ -115,9 +133,9 @@
                                     <amx:outputText value="#{row.day}" id="ot23"/>
                                 </amx:cellFormat>
                                 <amx:cellFormat id="cf4" width="40%" halign="center">
-                                    <amx:outputText value="On Order :#{row.onOrders}" id="ot2" styleClass="xxRobotoFieldTitle"/>
+                                    <amx:outputText value="On Order Quantity:#{row.onOrders}#{row.hashVal}" id="ot2" styleClass="xxRobotoFieldTitle"/>
                                 </amx:cellFormat>
-                                <amx:cellFormat id="cf6" width="20%" halign="end">
+                                <amx:cellFormat id="cf35" width="20%" halign="end">
                                     <amx:commandLink id="cl2" rendered="#{row.expandCollapseFlag == 'N' ? true:false}">
                                         <amx:outputHtml id="oh2" styleClass="fa fa-plus-square-o"
                                                         inlineStyle="color:#86BC25;"/>
@@ -159,9 +177,9 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>-->
                             <amx:rowLayout id="rl1">
-                                <amx:cellFormat id="cf7" width="5%"/>
+                                <amx:cellFormat id="cf37" width="5%"/>
                                 <amx:cellFormat id="cf2" width="45%">
-                                    <amx:outputText value="Allocated" id="ot10" styleClass="xxRobotoGroupLabel"/>
+                                    <amx:outputText value="Allocated" id="ot13" styleClass="xxRobotoGroupLabel"/>
                                 </amx:cellFormat>
                                 <amx:cellFormat id="cf5" width="50%">
                                     <!--<amx:outputText value="1200 EA" id="ot23" styleClass="xxRobotoFieldValue"/>-->
@@ -169,8 +187,8 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                             <amx:rowLayout id="rl2">
-                                <amx:cellFormat id="cf8" width="5%"/>
-                                <amx:cellFormat id="cf9" width="45%">
+                                <amx:cellFormat id="cf40" width="5%"/>
+                                <amx:cellFormat id="cf41" width="45%">
                                     <amx:outputText value="Sales Forecast" id="ot5" styleClass="xxRobotoGroupLabel"/>
                                 </amx:cellFormat>
                                 <amx:cellFormat id="cf18" width="50%">
@@ -190,7 +208,7 @@
                                                     styleClass="xxRobotoFieldValue"/>
                                 </amx:cellFormat>
                             </amx:rowLayout>
-                            <amx:rowLayout id="rl3">
+                            <amx:rowLayout id="rl13">
                                 <amx:cellFormat id="cf16" width="5%"/>
                                 <amx:cellFormat id="cf38" width="45%">
                                     <amx:outputText value="Pack Size" id="ot18" styleClass="xxRobotoGroupLabel"/>
@@ -199,7 +217,14 @@
                                     <amx:outputText value="#{row.packSize}" id="ot25" styleClass="xxRobotoFieldValue"/>
                                 </amx:cellFormat>
                             </amx:rowLayout>
-                            <amx:rowLayout id="rl10">
+                            <!--<amx:rowLayout id="r114">
+                                <amx:cellFormat id="cf32" width="5%"/>
+                                <amx:cellFormat id="cf19" width="45%"/>    
+                                <amx:cellFormat id="cf36">
+                                   <amx:outputText value="Note: * Item is 'On Sale' for this week" id="ot16" inlineStyle="color:#da291c; font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>-->
+                            <!--<amx:rowLayout id="rl10">
                                 <amx:cellFormat id="cf19" width="5%"/>
                                 <amx:cellFormat id="cf32" width="45%">
                                     <amx:outputText value="Promotions" id="ot16" styleClass="xxRobotoGroupLabel"/>
@@ -207,12 +232,14 @@
                                 <amx:cellFormat id="cf36" width="50%">
                                     <amx:outputText value="Yes" id="ot17" styleClass="xxRobotoFieldValue"/>
                                 </amx:cellFormat>
-                            </amx:rowLayout>
+                            </amx:rowLayout>-->
                         </amx:tableLayout>
                     </amx:panelGroupLayout>
                 </amx:listItem>
             </amx:listView>
+        
         </amx:panelGroupLayout>
+        
         <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot7"/>
         <amx:outputText value="#{pageFlowScope.strMainDebug}" id="ot26"/>
         <amx:outputText value="#{pageFlowScope.strTest}" id="ot13"/>
