@@ -131,16 +131,15 @@ public class RestURIs {
             return FirmOrderURL+"/"+strSellableUpc+"/"+strStoreName;
         } 
 
-    public static String getBuyerLOVURI(String storeId)
+    public static String getBuyerLOVURI(String storeId,String sellableUPC, String weekEndDt)
     {
-        return BuyerLOVUrl+"/"+storeId;
+        return BuyerLOVUrl+"/"+storeId+"/"+sellableUPC+"/"+weekEndDt;
     }
-    public static String getSourceLOVURI(String storeId)
+    public static String getSourceLOVURI(String storeId,String sellableUPC, String weekEndDt)
     {
-        return SourceLOVUrl+"/"+storeId;
+        return SourceLOVUrl+"/"+storeId+"/"+sellableUPC+"/"+weekEndDt;
     }
     public static String getStoreLOVURI(String storeId){
         return StoreLOVUrl +"/"+storeId;
     }
-//amx-panelPage-header-overflowIcon
 }
