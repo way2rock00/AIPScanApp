@@ -87,6 +87,7 @@
           <Item Value="seq"/>
           <Item Value="source"/>
           <Item Value="weekNo"/>
+          <Item Value="hashVal"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
