@@ -64,6 +64,7 @@
           <Item Value="qty"/>
           <Item Value="weekEnd"/>
           <Item Value="weekNo"/>
+          <Item Value="hashValue"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
