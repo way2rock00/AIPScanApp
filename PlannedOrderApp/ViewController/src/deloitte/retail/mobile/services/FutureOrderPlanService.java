@@ -91,7 +91,11 @@ public class FutureOrderPlanService {
                     FutureOrderPlan fOP=new FutureOrderPlan();
                     fOP.setWeekNo(Integer.toString((j/noOfWeek)+1));
                     fOP.setWeekEnd(planObj.getDay());
-                    fOP.setQty(Integer.toString(weekWiseSum));                        
+                    fOP.setQty(Integer.toString(weekWiseSum));  
+                    
+                    if ("Y".equalsIgnoreCase(planObj.getCausal())) {
+                        fOP.setHashValue("*");
+                    }
                     futureOrderPlanList.add(fOP);
                     
                     //Resetting week wise count flag.
@@ -212,7 +216,9 @@ public class FutureOrderPlanService {
                     if (temp.getString("SOURCE_ID") != null)
                         payloadSourceId = temp.getString("SOURCE_ID");                       
                     
-                    
+                    String hashVal=null;
+                    if ("Y".equalsIgnoreCase(causal))
+                        hashVal="*";
                         
                     String weekNo;
                     
@@ -235,7 +241,8 @@ public class FutureOrderPlanService {
                                                 source,
                                                 "N",
                                                 payloadBuyerId,
-                                                payloadSourceId);
+                                                payloadSourceId,
+                                                hashVal);
                     
                     planOrderInvDetailsList.add(planOrdInvDtlRec);                                    
                 }
@@ -255,7 +262,7 @@ public class FutureOrderPlanService {
     public PlanOrderInvDetails[] getDayDetails() 
     {
             List<PlanOrderInvDetails> planOrderInvDetails  = new ArrayList<PlanOrderInvDetails>();
-            String strDebug="";
+            String strDebug="GetDayDetails: ";
             String strMainDebug="";
             String strBuyerChange = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.buyerChange}");
             strBuyerChange = strBuyerChange +"~N~";
@@ -266,19 +273,26 @@ public class FutureOrderPlanService {
             List planOrderInvDetailsList = (List)AdfmfJavaUtilities.getELValue("#{pageFlowScope.planOrderInv}");
             String strPlanOrderSetFlag = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.planOrderSetFlag}");
             String strSelectedIndex = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedWeekIndex}");
-            
+                                    
             //strDebug= "strPlanOrderSetFlag: "+strPlanOrderSetFlag;
             try
             {
                 int noOfWeek = 7;//temp change it to 7 once testing completes
                 int startIndex = (Integer.parseInt(strSelectedIndex)-1)*noOfWeek;
                 int endIndex = (startIndex+noOfWeek);
+                
+                PlanOrderInvDetails weekEndVariable=(PlanOrderInvDetails)planOrderInvDetailsList.get(endIndex);
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.weekEndDt}",weekEndVariable.getDay());
+                strDebug=strDebug+"WeekEndValue: "+weekEndVariable;
+                strDebug=strDebug+"endIndex: "+endIndex;
+                
                 //strDebug=strDebug+":startIndex:"+startIndex+":endIndex:"+endIndex;
                 if("Y".equalsIgnoreCase(strPlanOrderSetFlag))
                 {
                     for(int i = startIndex ; i < endIndex ; i++)
                     {
                         PlanOrderInvDetails porid= (PlanOrderInvDetails)planOrderInvDetailsList.get(i);
+                        
                         porid.setExpandCollapseFlag("N");
                         String payloadBuyerId = porid.getBuyerId();
                         String payloadSourceId = porid.getSourceId();
