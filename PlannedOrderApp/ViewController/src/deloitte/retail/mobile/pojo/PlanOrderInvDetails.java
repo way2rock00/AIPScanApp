@@ -14,7 +14,7 @@ public class PlanOrderInvDetails {
 
     public PlanOrderInvDetails(String seq, String weekNo, String day, String inventoryDt, String salesForecast, String safetyStock,
                                String onOrders, String packSize, String allocated, String causal, String buyer,
-                               String source, String expandCollapseFlag,String buyerId,String sourceId) 
+                               String source, String expandCollapseFlag,String buyerId,String sourceId, String hashVal) 
     {
         super();
         this.seq=seq;
@@ -32,14 +32,37 @@ public class PlanOrderInvDetails {
         this.buyerId = buyerId;
         this.sourceId = sourceId;
         this.expandCollapseFlag = expandCollapseFlag;
+        this.hashVal=hashVal;
     }
-    
+
+    public void setHashVal(String hashVal) {
+        String oldHashVal = this.hashVal;
+        this.hashVal = hashVal;
+        propertyChangeSupport.firePropertyChange("hashVal", oldHashVal, hashVal);
+    }
+
+    public String getHashVal() {
+        return hashVal;
+    }
+
+    public void setPlanOrderDayComparator(Comparator<PlanOrderInvDetails> planOrderDayComparator) {
+        Comparator<PlanOrderInvDetails> oldPlanOrderDayComparator = PlanOrderInvDetails.planOrderDayComparator;
+        PlanOrderInvDetails.planOrderDayComparator = planOrderDayComparator;
+        propertyChangeSupport.firePropertyChange("planOrderDayComparator", oldPlanOrderDayComparator,
+                                                 planOrderDayComparator);
+    }
+
+    public static Comparator<PlanOrderInvDetails> getPlanOrderDayComparator() {
+        return planOrderDayComparator;
+    }
+
     private String seq;
     private String weekNo;
     private String day;
     private String inventoryDt;
     private String salesForecast;
-
+    private String hashVal;
+    
     public void setExpandCollapseFlag(String expandCollapseFlag) {
         String oldExpandCollapseFlag = this.expandCollapseFlag;
         this.expandCollapseFlag = expandCollapseFlag;
