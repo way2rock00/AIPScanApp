@@ -19,11 +19,11 @@
                              styleClass="invPageHeader">
                 <amx:rowLayout id="rl4">
                     <amx:cellFormat id="cf11" width="3%" inlineStyle="padding-top:8px;"/>
-                    <amx:cellFormat id="cf3" width="25%" height="10" inlineStyle="padding-top:8px;">
+                    <amx:cellFormat id="cf3" width="30%" height="10" inlineStyle="padding-top:8px;">
                         <amx:outputText value="Sellable UPC" id="ot3" styleClass="xxRobotoFieldTitle"/>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf10" width="4%"/>
-                    <amx:cellFormat id="cf15" width="70%" height="10" inlineStyle="padding-top:8px;">
+                    <amx:cellFormat id="cf15" width="65%" height="10" inlineStyle="padding-top:8px;">
                         <amx:outputText value="#{pageFlowScope.itemNumber}" id="ot6" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
@@ -37,6 +37,17 @@
                         <amx:outputText value="#{pageFlowScope.itemDesc}" id="ot9" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
+                <amx:rowLayout id="rl7">
+                    <amx:cellFormat id="cf28" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf25" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="Item Sub-Class" id="ot15" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf26" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf27" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot12"
+                                        styleClass="xxRobotoFieldValue"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
                 <amx:rowLayout id="rl6">
                     <amx:cellFormat id="cf21" width="3%" inlineStyle="padding-top:8px;"/>
                     <amx:cellFormat id="cf23" width="25%" height="10" inlineStyle="padding-top:8px;">
@@ -47,15 +58,14 @@
                         <amx:outputText value="#{pageFlowScope.BarcodeBean.storeName}" id="ot11" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
-                <amx:rowLayout id="rl7">
-                    <amx:cellFormat id="cf28" width="3%" inlineStyle="padding-top:8px;"/>
-                    <amx:cellFormat id="cf25" width="25%" height="10" inlineStyle="padding-top:8px;">
-                        <amx:outputText value="Sub-Class" id="ot15" styleClass="xxRobotoFieldTitle"/>
+                <amx:rowLayout id="rl3">
+                    <amx:cellFormat id="cf6" width="3%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf7" width="25%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="On-Hand" id="ot7" styleClass="xxRobotoFieldTitle"/>
                     </amx:cellFormat>
-                    <amx:cellFormat id="cf26" width="4%" inlineStyle="padding-top:8px;"/>
-                    <amx:cellFormat id="cf27" width="70%" height="10" inlineStyle="padding-top:8px;">
-                        <amx:outputText value="#{pageFlowScope.itemSubClass}" id="ot12"
-                                        styleClass="xxRobotoFieldValue"/>
+                    <amx:cellFormat id="cf8" width="4%" inlineStyle="padding-top:8px;"/>
+                    <amx:cellFormat id="cf9" width="70%" height="10" inlineStyle="padding-top:8px;">
+                        <amx:outputText value="#{pageFlowScope.onHandQty}" id="ot10" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
@@ -91,12 +101,15 @@
                                     <amx:outputText value="#{row.weekEnd}" id="ot26" inlineStyle="color:#999999;"/>
                                 </amx:cellFormat>
                                 <amx:cellFormat id="cf5" width="50%" halign="center">
-                                    <amx:outputText value="#{row.qty}" id="ot5" inlineStyle="color:#999999;"/>
+                                    <amx:outputText value="#{row.qty}#{row.hashValue}" id="ot5" inlineStyle="color:#999999;"/>
                                 </amx:cellFormat>
                             </amx:rowLayout>
-                        </amx:tableLayout>
+                        </amx:tableLayout>                        
                     </amx:listItem>
                 </amx:listView>
+                <amx:spacer id="s2" height="20"/>
+                <amx:outputText value="Note: * Item is 'On Sale' for this week" id="ot13"
+                                inlineStyle="color:#da291c; font-size:small;"/>
             </amx:panelGroupLayout>
         </amx:panelGroupLayout>
         <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot21"/>-->
