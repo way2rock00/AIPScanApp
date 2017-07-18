@@ -2,6 +2,7 @@ package deloitte.retail.mobile.services;
 
 
 import deloitte.retail.mobile.pojo.Buyer;
+import deloitte.retail.mobile.pojo.PlanOrderInvDetails;
 import deloitte.retail.mobile.pojo.Source;
 import deloitte.retail.mobile.pojo.Store;
 import deloitte.retail.mobile.utility.RestURIs;
@@ -20,20 +21,29 @@ public class LOVService {
         super();
     }
     public Buyer[] getBuyerLOV(){
-        String strBuyerDebug="S1:";
+        String strBuyerDebug="Buyer:";
         List<Buyer> buyerList = new ArrayList<Buyer>();
         Buyer buyerArray[] = null;
         
         ServiceManager serviceManager = new ServiceManager();
         String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
-        String url = RestURIs.getBuyerLOVURI(selectedStoreId);
+        String sellableUPC  = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
+        String weekEndDt    = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.weekEndDt}");    
+                
+        strBuyerDebug=strBuyerDebug+"Selcted Store Id:"+(String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
+        strBuyerDebug=strBuyerDebug+"Item:"+(String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
+        strBuyerDebug=strBuyerDebug+"WeekEndDt:"+(String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.weekEndDt}");
+        
+        String url = RestURIs.getBuyerLOVURI(selectedStoreId,sellableUPC,weekEndDt);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
+        strBuyerDebug=strBuyerDebug+jsonArrayAsString;
         try {
             strBuyerDebug = strBuyerDebug +":2:";
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);       
             
             JSONArray nodeArray = jsonObject.getJSONArray("dbGetBuyerDetailsOutput");
             Buyer buyerObj = new Buyer("-999","Select Buyer");
+            
             buyerList.add(buyerObj);
             int size = nodeArray.length();
             strBuyerDebug = strBuyerDebug +":size:"+size;
@@ -41,8 +51,8 @@ public class LOVService {
                 JSONObject temp = nodeArray.getJSONObject(i);
                 
                 String buyerId = null;
-                if (temp.getString("buyer") != null)
-                    buyerId = temp.getString("buyer");                
+                if (temp.getString("buyer_id") != null)
+                    buyerId = temp.getString("buyer_id");                
 
                 String buyer = null;
                 if (temp.getString("buyer_name") != null)
@@ -64,14 +74,21 @@ public class LOVService {
     }    
     
     public Source[] getSourceLOV(){
-        String strSourceDebug="S1:";
+        String strSourceDebug="SourceDebug:";
         List<Source> sourceList = new ArrayList<Source>();
         Source sourceArray[] = null;
         
         ServiceManager serviceManager = new ServiceManager();
         String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
-        String url = RestURIs.getSourceLOVURI(selectedStoreId);
+        String sellableUPC  = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
+        String weekEndDt    = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.weekEndDt}");    
+        
+        strSourceDebug=strSourceDebug+"WeekEndDt: "+weekEndDt;
+        
+        String url = RestURIs.getSourceLOVURI(selectedStoreId,sellableUPC,weekEndDt);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
+        strSourceDebug=strSourceDebug+jsonArrayAsString;
+        
         try {
             strSourceDebug = strSourceDebug +":2:";
             JSONObject jsonObject = new JSONObject(jsonArrayAsString);       
@@ -89,8 +106,8 @@ public class LOVService {
                     sourceId = temp.getString("source_id");
                 
                 String source = null;
-                if (temp.getString("source") != null)
-                    source = temp.getString("source");                
+                if (temp.getString("source_name") != null)
+                    source = temp.getString("source_name");                
 
                 sourceObj = new Source(sourceId,source);
                sourceList.add(sourceObj);
@@ -116,6 +133,9 @@ public class LOVService {
         ServiceManager serviceManager = new ServiceManager();
 //        String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
         String selectedStoreId = "1";
+        
+        String weekEndDt = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.weekEndDt}");
+        
         String url = RestURIs.getStoreLOVURI(selectedStoreId);
         strStoreDebug = strStoreDebug +":url:"+url;
         String strServiceStatus = "";
