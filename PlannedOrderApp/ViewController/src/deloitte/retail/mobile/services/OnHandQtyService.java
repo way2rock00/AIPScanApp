@@ -66,7 +66,10 @@ public class OnHandQtyService {
 
                                     String onHandQty = null;
                                     if (temp.getString("P_ON_HAND_QUANTITY") != null)
+                                    {
                                         onHandQty = temp.getString("P_ON_HAND_QUANTITY");
+                                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.onHandQty}", onHandQty);
+                                    }
                                     else if (onHandQty == null)
                                         onHandQty = "0";                    
                                     strDebug13=strDebug13+"--OnHand-- "+onHandQty;
@@ -121,6 +124,7 @@ public class OnHandQtyService {
                 strDebug = strDebug +":10:";
                 onHandQtyArray = onHandQtyList.toArray(new OnHandQty[onHandQtyList.size()]);
                 AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}", strDebug);
+                
                 return onHandQtyArray;
     }
     
