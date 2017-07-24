@@ -66,6 +66,18 @@
                 <amx:rowLayout id="rl8">
                     <amx:cellFormat id="cf2" height="5"/>
                 </amx:rowLayout>
+                <amx:rowLayout id="rl15">
+                    <amx:cellFormat id="cf37" width="5"/>
+                    <amx:cellFormat id="cf38">
+                        <amx:outputText value="On Hand" id="ot9" styleClass="xxRobotoFieldTitle"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf39">
+                        <amx:outputText value="#{pageFlowScope.onHandQuantity==null?0:pageFlowScope.onHandQuantity}" id="ot10"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl16">
+                    <amx:cellFormat id="cf40"/>
+                </amx:rowLayout>
                 <amx:rowLayout id="rl14">
                     <amx:cellFormat id="cf15" width="5"/>
                     <amx:cellFormat id="cf24">
@@ -131,17 +143,19 @@
                             <amx:cellFormat id="cf11" width="50%">
                                 <amx:outputText value="Source" id="ot23" styleClass="xxRobotoFieldTitle"/>
                             </amx:cellFormat>
-                            <amx:cellFormat id="cf12">
-                                <amx:outputText value="#{row.source}" id="ot13"/>
+                            <amx:cellFormat id="cf12" inlineStyle="text-wrap:avoid;">
+                                <amx:outputText value="#{row.source}" id="ot13" inlineStyle="text-wrap:avoid;"/>
+                                <amx:outputText value=" - " id="ot15" inlineStyle="text-wrap:avoid;"/>
+                                <amx:outputText value="#{row.sourceType}" id="ot14" inlineStyle="text-wrap:avoid;"/>
                             </amx:cellFormat>
                         </amx:rowLayout>
-                        <amx:rowLayout id="rl7">
+                        <amx:rowLayout id="rl7" rendered="true">
                             <amx:cellFormat id="cf31" width="10%"/>
                             <amx:cellFormat id="cf13" width="50%">
-                                <amx:outputText value="Source Type:" id="ot24" styleClass="xxRobotoFieldTitle"/>
+                                <amx:outputText value="UOM:" id="ot24" styleClass="xxRobotoFieldTitle"/>
                             </amx:cellFormat>
                             <amx:cellFormat id="cf14">
-                                <amx:outputText value="#{row.sourceType}" id="ot14"/>
+                                <amx:outputText value="each" id="ot16"/>
                             </amx:cellFormat>
                         </amx:rowLayout>
                         <amx:rowLayout id="rl9">

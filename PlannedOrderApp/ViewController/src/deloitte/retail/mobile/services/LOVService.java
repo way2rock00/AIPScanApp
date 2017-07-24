@@ -28,13 +28,11 @@ public class LOVService {
         ServiceManager serviceManager = new ServiceManager();
         String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
         String sellableUPC  = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
-        String weekEndDt    = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.weekEndDt}");    
                 
         strBuyerDebug=strBuyerDebug+"Selcted Store Id:"+(String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
         strBuyerDebug=strBuyerDebug+"Item:"+(String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
-        strBuyerDebug=strBuyerDebug+"WeekEndDt:"+(String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.weekEndDt}");
         
-        String url = RestURIs.getBuyerLOVURI(selectedStoreId,sellableUPC,weekEndDt);
+        String url = RestURIs.getBuyerLOVURI(selectedStoreId,sellableUPC);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
         strBuyerDebug=strBuyerDebug+jsonArrayAsString;
         try {
@@ -81,11 +79,9 @@ public class LOVService {
         ServiceManager serviceManager = new ServiceManager();
         String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
         String sellableUPC  = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.itemNumber}");
-        String weekEndDt    = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.weekEndDt}");    
         
-        strSourceDebug=strSourceDebug+"WeekEndDt: "+weekEndDt;
         
-        String url = RestURIs.getSourceLOVURI(selectedStoreId,sellableUPC,weekEndDt);
+        String url = RestURIs.getSourceLOVURI(selectedStoreId,sellableUPC);
         String jsonArrayAsString = serviceManager.invokeREAD(url);
         strSourceDebug=strSourceDebug+jsonArrayAsString;
         
@@ -133,8 +129,6 @@ public class LOVService {
         ServiceManager serviceManager = new ServiceManager();
 //        String selectedStoreId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}");
         String selectedStoreId = "1";
-        
-        String weekEndDt = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.weekEndDt}");
         
         String url = RestURIs.getStoreLOVURI(selectedStoreId);
         strStoreDebug = strStoreDebug +":url:"+url;

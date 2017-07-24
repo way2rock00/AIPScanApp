@@ -131,13 +131,13 @@ public class RestURIs {
             return FirmOrderURL+"/"+strSellableUpc+"/"+strStoreName;
         } 
 
-    public static String getBuyerLOVURI(String storeId,String sellableUPC, String weekEndDt)
+    public static String getBuyerLOVURI(String storeId,String sellableUPC)
     {
-        return BuyerLOVUrl+"/"+storeId+"/"+sellableUPC+"/"+weekEndDt;
+        return BuyerLOVUrl+"/"+storeId+"/"+sellableUPC;
     }
-    public static String getSourceLOVURI(String storeId,String sellableUPC, String weekEndDt)
+    public static String getSourceLOVURI(String storeId,String sellableUPC)
     {
-        return SourceLOVUrl+"/"+storeId+"/"+sellableUPC+"/"+weekEndDt;
+        return SourceLOVUrl+"/"+storeId+"/"+sellableUPC;
     }
     public static String getStoreLOVURI(String storeId){
         return StoreLOVUrl +"/"+storeId;

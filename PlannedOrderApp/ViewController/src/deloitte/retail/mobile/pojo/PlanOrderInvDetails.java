@@ -14,7 +14,8 @@ public class PlanOrderInvDetails {
 
     public PlanOrderInvDetails(String seq, String weekNo, String day, String inventoryDt, String salesForecast, String safetyStock,
                                String onOrders, String packSize, String allocated, String causal, String buyer,
-                               String source, String expandCollapseFlag,String buyerId,String sourceId, String hashVal) 
+                               String source, String expandCollapseFlag,String buyerId,String sourceId, String hashVal,
+                               String weekEnding) 
     {
         super();
         this.seq=seq;
@@ -33,6 +34,7 @@ public class PlanOrderInvDetails {
         this.sourceId = sourceId;
         this.expandCollapseFlag = expandCollapseFlag;
         this.hashVal=hashVal;
+        this.weekEnding=weekEnding;
     }
 
     public void setHashVal(String hashVal) {
@@ -82,6 +84,7 @@ public class PlanOrderInvDetails {
     private String source;
     private String sourceId;
     private String expandCollapseFlag;
+    private String weekEnding;
 
     public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
         PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
@@ -240,6 +243,17 @@ public class PlanOrderInvDetails {
 
     public String getSourceId() {
         return sourceId;
+    }
+
+
+   public void setWeekEnding(String weekEnding) {
+        String oldWeekEnding = this.weekEnding;
+        this.weekEnding = weekEnding;
+        propertyChangeSupport.firePropertyChange("weekEnding", oldWeekEnding, weekEnding);
+    }
+
+    public String getWeekEnding() {
+        return weekEnding;
     }
 
     public static Comparator<PlanOrderInvDetails> planOrderDayComparator=new Comparator<PlanOrderInvDetails>() {

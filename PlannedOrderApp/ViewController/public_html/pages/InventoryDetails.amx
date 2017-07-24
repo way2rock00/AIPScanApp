@@ -69,7 +69,7 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf8" width="4%" inlineStyle="padding-top:8px;"/>
                     <amx:cellFormat id="cf9" width="70%" height="10" inlineStyle="padding-top:8px;">
-                        <amx:outputText value="#{pageFlowScope.onHandQty}" id="ot10" styleClass="xxRobotoFieldValue"/>
+                        <amx:outputText value="#{pageFlowScope.onHandQuantity==null?0:pageFlowScope.onHandQuantity}" id="ot10" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>                
             </amx:tableLayout>
@@ -115,7 +115,7 @@
             
             <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot21"/>
             <amx:outputText value="#{pageFlowScope.strBuyerDebug}" id="ot17"/>-->
-            <amx:outputText value="#{pageFlowScope.strSourceDebug}" id="ot17"/>
+            <!--<amx:outputText value="#{pageFlowScope.strSourceDebug}" id="ot17"/>-->
             
             <amx:outputText value="Note: * Item is 'On Sale' for this week" id="ot16" inlineStyle="color:#da291c; font-size:small;"/>
             <amx:spacer id="sp01" height="10"/>
@@ -240,8 +240,8 @@
         
         </amx:panelGroupLayout>
         
-        <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot7"/>
-        <amx:outputText value="#{pageFlowScope.strMainDebug}" id="ot26"/>
+        <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot21"/>-->
+        <!--<amx:outputText value="#{pageFlowScope.strMainDebug}" id="ot26"/>
         <amx:outputText value="#{pageFlowScope.strTest}" id="ot13"/>
         <amx:panelGroupLayout id="pgl4" layout="horizontal">
             <amx:commandButton text="Test" id="cb1" actionListener="#{pageFlowScope.BarcodeBean.testBtn}"/>

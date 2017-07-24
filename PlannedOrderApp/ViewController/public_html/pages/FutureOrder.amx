@@ -65,10 +65,12 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf8" width="4%" inlineStyle="padding-top:8px;"/>
                     <amx:cellFormat id="cf9" width="70%" height="10" inlineStyle="padding-top:8px;">
-                        <amx:outputText value="#{pageFlowScope.onHandQty}" id="ot10" styleClass="xxRobotoFieldValue"/>
+                        <amx:outputText value="#{pageFlowScope.onHandQuantity==null?0:pageFlowScope.onHandQuantity}" id="ot10" styleClass="xxRobotoFieldValue"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
+            <amx:outputText value="Note: * Item is 'On Sale' for this week" id="ot13"
+                            inlineStyle="color:#da291c; font-size:small;"/>            
             <amx:panelGroupLayout id="pgl2" layout="vertical">
                 <amx:spacer id="s1" height="10"/>
                 <amx:tableLayout id="tl2" width="100%" inlineStyle="padding:10px;background-color:#86BC25;">
@@ -108,12 +110,10 @@
                     </amx:listItem>
                 </amx:listView>
                 <amx:spacer id="s2" height="20"/>
-                <amx:outputText value="Note: * Item is 'On Sale' for this week" id="ot13"
-                                inlineStyle="color:#da291c; font-size:small;"/>
             </amx:panelGroupLayout>
         </amx:panelGroupLayout>
         <!--<amx:outputText value="#{pageFlowScope.strDebug}" id="ot21"/>-->
-        <!--<amx:outputText value="getPlanOrderInvDetails:#{pageFlowScope.getPlanOrderInvDetails}" id="ot7"/>
-        <amx:outputText value="getFutureOrderPlan:#{pageFlowScope.getFutureOrderPlan}" id="ot10"/>-->
+        <!--<amx:outputText value="getPlanOrderInvDetails:#{pageFlowScope.getPlanOrderInvDetails}" id="ot7"/>-->
+        <!--<amx:outputText value="getFutureOrderPlan:#{pageFlowScope.getFutureOrderPlan}" id="ot14"/>-->
     </amx:panelPage>
 </amx:view>

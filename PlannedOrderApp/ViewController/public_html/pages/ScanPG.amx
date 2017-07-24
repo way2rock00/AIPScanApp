@@ -3,7 +3,7 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
         <amx:facet name="header">
-            <amx:outputText value="Scan Product" id="ot1" styleClass="headertextwhite"
+            <amx:outputText value="Store Inventory Inquiry" id="ot1" styleClass="headertextwhite"
                             inlineStyle="font-size:20px;flex-wrap:wrap; overflow-wrap:break-word; text-align:center; border-bottom-width:0px; border-bottom-style:hidden; border-bottom-color:transparent;"/>
         </amx:facet>
         <amx:facet name="primary">
@@ -20,11 +20,11 @@
                 <amx:cellFormat id="cf2" width="100%" halign="center" inlineStyle="padding-right:15px">
                     <amx:commandButton text="Scan" id="cb111" styleClass="buttonsLarge" shortDesc="Scan"
                                        actionListener="#{pageFlowScope.BarcodeBean.scanBarcode}"
-                                       inlineStyle="width:100%;height:auto;"/>
+                                       inlineStyle="width:50%;height:20%;"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <amx:spacer id="s2" height="20"/>
+        <amx:spacer id="s2" height="70"/>
         <amx:tableLayout id="tl1" width="100%" inlineStyle="table-layout:fixed;">
             <amx:rowLayout id="rl4">
                 <amx:cellFormat id="cf11" width="3%"/>
@@ -71,7 +71,7 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <amx:spacer id="s4" height="20"/>
+        <amx:spacer id="s4" height="150"/>
         <amx:tableLayout id="tl2" width="100%" inlineStyle="table-layout:fixed;">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" width="45%" halign="center" inlineStyle="padding-left:10px">
