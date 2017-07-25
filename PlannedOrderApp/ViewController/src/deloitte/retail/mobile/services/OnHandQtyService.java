@@ -8,6 +8,7 @@ import deloitte.retail.mobile.utility.ServiceManager;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.json.JSONArray;
 import oracle.adfmf.json.JSONObject;
@@ -66,10 +67,7 @@ public class OnHandQtyService {
 
                                     String onHandQty = null;
                                     if (temp.getString("P_ON_HAND_QUANTITY") != null)
-                                    {
                                         onHandQty = temp.getString("P_ON_HAND_QUANTITY");
-                                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.onHandQty}", onHandQty);
-                                    }
                                     else if (onHandQty == null)
                                         onHandQty = "0";                    
                                     strDebug13=strDebug13+"--OnHand-- "+onHandQty;
@@ -104,11 +102,15 @@ public class OnHandQtyService {
                                     else if (price == null)
                                         price = "0";
                                     
+                                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.promotionAvailable}", Boolean.FALSE);
                                     String causal = null;
                                     if (temp.getString("P_CAUSAL") != null)
                                     {
                                         if("Y".equalsIgnoreCase(temp.getString("P_CAUSAL")))
-                                            causal = "Yes";
+                                        {
+                                            //causal = "Yes";
+                                            AdfmfJavaUtilities.setELValue("#{pageFlowScope.promotionAvailable}", Boolean.TRUE);
+                                        }
                                         else if("N".equalsIgnoreCase(temp.getString("P_CAUSAL")))
                                             causal = "No";
                                     }
@@ -124,7 +126,6 @@ public class OnHandQtyService {
                 strDebug = strDebug +":10:";
                 onHandQtyArray = onHandQtyList.toArray(new OnHandQty[onHandQtyList.size()]);
                 AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}", strDebug);
-                
                 return onHandQtyArray;
     }
     
