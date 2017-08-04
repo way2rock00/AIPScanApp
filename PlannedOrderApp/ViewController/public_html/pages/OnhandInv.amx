@@ -449,8 +449,13 @@
                                                         inlineStyle="font-size:large; color:White;"/>
                                     </amx:cellFormat>
                                     <amx:cellFormat id="cf25" width="50%">
-                                        <amx:outputText value="$ #{row.price} #" id="ot28"
+                                        <amx:outputText value="$ #{row.price}" id="ot28"
                                                         inlineStyle="font-size:large; color:White;"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat id="cf3">
+                                        <amx:outputText value="#" id="ot3"
+                                                        inlineStyle="color:Orange; font-size:large;"
+                                                        rendered="#{pageFlowScope.promotionAvailable}"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl31">

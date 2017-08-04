@@ -24,6 +24,8 @@ public class BarcodeBean {
     private String storeName="";
     private String storeId="0";
     
+    private boolean validatedItem = false;
+    private boolean validatedStore = false;
     
     public void setStoreName(String storeName) {
         this.storeName = storeName;
@@ -216,4 +218,142 @@ public class BarcodeBean {
             AdfmfJavaUtilities.getELValue("#{bindings.dayWisePlanDetails}");
         a.getIterator().refresh();
     }
+    
+    public String landingNavigation() {
+        // Add event code here...
+//        System.out.println("landingNavigation start");
+        String pageNav=null;
+       
+       if (this.validatedStore) 
+       {            
+           if(this.validatedItem) 
+           {
+               pageNav = "scanProduct";
+               System.out.println("validated true");
+           }            
+            System.out.println("validated true"); 
+            //AdfmfContainerUtilities.gotoFeature("deloitte.retail.MainMenu");
+//            AdfmfContainerUtilities.gotoFeature("deloitte.retail.InvTF");
+        }
+        else {
+            pageNav = null;
+        }
+       
+//        System.out.println("landingNavigation end");
+        return pageNav;
+    }   
+    public void ScanIn_buttonClick(ActionEvent actionEvent) {
+        //Supplier Check
+//        String strReturnStatus = "E";
+//        String strLoginNumber = "";
+        String strErrorMessage = "";
+//        String strRole="";
+//        String strOprStoreId="";
+        String strDebug="ScanValidation:";
+        
+        System.out.println("Scan_buttonClick start");
+        
+//        String userName = AdfmfJavaUtilities.getELValue("#{pageFlowScope.userName}").toString();
+//        String password = AdfmfJavaUtilities.getELValue("#{pageFlowScope.password}").toString();
+
+        String storeId = AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedStoreId}").toString();
+                    
+        this.validatedStore = false;
+        this.validatedItem = false;
+        
+        String strItemNumber = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.BarcodeBean.barcodeResult}");
+        
+        strDebug=strDebug+"~strItemNumber:"+strItemNumber;
+        
+            String url = RestURIs.getScanItemDetailsURL(strItemNumber);
+            strDebug = strDebug+"~"+url;
+            ServiceManager serviceManager = new ServiceManager();
+            String jsonArrayAsString = serviceManager.invokeREAD(url); 
+            strDebug = strDebug+"~"+jsonArrayAsString;
+            try{
+                JSONObject jsonObject = new JSONObject(jsonArrayAsString);
+                JSONObject parent = jsonObject; //jsonObject.getJSONObject("OutputParameters");
+                strDebug = strDebug+"~"+"1";
+                
+                String returnStatus = null;
+                
+                if (parent.getString("X_RETURN_STATUS") != null)
+                    returnStatus = parent.getString("X_RETURN_STATUS");
+                strDebug = strDebug+"~"+"2:"+returnStatus;
+                
+                String returnMsg = null;
+                
+                if (parent.getString("X_RETURN_MSG") != null)
+                    returnMsg = parent.getString("X_RETURN_MSG");
+                strDebug = strDebug+"~"+"3:"+returnMsg;
+                
+                String desc = null;
+                
+                if (parent.getString("P_DESC") != null)
+                    desc = parent.getString("P_DESC");
+                
+                strDebug = strDebug+"~"+"4:"+desc;
+                String subClass = null;
+                
+                if (parent.getString("P_SUBCLASS") != null)
+                    subClass = parent.getString("P_SUBCLASS");
+                
+                strDebug = strDebug+"~"+"5:"+subClass;
+                String uom = null;
+                
+                if (parent.getString("P_UOM") != null)
+                    uom = parent.getString("P_UOM");
+                strDebug = strDebug+"~"+"5:"+uom;
+                
+//                if(returnStatus==null || "".equals(returnStatus))
+                if("S".equals(returnStatus))
+                {         
+                    this.validatedItem=true;
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.itemNumber}",strItemNumber);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.itemDesc}",desc );
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.itemSubClass}",subClass);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.itemUom}",uom);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItmScanMessage}", "");
+                }
+                else 
+                {
+                    this.validatedItem=false;
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItmScanMessage}", "Please scan an valid Item.");
+                }
+            }
+            catch(Exception e){
+                strDebug = strDebug +":Error:"+e.getMessage();
+            }
+            
+//            AdfmfJavaUtilities.setELValue("#{pageFlowScope.BarcodeBean.barcodeError}",strDebug);
+    //        strReturnStatus = "S";
+        if("-999".equals(storeId) || (storeId==null || ("".equals(storeId)))) 
+        {
+            this.validatedStore=false;   
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.StrScanMessage}", "Please select a store Id.");  
+        }
+        else 
+        {
+           this.validatedStore=true;    
+           AdfmfJavaUtilities.setELValue("#{pageFlowScope.StrScanMessage}", " ");  
+        }
+//        if("E".equalsIgnoreCase(strReturnStatus)){
+//            this.validated = false;
+//            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ScanMessage}", "Invalid Credentials Provided.");
+//        }
+//        else
+//        {
+//            this.validated = true;
+//            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LoginMessage}", null);
+//            AdfmfJavaUtilities.setELValue("#{applicationScope.loggedInUser}", userName);
+//            AdfmfJavaUtilities.setELValue("#{applicationScope.loggedInBuyerNumber}", strLoginNumber);
+//            AdfmfJavaUtilities.setELValue("#{pageFlowScope.showSearchRegion}", "false");
+//            AdfmfJavaUtilities.setELValue("#{applicationScope.loginRole}", strRole);
+//            AdfmfJavaUtilities.setELValue("#{applicationScope.oprStrId}", strOprStoreId);
+//        }
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}", strDebug);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.strDebug}",strDebug);
+        System.out.println("Scan_buttonClick end");
+    }
+  
 }

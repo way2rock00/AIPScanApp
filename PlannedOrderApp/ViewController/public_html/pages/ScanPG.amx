@@ -71,11 +71,16 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
+        <amx:outputText value="#{pageFlowScope.StrScanMessage}" id="ot2" inlineStyle="color:Red;"/>
+        <amx:outputText value="#{pageFlowScope.ItmScanMessage}" id="ot4" inlineStyle="color:Red;"/>
+        
         <amx:spacer id="s4" height="150"/>
         <amx:tableLayout id="tl2" width="100%" inlineStyle="table-layout:fixed;">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" width="45%" halign="center" inlineStyle="padding-left:10px">
-                    <amx:commandButton text="Ok" id="cb2" styleClass="buttonsLarge" shortDesc="Ok" action="scanProduct"
+                    <amx:commandButton text="Ok" id="cb2" styleClass="buttonsLarge" shortDesc="Ok"
+                                       actionListener="#{pageFlowScope.BarcodeBean.ScanIn_buttonClick}"
+                                       action= "#{pageFlowScope.BarcodeBean.landingNavigation}"
                                        inlineStyle="width:100%;height:auto;">
                     </amx:commandButton>
                 </amx:cellFormat>
@@ -88,9 +93,9 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <!--<amx:outputText value="ItemNumber:#{pageFlowScope.itemNumber}" id="ot2"/>
-        <amx:outputText value="ItemDesc:#{pageFlowScope.itemDesc}" id="ot4"/>
-        <amx:outputText value="SubClass:#{pageFlowScope.itemSubClass}" id="ot5"/>-->
+        
+        <!--<amx:outputText value="Store Id:#{pageFlowScope.selectedStoreId}" id="ot5"/>-->
+        <!--<amx:outputText value="SubClass:#{pageFlowScope.itemSubClass}" id="ot5"/>-->
         <!--<amx:outputText value="Debug:#{pageFlowScope.strDebug}" id="ot6"/>-->
         <!--<amx:outputText value="BarCodeResult:#{pageFlowScope.BarcodeBean.barcodeResult}" id="ot7"/>-->
         <!--<amx:outputText value="StoreName:#{pageFlowScope.strStoreDebug}" id="ot11"/>
